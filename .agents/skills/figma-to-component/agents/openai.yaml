@@ -1,0 +1,4 @@
+interface:
+  display_name: "Figma to Component"
+  short_description: "Replicate Figma sections as components"
+  default_prompt: "Use $figma-to-component to replicate this Figma section as a repository component."
