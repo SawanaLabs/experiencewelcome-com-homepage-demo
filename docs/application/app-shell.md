@@ -8,7 +8,7 @@ updateAt: 2026-07-01
 
 ## Scope
 
-- Covers `src/app/[locale]/layout.tsx`, `src/app/[locale]/page.tsx`, `src/app/globals.css`, and app-level behavior affected by `next.config.ts`.
+- Covers `src/app/[locale]/layout.tsx`, `src/app/[locale]/(home)/page.tsx`, `src/app/globals.css`, and app-level behavior affected by `next.config.ts`.
 - Covers the current localized homepage route while the project is still a homepage demo.
 
 ## Current Subdomain Docs
@@ -18,7 +18,8 @@ updateAt: 2026-07-01
 - `src/app/[locale]/layout.tsx` validates the locale segment, sets request locale for static rendering, generates localized metadata, and loads Geist Sans and Geist Mono via `next/font/google`.
 - Geist font variables are applied on `<html>` and the body uses `font-sans antialiased`; keep this shape unless Tailwind or Next guidance changes.
 - `src/app/globals.css` uses literal Geist font families inside `@theme inline`, which avoids Tailwind v4 circular font token resolution.
-- `src/app/[locale]/page.tsx` is still the starter homepage entrypoint. Replace it directly when the real ExperienceWelcome homepage work begins.
+- `src/app/[locale]/(home)/page.tsx` is the starter homepage entrypoint. Replace it directly when the real ExperienceWelcome homepage work begins.
+- Keep homepage-specific route-local files inside `src/app/[locale]/(home)/`; the `(home)` route group keeps the URL at `/{locale}` while giving homepage work a clear bounded folder.
 - `next/image` usages include explicit dimensions plus `style={{ width: "auto", height: "auto" }}` to avoid aspect-ratio warnings after starter cleanup.
 
 ## Update Triggers

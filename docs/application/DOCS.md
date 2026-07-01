@@ -23,7 +23,7 @@ updateAt: 2026-07-01
 
 - `src/app/[locale]/layout.tsx` owns localized metadata, font wiring, and shared document structure.
 - `src/app/globals.css` owns Tailwind v4 theme tokens and global CSS variables.
-- `src/app/[locale]/page.tsx` owns the current localized homepage route implementation.
+- `src/app/[locale]/(home)/page.tsx` owns the current localized homepage route implementation.
 - `src/components/` owns reusable UI modules once they are promoted out of a route or page.
 - `src/lib/` owns shared application utilities such as `cn`.
 - `src/i18n/` owns locale lists, JSON messages, next-intl request configuration, localized navigation helpers, and SEO URL helpers.

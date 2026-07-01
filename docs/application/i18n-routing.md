@@ -16,6 +16,7 @@ updateAt: 2026-07-01
 - The app uses `next-intl` with App Router and the dynamic `src/app/[locale]/` route segment.
 - Supported locales are `en`, `zh`, `ja`, `fr`, `es`, and `hi`; the default locale is `en`.
 - `localePrefix: "as-needed"` keeps the default English homepage at `/` while non-default locales use prefixed paths such as `/zh`, `/ja`, `/fr`, `/es`, and `/hi`.
+- `src/app/[locale]/(home)/page.tsx` serves the locale homepage without adding a URL segment because `(home)` is a route group.
 - `src/proxy.ts` uses next-intl middleware and excludes API routes, Next internals, Vercel internals, and dotted static assets from locale matching.
 - `src/i18n/routing.ts` is the source of truth for locale codes, default locale, pathnames, and the locale type guard.
 - `src/i18n/navigation.ts` exports the locale-aware navigation helpers from `createNavigation(routing)`.
