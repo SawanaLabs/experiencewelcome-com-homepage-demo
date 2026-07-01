@@ -24,10 +24,10 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full`}
+      lang="en"
     >
-      <body className="min-h-full flex flex-col font-sans antialiased">
+      <body className="flex min-h-full flex-col font-sans antialiased">
         {children}
       </body>
     </html>
