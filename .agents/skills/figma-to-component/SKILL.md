@@ -11,9 +11,10 @@ Use this skill to run a trace from a Figma source section to a committed-quality
 
 - Treat Figma as the source of truth for structure, dimensions, spacing, copy, colors, and exported assets.
 - Preserve the meaningful Figma box tree. Semantic HTML is allowed, but do not flatten layout groups that exist to position children.
-- Use Tailwind arbitrary values for Figma colors, such as `bg-[#000000]` or `text-[rgba(255,255,255,0.65)]`. Do not substitute theme tokens unless the user explicitly maps them.
-- Use exported screenshots as references and exported SVGs/images as assets. Do not implement a section by pasting one screenshot as the UI.
-- If Dev Mode is unavailable, say so and continue with the viewer tree, reference screenshots, exported assets, and browser measurements.
+- Encode Figma colors exactly in the repo's styling system. In Tailwind repos, use arbitrary values such as `bg-[#000000]` or `text-[rgba(255,255,255,0.65)]`. Do not substitute theme tokens unless the user explicitly maps them.
+- Export references and assets from selected Figma nodes whenever browser access is available. Export the selected section/frame as a visual reference, usually PNG. Prefer SVG for vector icons, logos, and simple graphic groups; use PNG, JPEG, WebP, GIF, or video when the source content requires raster or motion output.
+- Use exported section references as visual references and exported SVGs/images as assets. Do not implement a section by pasting one screenshot as the UI.
+- If Dev Mode is unavailable, say so and continue with the viewer tree, exported references, exported assets, and browser measurements.
 - Ask at most one blocking question before implementation; otherwise make the conservative choice that keeps the trace strongest.
 
 ## Workflow
@@ -26,29 +27,40 @@ Capture:
 
 - Figma file URL and node ID, if available.
 - Selected layer name as shown in Figma.
-- Target viewport width for first-pass fidelity, usually the design frame width.
+- Target viewport or viewport set for first-pass fidelity. Derive it from the selected Figma frame, user request, or responsive variants in the design.
 - Target component path and route/page where the component will be mounted for verification.
 - Stage constraints, such as static-only, no i18n, exported assets allowed, or one-section-per-commit.
 
-Completion criterion: the target layer, viewport, component path, mounting route, and acceptance rules are explicit or can be stated as assumptions.
+Completion criterion: the target layer, viewport set, component path, mounting route, and acceptance rules are explicit or can be stated as assumptions.
 
 ### 2. Read The Repository Contract
 
 Before editing, read the repo rules and the local surface being changed.
 
-For this Next.js repo, include:
+Include:
 
-- `AGENTS.md`
-- relevant `node_modules/next/dist/docs/` guide before writing Next.js code
+- repo instructions such as `AGENTS.md`, `CLAUDE.md`, or local project docs
+- relevant framework docs required by the repo before writing framework-specific code
 - current route/page file that will mount the component
-- existing component conventions under `src/components/`
-- existing asset and docs folders under `public/` and `docs/assets/`
+- existing component conventions
+- existing asset and reference folders
 
 Completion criterion: you know where the component belongs, where raw references belong, where browser-served assets belong, and which commands verify the change.
 
 ### 3. Extract Figma Truth
 
 Use Figma and exported files to gather enough facts to code without guessing.
+
+Extraction principles:
+
+- Work in an authenticated browser session that can access the intended Figma file. When this environment provides `chrome-live-profile`, use that skill and follow its current instructions.
+- Use visible UI automation when Figma selection or export requires direct browser interaction. When this environment provides `computer-use:computer-use`, use that skill and follow its current instructions.
+- Confirm the browser is on the intended Figma file before extracting facts.
+- Select the target section/frame and export it as the visual reference.
+- Select child nodes that represent reusable assets, such as logo marks, icons, decorative vectors, product screenshots, or media frames, and export each asset from its own Figma node.
+- Choose export formats by asset nature: SVG for vector content; raster or motion formats for raster, bitmap-like, or animated content.
+- Move downloaded exports into the repository only after recording the original filenames and selected Figma layer names.
+- Do not encode Figma UI coordinates, panel locations, profile labels, profile directory names, account names, or local paths in this skill.
 
 Record:
 
@@ -61,9 +73,9 @@ Record:
 
 Asset handling:
 
-- Save section screenshots as references, for example `docs/assets/homepage/<section>/<section>-reference.png`.
-- Move browser-served assets to `public/homepage/<section>/`.
-- Rename assets semantically, such as `welcome-mark.svg`, `youtube.svg`, or `linkedin.svg`.
+- Save exported section references in the repo's reference or docs-assets area.
+- Move browser-served assets to the repo's served asset area.
+- Rename assets semantically, using the Figma layer purpose rather than the browser download name.
 - Preserve exported SVG/image contents unless the user asks for optimization.
 
 Completion criterion: you can list the section's main child hierarchy, colors, dimensions, and asset files without relying on visual memory.
@@ -77,7 +89,7 @@ Map:
 - Figma section/frame -> exported React component
 - Figma layout groups -> nested `div`, `section`, `nav`, `ul`, or other semantic containers
 - repeated link/card groups -> local data arrays
-- exported icons/images -> `public/` paths with explicit width and height
+- exported icons/images -> served asset paths with explicit width and height
 - page-level verification mount -> minimal route composition
 
 Keep the component cohesive. Put section-local data beside the component until reuse is real. Avoid a new abstraction unless it removes meaningful duplication.
@@ -90,14 +102,14 @@ Build the static section first.
 
 Rules:
 
-- Put homepage section components under `src/components/homepage/`.
-- Use `next/image` for `public/` assets when working in Next.js and dimensions are known.
-- Encode Figma desktop dimensions with Tailwind arbitrary values at the relevant breakpoint.
-- Add responsive behavior below the target viewport without changing the desktop trace.
+- Put components under the repo's established component directory and domain grouping.
+- Use the framework's image component for served assets when dimensions are known and the repo already uses one.
+- Encode Figma dimensions at the relevant breakpoint.
+- Add responsive behavior outside the target viewport without changing the target viewport trace.
 - Keep static-stage copy hard-coded if the user has deferred i18n.
 - Preserve accessibility basics: semantic landmarks, link labels, decorative image `alt=""`, and visible focus styles.
 
-Completion criterion: the component renders on the chosen route and all referenced assets load from `public/`.
+Completion criterion: the component renders on the chosen route and all referenced assets load from the repo's served asset system.
 
 ### 6. Verify The Trace
 
@@ -112,22 +124,10 @@ Code checks:
 Browser checks:
 
 - Start the local dev server.
-- Use the in-app browser for viewport control and DOM inspection.
-- Set the design viewport when the browser supports it.
+- Use the repo's normal browser verification tool for viewport control and DOM inspection.
+- Set every target viewport when the browser supports it.
 - Measure key nodes with `getBoundingClientRect()`: section size, major child x/y positions, image sizes, and divider/border positions.
 - Read computed colors with `getComputedStyle()`.
 - Take a screenshot when the browser surface returns a trustworthy image. If screenshots are clipped or scaled, use DOM measurements as the fidelity evidence and report the screenshot limitation.
 
 Completion criterion: report the verification commands and the measured facts that prove the implementation matches the Figma source.
-
-## Proven Footer Trace
-
-Use this repo's footer as the first precedent:
-
-- reference: `docs/assets/homepage/footer/footer-reference.png` at `1440 x 536`
-- assets: `public/homepage/footer/welcome-mark.svg`, `youtube.svg`, `twitter.svg`, `linkedin.svg`
-- component: `src/components/homepage/footer.tsx`
-- route mount: `src/app/[locale]/(home)/page.tsx`
-- desktop measurements: footer `1440 x 536`, top area `457px`, bottom area `79px` including `1px` border, logo `105 x 120` at `x=80 y=112`, nav headings at `x=428/750/1072 y=112`
-
-This precedent is useful for process, not for copy-pasting dimensions into unrelated sections.
