@@ -18,6 +18,25 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "style": {
+        "noRestrictedImports": {
+          "level": "error",
+          "options": {
+            "paths": {
+              "next/link": "Use Link from @/i18n/navigation instead of next/link.",
+              "next/navigation": {
+                "importNames": [
+                  "permanentRedirect",
+                  "redirect",
+                  "usePathname",
+                  "useRouter"
+                ],
+                "message": "Use permanentRedirect, redirect, usePathname, and useRouter from @/i18n/navigation instead of next/navigation."
+              }
+            }
+          }
+        }
+      },
       "suspicious": {
         "noUnknownAtRules": "off"
       }
