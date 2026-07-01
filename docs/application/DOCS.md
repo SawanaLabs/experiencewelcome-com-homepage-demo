@@ -10,6 +10,7 @@ updateAt: 2026-07-01
 
 - **App Router surface**: The route and layout tree under `src/app/`.
 - **App shell**: The localized layout, global CSS, metadata, and current homepage entrypoint that shape the visible application.
+- **Component library surface**: The reusable project-owned UI modules under `src/components/`.
 - **Locale route**: The `src/app/[locale]/` segment used by next-intl to serve each supported language.
 
 ## Collaboration Conventions
@@ -23,5 +24,7 @@ updateAt: 2026-07-01
 - `src/app/[locale]/layout.tsx` owns localized metadata, font wiring, and shared document structure.
 - `src/app/globals.css` owns Tailwind v4 theme tokens and global CSS variables.
 - `src/app/[locale]/page.tsx` owns the current localized homepage route implementation.
+- `src/components/` owns reusable UI modules once they are promoted out of a route or page.
+- `src/lib/` owns shared application utilities such as `cn`.
 - `src/i18n/` owns locale lists, JSON messages, next-intl request configuration, localized navigation helpers, and SEO URL helpers.
 - `next.config.ts` owns framework-level switches such as React Compiler.

@@ -21,7 +21,7 @@ updateAt: 2026-07-01
 
 ## Boundary Principles
 
-- Application code lives under `src/app/` until the app has a clear reason to introduce another runtime surface.
+- Application code lives under `src/app/`, reusable UI modules under `src/components/`, and shared application utilities under `src/lib/`.
 - Repository-level tooling belongs in root config files such as `package.json`, `pnpm-workspace.yaml`, `biome.json`, and `next.config.ts`.
 - Agent skills live under `.agents/skills/`; the installed skill inventory is tracked by `skills-lock.json`.
 - Put project-wide conventions here, domain navigation in `docs/index.md`, domain-specific conventions in `docs/<domain>/DOCS.md`, and leaf knowledge in `docs/<domain>/<subdomain>.md`.

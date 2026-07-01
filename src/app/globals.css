@@ -2,20 +2,55 @@
 
 :root {
   --background: #ffffff;
+  --border: oklch(0.922 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
   --foreground: #171717;
+  --input: oklch(0.922 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --radius: 0.625rem;
+  --ring: oklch(0.708 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
 }
 
 @theme inline {
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
   --color-background: var(--background);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
   --color-foreground: var(--foreground);
+  --color-input: var(--input);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-ring: var(--ring);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
   --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  --radius-sm: calc(var(--radius) * 0.75);
+  --radius-md: calc(var(--radius) * 0.875);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.5);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
+    --border: oklch(1 0 0 / 10%);
+    --destructive: oklch(0.704 0.191 22.216);
     --foreground: #ededed;
+    --input: oklch(1 0 0 / 15%);
+    --primary: oklch(0.922 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --ring: oklch(0.556 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
   }
 }
 
