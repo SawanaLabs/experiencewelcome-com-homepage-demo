@@ -1,7 +1,7 @@
 ---
 title: Component Library
-description: Stable conventions for project-owned UI components, pass-through props, and shadcn-inspired composition.
-updateAt: 2026-07-01
+description: Stable conventions for project-owned UI components, Base UI-backed primitives, pass-through props, and shadcn-inspired composition.
+updateAt: 2026-07-02
 ---
 
 # Component Library
@@ -17,6 +17,7 @@ updateAt: 2026-07-01
 - **Project-owned component**: A component whose source lives in this repository and can be edited directly.
 - **UI primitive**: A reusable, product-agnostic component that owns presentation and accessible behavior, but no business workflow.
 - **Pass-through component**: A component that preserves the underlying element or primitive interface by accepting and spreading the native props callers expect.
+- **Base UI-backed primitive**: A source-owned project component that wraps or adapts `@base-ui/react` behavior while keeping project styling, props, and exports under `src/components/`.
 
 ## Current Subdomain Docs
 
@@ -25,7 +26,11 @@ updateAt: 2026-07-01
 - Keep generic primitives in `src/components/` when they appear. These modules should be reusable across pages and should not import product copy, next-intl translations, route data, analytics, or feature-specific state.
 - Keep site-wide ExperienceWelcome assemblies in `src/components/` when they are reused across pages but still own product-specific copy or assets. `src/components/navbar.tsx` owns the shared Welcome navigation content and exposes layout variants for the homepage hero, mobile header, and floating shell.
 - Put ExperienceWelcome homepage section components under `src/components/homepage/`. These are product-specific assemblies, so they may depend on homepage copy, assets, layout choreography, and next-intl boundaries defined for the homepage.
-- `src/components/button.tsx` is the first shadcn-style copied primitive. It intentionally avoids `radix-ui`, `Slot`, `asChild`, and `class-variance-authority`; use its exported `buttonVariants` to style other elements such as locale-aware links.
+- `src/components/button.tsx` is the first shadcn-style copied primitive. It intentionally avoids headless UI dependencies, `Slot`, `asChild`, and `class-variance-authority`; use its exported `buttonVariants` to style other elements such as locale-aware links.
+- For new copied shadcn-style interactive primitives that need managed accessibility behavior, prefer the shadcn Base UI variant and `@base-ui/react` primitives over Radix-based implementations.
+- Use native elements first for simple controls such as plain buttons, links, and static layout. Use Base UI for menus, dropdowns, select-like controls, popovers, dialogs, tabs, tooltips, and other stateful interaction patterns where keyboard behavior, focus management, positioning, or ARIA semantics would otherwise be hand-written.
+- Keep Base UI as an implementation detail behind source-owned project modules. Callers should import from `@/components/...`, not from `@base-ui/react/...`, unless a low-level module is intentionally being built.
+- Do not add new `@radix-ui/*` dependencies by default. Use Radix only for a documented exception when the current shadcn Base UI variant or Base UI primitive cannot cover the component.
 - For other future routes, keep page-specific assemblies near the page until repetition is proven. The ExperienceWelcome homepage is the current exception because its section components are intentionally organized under `src/components/homepage/`.
 - Prefer native elements and accessible headless primitives over custom `div` controls. Do not drop `id`, `aria-*`, `data-*`, event handlers, form props, or `ref` behavior when wrapping an element.
 - Type component props from the underlying element or primitive, then add only the small project-specific props the component truly owns:
@@ -78,6 +83,11 @@ export function Button({
   Context: The upstream Button source uses `radix-ui` Slot and `class-variance-authority`, but the current project only needs a native button and a reusable class generator.
   Decision: Implement `src/components/button.tsx` with local variant maps, export `buttonVariants`, keep `...props`, and limit new dependencies to `clsx` and `tailwind-merge` for `cn`.
   Consequences: The component does not support `asChild`; callers should apply `buttonVariants` directly to links or other elements when needed.
+- **2026-07-02-base-ui-for-headless-primitives**: Prefer Base UI for new interactive shadcn-style primitives.
+  Status: Accepted.
+  Context: shadcn now documents both Radix UI and Base UI variants, while Base UI is an actively maintained, unstyled React primitive library built for accessible, composable component systems.
+  Decision: For new interactive primitives, copy and adapt the shadcn Base UI implementation or wrap `@base-ui/react` directly inside a project-owned component. Keep native implementations for simple controls and avoid new Radix dependencies unless there is a documented gap.
+  Consequences: Future dropdown, menu, select, popover, dialog, tabs, tooltip, and similar components should be Base UI-backed by default while preserving the repository's source-owned component surface.
 
 ## Update Triggers
 

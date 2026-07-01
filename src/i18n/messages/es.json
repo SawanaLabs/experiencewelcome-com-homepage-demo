@@ -4,6 +4,22 @@
     "siteName": "ExperienceWelcome",
     "title": "Demostración de página de inicio de ExperienceWelcome"
   },
+  "Navbar": {
+    "accountNavigation": {
+      "login": "Iniciar sesión",
+      "support": "Soporte"
+    },
+    "brandAriaLabel": "Inicio de Welcome",
+    "demoLabel": "Demo",
+    "languageLabel": "Cambiar idioma",
+    "primaryNavigation": {
+      "about": "Acerca de",
+      "blog": "Blog",
+      "events": "Eventos",
+      "features": "Funciones",
+      "pricing": "Precios"
+    }
+  },
   "HomePage": {
     "body": "Esta ruta inicial está configurada para seis idiomas con rutas App Router pensadas para SEO.",
     "deployNow": "Desplegar ahora",

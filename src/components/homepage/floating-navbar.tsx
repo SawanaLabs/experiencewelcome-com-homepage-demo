@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { SiteNavbar } from "@/components/navbar";
+import { type NavbarCopy, SiteNavbar } from "@/components/navbar";
+import type { Locale } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 
 const headerNavbarSelector = "[data-homepage-header-nav]";
@@ -19,7 +20,15 @@ function isVisibleInViewport(element: HTMLElement) {
   );
 }
 
-export function FloatingNavbar() {
+interface FloatingNavbarProps {
+  currentLocale: Locale;
+  navbarCopy: NavbarCopy;
+}
+
+export function FloatingNavbar({
+  currentLocale,
+  navbarCopy,
+}: FloatingNavbarProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -64,7 +73,11 @@ export function FloatingNavbar() {
       )}
       data-homepage-floating-navbar="true"
     >
-      <SiteNavbar linkTabIndex={isVisible ? undefined : -1} />
+      <SiteNavbar
+        copy={navbarCopy}
+        currentLocale={currentLocale}
+        linkTabIndex={isVisible ? undefined : -1}
+      />
     </div>
   );
 }

@@ -4,6 +4,22 @@
     "siteName": "ExperienceWelcome",
     "title": "ExperienceWelcome Homepage Demo"
   },
+  "Navbar": {
+    "accountNavigation": {
+      "login": "Login",
+      "support": "Support"
+    },
+    "brandAriaLabel": "Welcome home",
+    "demoLabel": "Demo",
+    "languageLabel": "Change language",
+    "primaryNavigation": {
+      "about": "About",
+      "blog": "Blog",
+      "events": "Events",
+      "features": "Features",
+      "pricing": "Pricing"
+    }
+  },
   "HomePage": {
     "body": "This starter route is configured for six locales with SEO-friendly App Router routing.",
     "deployNow": "Deploy Now",

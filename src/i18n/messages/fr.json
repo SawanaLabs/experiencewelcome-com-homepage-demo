@@ -4,6 +4,22 @@
     "siteName": "ExperienceWelcome",
     "title": "Démo de page d'accueil ExperienceWelcome"
   },
+  "Navbar": {
+    "accountNavigation": {
+      "login": "Connexion",
+      "support": "Assistance"
+    },
+    "brandAriaLabel": "Accueil Welcome",
+    "demoLabel": "Démo",
+    "languageLabel": "Changer de langue",
+    "primaryNavigation": {
+      "about": "À propos",
+      "blog": "Blog",
+      "events": "Événements",
+      "features": "Fonctionnalités",
+      "pricing": "Tarifs"
+    }
+  },
   "HomePage": {
     "body": "Cette route de départ est configurée pour six langues avec un routage App Router favorable au SEO.",
     "deployNow": "Déployer",

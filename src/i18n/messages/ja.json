@@ -4,6 +4,22 @@
     "siteName": "ExperienceWelcome",
     "title": "ExperienceWelcome ホームページデモ"
   },
+  "Navbar": {
+    "accountNavigation": {
+      "login": "ログイン",
+      "support": "サポート"
+    },
+    "brandAriaLabel": "Welcome ホーム",
+    "demoLabel": "デモ",
+    "languageLabel": "言語を切り替え",
+    "primaryNavigation": {
+      "about": "概要",
+      "blog": "ブログ",
+      "events": "イベント",
+      "features": "機能",
+      "pricing": "料金"
+    }
+  },
   "HomePage": {
     "body": "このスタータールートは、SEO に適した App Router ルーティングで 6 つのロケールに対応しています。",
     "deployNow": "今すぐデプロイ",

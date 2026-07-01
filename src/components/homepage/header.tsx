@@ -1,14 +1,25 @@
 import Image from "next/image";
-import { SiteNavbar } from "@/components/navbar";
+import { type NavbarCopy, SiteNavbar } from "@/components/navbar";
+import type { Locale } from "@/i18n/routing";
 
 const linkFocusClasses =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#ffffff] focus-visible:outline-offset-4";
 
-export function HomepageHeader() {
+interface HomepageHeaderProps {
+  currentLocale: Locale;
+  navbarCopy: NavbarCopy;
+}
+
+export function HomepageHeader({
+  currentLocale,
+  navbarCopy,
+}: HomepageHeaderProps) {
   return (
     <header className="w-full bg-[#000000] text-[#ffffff]">
       <div className="relative mx-auto hidden h-[min(1142px,79.306vw)] w-full max-w-[1440px] overflow-hidden bg-[#000000] lg:block">
         <SiteNavbar
+          copy={navbarCopy}
+          currentLocale={currentLocale}
           data-figma-layer="header/nav"
           data-homepage-header-nav="true"
           logoPriority
@@ -103,6 +114,8 @@ export function HomepageHeader() {
 
       <div className="relative overflow-hidden px-5 pt-5 pb-16 lg:hidden">
         <SiteNavbar
+          copy={navbarCopy}
+          currentLocale={currentLocale}
           data-homepage-header-nav="true"
           logoPriority
           variant="mobileHeader"
