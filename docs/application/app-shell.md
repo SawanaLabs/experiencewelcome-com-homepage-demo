@@ -19,7 +19,8 @@ updateAt: 2026-07-01
 - Geist font variables are applied on `<html>` and the body uses `font-sans antialiased`; keep this shape unless Tailwind or Next guidance changes.
 - `src/app/globals.css` uses literal Geist font families inside `@theme inline`, which avoids Tailwind v4 circular font token resolution.
 - `src/app/[locale]/(home)/page.tsx` is the starter homepage entrypoint. Replace it directly when the real ExperienceWelcome homepage work begins.
-- Keep homepage-specific route-local files inside `src/app/[locale]/(home)/`; the `(home)` route group keeps the URL at `/{locale}` while giving homepage work a clear bounded folder.
+- Keep `src/app/[locale]/(home)/page.tsx` as the homepage route entrypoint and page composition surface; put ExperienceWelcome homepage section components under `src/components/homepage/`.
+- The `(home)` route group keeps the URL at `/{locale}` without adding a path segment.
 - `next/image` usages include explicit dimensions plus `style={{ width: "auto", height: "auto" }}` to avoid aspect-ratio warnings after starter cleanup.
 
 ## Update Triggers

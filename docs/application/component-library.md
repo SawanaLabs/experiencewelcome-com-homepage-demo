@@ -23,8 +23,9 @@ updateAt: 2026-07-01
 - The project does not install `shadcn/ui` as a component dependency. It adopts the same useful philosophy: own the source, keep components composable, expose predictable interfaces, and keep implementation readable to agents and humans.
 - In this repository, `components/` means `src/components/`. Import components as `@/components/...`.
 - Keep generic primitives in `src/components/` when they appear. These modules should be reusable across pages and should not import product copy, next-intl translations, route data, analytics, or feature-specific state.
+- Put ExperienceWelcome homepage section components under `src/components/homepage/`. These are product-specific assemblies, so they may depend on homepage copy, assets, layout choreography, and next-intl boundaries defined for the homepage.
 - `src/components/button.tsx` is the first shadcn-style copied primitive. It intentionally avoids `radix-ui`, `Slot`, `asChild`, and `class-variance-authority`; use its exported `buttonVariants` to style other elements such as locale-aware links.
-- Keep page-specific assemblies near the page until repetition is proven. Promote them into `src/components/` only after the pattern is reused or the page file becomes harder to scan.
+- For other future routes, keep page-specific assemblies near the page until repetition is proven. The ExperienceWelcome homepage is the current exception because its section components are intentionally organized under `src/components/homepage/`.
 - Prefer native elements and accessible headless primitives over custom `div` controls. Do not drop `id`, `aria-*`, `data-*`, event handlers, form props, or `ref` behavior when wrapping an element.
 - Type component props from the underlying element or primitive, then add only the small project-specific props the component truly owns:
 
