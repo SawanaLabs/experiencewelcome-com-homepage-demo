@@ -1,5 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import { HomepageFooter } from "@/components/homepage/footer";
+import { HomepageHeader } from "@/components/homepage/header";
 import type { Locale } from "@/i18n/routing";
 
 interface HomeProps {
@@ -14,6 +15,7 @@ export default async function Home({ params }: HomeProps) {
 
   return (
     <main className="min-h-screen bg-[#000000]">
+      <HomepageHeader />
       <HomepageFooter />
     </main>
   );
