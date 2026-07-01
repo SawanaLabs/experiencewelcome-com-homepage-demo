@@ -1,3 +1,5 @@
+- 目前在快速迭代阶段，在 main 分支工作。
+
 <!-- BEGIN:nextjs-agent-rules -->
 # This is NOT the Next.js you know
 
