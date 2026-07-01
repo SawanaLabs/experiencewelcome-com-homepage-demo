@@ -20,6 +20,83 @@
       "pricing": "料金"
     }
   },
+  "Header": {
+    "previewAlt": "ローンチ当日のウェビナープレビュー",
+    "primaryCtaLabel": "デモ",
+    "secondaryCtaLabel": "仕組みを見る",
+    "subtitle": "マーケターが収益につながる印象的な体験を開催できるように設計されたウェビナープラットフォームです。",
+    "title": "惹きつけて、転換する"
+  },
+  "CustomerStories": {
+    "nextStoryLabel": "次の顧客ストーリー",
+    "previousStoryLabel": "前の顧客ストーリー",
+    "testimonials": {
+      "bitwise": {
+        "author": "Talisha Brantley",
+        "company": "Bitwise",
+        "logoAlt": "Bitwise",
+        "quote": "「Welcome 以前は、スイッチャーを用意し、Ecamm や OBS を使い、常に何かが足りない状態でした。今では、一人か二人で特別な機材なしにバーチャルイベントを簡単に運営できます。ひとつのプラットフォームだけで、やりたいことをすべて実現できます。」",
+        "role": "イベント担当 VP"
+      },
+      "dribbble": {
+        "author": "Madeleine Sava",
+        "company": "Dribbble",
+        "logoAlt": "Dribbble",
+        "quote": "「Welcome の体験は 10 点満点です。Facebook のようなスポンサーが私たちのイベント協賛を検討するとき、Welcome は私たちの秘密兵器です。」",
+        "role": "プログラムマネージャー"
+      },
+      "salesforce": {
+        "author": "Ally Masi",
+        "company": "Salesforce",
+        "logoAlt": "Salesforce",
+        "quote": "「Welcome を選んだ理由は、直感的で美しく設計され、参加者とのインタラクションに最適だからです。Slack のようなチャット、登壇中の Q&A、投票機能によって、視聴者のエンゲージメントが高まりました。」",
+        "role": "業界イベントマーケティングディレクター"
+      }
+    },
+    "title": "愛され、信頼されています"
+  },
+  "Footer": {
+    "copyright": "© 2022 Welcome. All rights reserved.",
+    "legalLinks": {
+      "privacyPolicy": "プライバシーポリシー",
+      "termsOfService": "利用規約"
+    },
+    "logoAlt": "Welcome",
+    "navigation": {
+      "company": {
+        "links": {
+          "aboutUs": "会社概要",
+          "contactUs": "お問い合わせ"
+        },
+        "title": "会社"
+      },
+      "explore": {
+        "links": {
+          "blog": "ブログ",
+          "events": "イベント"
+        },
+        "title": "見る"
+      },
+      "product": {
+        "links": {
+          "bookDemo": "デモを予約",
+          "features": "機能",
+          "pricing": "料金"
+        },
+        "title": "プロダクト"
+      }
+    },
+    "socialLinks": {
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "youtube": "YouTube"
+    }
+  },
+  "HomeMetadata": {
+    "description": "マーケターが収益につながる印象的な体験を開催できるように設計されたウェビナープラットフォームです。",
+    "imageAlt": "ExperienceWelcome ホームページのプレビュー",
+    "title": "惹きつけて、転換する"
+  },
   "HomePage": {
     "body": "このスタータールートは、SEO に適した App Router ルーティングで 6 つのロケールに対応しています。",
     "deployNow": "今すぐデプロイ",

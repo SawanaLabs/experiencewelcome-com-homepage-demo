@@ -20,6 +20,83 @@
       "pricing": "Precios"
     }
   },
+  "Header": {
+    "previewAlt": "Vista previa del webinar del día de lanzamiento",
+    "primaryCtaLabel": "Demo",
+    "secondaryCtaLabel": "Cómo funciona",
+    "subtitle": "Una plataforma de webinars diseñada para que los equipos de marketing creen experiencias impactantes que generan ingresos.",
+    "title": "Cautiva y convierte"
+  },
+  "CustomerStories": {
+    "nextStoryLabel": "Siguiente historia de cliente",
+    "previousStoryLabel": "Historia de cliente anterior",
+    "testimonials": {
+      "bitwise": {
+        "author": "Talisha Brantley",
+        "company": "Bitwise",
+        "logoAlt": "Bitwise",
+        "quote": "“Antes de Welcome, tenía que conseguir un switcher, usar Ecamm, OBS, y siempre faltaba algo para que todo funcionara. Ahora una o dos personas pueden ejecutar nuestros eventos virtuales fácilmente sin equipo especial. Con una sola plataforma podemos hacer todo lo que queremos.”",
+        "role": "VP de eventos"
+      },
+      "dribbble": {
+        "author": "Madeleine Sava",
+        "company": "Dribbble",
+        "logoAlt": "Dribbble",
+        "quote": "“La experiencia con Welcome ha sido 10 de 10. Cuando patrocinadores como Facebook evalúan apoyar nuestros eventos, Welcome es nuestra arma secreta.”",
+        "role": "Gerente de programa"
+      },
+      "salesforce": {
+        "author": "Ally Masi",
+        "company": "Salesforce",
+        "logoAlt": "Salesforce",
+        "quote": "“Elegimos Welcome porque es intuitivo, tiene un diseño excelente y está pensado para la interacción de los asistentes. El chat tipo Slack, las preguntas en escenario y las encuestas han aumentado la participación del público.”",
+        "role": "Directora de marketing de eventos industriales"
+      }
+    },
+    "title": "Amado y confiable"
+  },
+  "Footer": {
+    "copyright": "© 2022 Welcome. Todos los derechos reservados.",
+    "legalLinks": {
+      "privacyPolicy": "Política de privacidad",
+      "termsOfService": "Términos de servicio"
+    },
+    "logoAlt": "Welcome",
+    "navigation": {
+      "company": {
+        "links": {
+          "aboutUs": "Sobre nosotros",
+          "contactUs": "Contáctanos"
+        },
+        "title": "Empresa"
+      },
+      "explore": {
+        "links": {
+          "blog": "Blog",
+          "events": "Eventos"
+        },
+        "title": "Explorar"
+      },
+      "product": {
+        "links": {
+          "bookDemo": "Reservar demo",
+          "features": "Funciones",
+          "pricing": "Precios"
+        },
+        "title": "Producto"
+      }
+    },
+    "socialLinks": {
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "youtube": "YouTube"
+    }
+  },
+  "HomeMetadata": {
+    "description": "Una plataforma de webinars diseñada para que los equipos de marketing creen experiencias impactantes que generan ingresos.",
+    "imageAlt": "Vista previa de la página de inicio de ExperienceWelcome",
+    "title": "Cautiva y convierte"
+  },
   "HomePage": {
     "body": "Esta ruta inicial está configurada para seis idiomas con rutas App Router pensadas para SEO.",
     "deployNow": "Desplegar ahora",

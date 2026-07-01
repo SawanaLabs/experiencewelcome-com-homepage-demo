@@ -20,6 +20,83 @@
       "pricing": "Pricing"
     }
   },
+  "Header": {
+    "previewAlt": "Launch day webinar preview",
+    "primaryCtaLabel": "Demo",
+    "secondaryCtaLabel": "How it works",
+    "subtitle": "A webinar platform designed for marketers to host jaw-dropping experiences that drive revenue.",
+    "title": "Captivate & Convert"
+  },
+  "CustomerStories": {
+    "nextStoryLabel": "Next customer story",
+    "previousStoryLabel": "Previous customer story",
+    "testimonials": {
+      "bitwise": {
+        "author": "Talisha Brantley",
+        "company": "Bitwise",
+        "logoAlt": "Bitwise",
+        "quote": "“Before Welcome, I had to get a switcher, use Ecamm, OBS and always needed this or that to make it all work. Now, one or two people can run our virtual events easily without any special equipment. With just one platform, we can do everything we want.”",
+        "role": "VP of Events"
+      },
+      "dribbble": {
+        "author": "Madeleine Sava",
+        "company": "Dribbble",
+        "logoAlt": "Dribbble",
+        "quote": "\"The Welcome experience has been 10 out of 10. When our sponsors like Facebook are considering sponsoring our events, Welcome is our \"secret weapon\"",
+        "role": "Program Manager"
+      },
+      "salesforce": {
+        "author": "Ally Masi",
+        "company": "Salesforce",
+        "logoAlt": "Salesforce",
+        "quote": "\"We chose Welcome because it’s intuitive, beautifully designed, and made for attendee interaction, making it the perfect way to uplevel our experiences. The Slack-like chat, on-stage Q&A, and polling has increased audience engagement.\"",
+        "role": "Director of Industries Events Marketing"
+      }
+    },
+    "title": "Loved & trusted"
+  },
+  "Footer": {
+    "copyright": "© 2022 Welcome. All right reserved.",
+    "legalLinks": {
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service"
+    },
+    "logoAlt": "Welcome",
+    "navigation": {
+      "company": {
+        "links": {
+          "aboutUs": "About us",
+          "contactUs": "Contact us"
+        },
+        "title": "Company"
+      },
+      "explore": {
+        "links": {
+          "blog": "Blog",
+          "events": "Events"
+        },
+        "title": "Explore"
+      },
+      "product": {
+        "links": {
+          "bookDemo": "Book a demo",
+          "features": "Features",
+          "pricing": "Pricing"
+        },
+        "title": "Product"
+      }
+    },
+    "socialLinks": {
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "youtube": "YouTube"
+    }
+  },
+  "HomeMetadata": {
+    "description": "A webinar platform designed for marketers to host jaw-dropping experiences that drive revenue.",
+    "imageAlt": "ExperienceWelcome homepage preview",
+    "title": "Captivate & Convert"
+  },
   "HomePage": {
     "body": "This starter route is configured for six locales with SEO-friendly App Router routing.",
     "deployNow": "Deploy Now",

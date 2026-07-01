@@ -20,6 +20,83 @@
       "pricing": "मूल्य निर्धारण"
     }
   },
+  "Header": {
+    "previewAlt": "लॉन्च डे वेबिनार प्रीव्यू",
+    "primaryCtaLabel": "डेमो",
+    "secondaryCtaLabel": "यह कैसे काम करता है",
+    "subtitle": "मार्केटिंग टीमों के लिए बनाया गया वेबिनार प्लेटफॉर्म, जो यादगार अनुभवों से revenue बढ़ाने में मदद करता है.",
+    "title": "Captivate और Convert करें"
+  },
+  "CustomerStories": {
+    "nextStoryLabel": "अगली customer story",
+    "previousStoryLabel": "पिछली customer story",
+    "testimonials": {
+      "bitwise": {
+        "author": "Talisha Brantley",
+        "company": "Bitwise",
+        "logoAlt": "Bitwise",
+        "quote": "“Welcome से पहले मुझे switcher लेना पड़ता था, Ecamm और OBS इस्तेमाल करने पड़ते थे, और हमेशा कुछ न कुछ चाहिए होता था. अब एक या दो लोग बिना किसी special equipment के हमारे virtual events आसानी से चला सकते हैं. सिर्फ एक platform से हम सब कुछ कर सकते हैं जो हम करना चाहते हैं.”",
+        "role": "VP of Events"
+      },
+      "dribbble": {
+        "author": "Madeleine Sava",
+        "company": "Dribbble",
+        "logoAlt": "Dribbble",
+        "quote": "“Welcome experience 10 में से 10 रहा है. जब Facebook जैसे sponsors हमारे events को sponsor करने पर विचार करते हैं, Welcome हमारा secret weapon होता है.”",
+        "role": "Program Manager"
+      },
+      "salesforce": {
+        "author": "Ally Masi",
+        "company": "Salesforce",
+        "logoAlt": "Salesforce",
+        "quote": "“हमने Welcome चुना क्योंकि यह intuitive है, खूबसूरती से designed है, और attendee interaction के लिए बनाया गया है. Slack जैसे chat, on-stage Q&A और polling ने audience engagement बढ़ाया है.”",
+        "role": "Director of Industries Events Marketing"
+      }
+    },
+    "title": "पसंदीदा और भरोसेमंद"
+  },
+  "Footer": {
+    "copyright": "© 2022 Welcome. सर्वाधिकार सुरक्षित.",
+    "legalLinks": {
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service"
+    },
+    "logoAlt": "Welcome",
+    "navigation": {
+      "company": {
+        "links": {
+          "aboutUs": "हमारे बारे में",
+          "contactUs": "संपर्क करें"
+        },
+        "title": "कंपनी"
+      },
+      "explore": {
+        "links": {
+          "blog": "ब्लॉग",
+          "events": "इवेंट"
+        },
+        "title": "एक्सप्लोर"
+      },
+      "product": {
+        "links": {
+          "bookDemo": "डेमो बुक करें",
+          "features": "सुविधाएं",
+          "pricing": "मूल्य निर्धारण"
+        },
+        "title": "प्रोडक्ट"
+      }
+    },
+    "socialLinks": {
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "youtube": "YouTube"
+    }
+  },
+  "HomeMetadata": {
+    "description": "मार्केटिंग टीमों के लिए बनाया गया वेबिनार प्लेटफॉर्म, जो यादगार अनुभवों से revenue बढ़ाने में मदद करता है.",
+    "imageAlt": "ExperienceWelcome होमपेज प्रीव्यू",
+    "title": "Captivate और Convert करें"
+  },
   "HomePage": {
     "body": "यह starter route SEO-friendly App Router routing के साथ छह locales के लिए configured है.",
     "deployNow": "अभी deploy करें",

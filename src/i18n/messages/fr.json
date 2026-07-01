@@ -20,6 +20,83 @@
       "pricing": "Tarifs"
     }
   },
+  "Header": {
+    "previewAlt": "Aperçu du webinaire de lancement",
+    "primaryCtaLabel": "Démo",
+    "secondaryCtaLabel": "Comment ça marche",
+    "subtitle": "Une plateforme de webinaires conçue pour aider les équipes marketing à créer des expériences spectaculaires qui génèrent du revenu.",
+    "title": "Captiver et convertir"
+  },
+  "CustomerStories": {
+    "nextStoryLabel": "Témoignage client suivant",
+    "previousStoryLabel": "Témoignage client précédent",
+    "testimonials": {
+      "bitwise": {
+        "author": "Talisha Brantley",
+        "company": "Bitwise",
+        "logoAlt": "Bitwise",
+        "quote": "« Avant Welcome, je devais utiliser un mélangeur, Ecamm, OBS, et il manquait toujours quelque chose pour que tout fonctionne. Maintenant, une ou deux personnes peuvent gérer facilement nos événements virtuels sans équipement spécial. Avec une seule plateforme, nous pouvons tout faire. »",
+        "role": "VP des événements"
+      },
+      "dribbble": {
+        "author": "Madeleine Sava",
+        "company": "Dribbble",
+        "logoAlt": "Dribbble",
+        "quote": "« L’expérience Welcome mérite 10 sur 10. Quand des sponsors comme Facebook envisagent de soutenir nos événements, Welcome est notre arme secrète. »",
+        "role": "Responsable de programme"
+      },
+      "salesforce": {
+        "author": "Ally Masi",
+        "company": "Salesforce",
+        "logoAlt": "Salesforce",
+        "quote": "« Nous avons choisi Welcome parce que la plateforme est intuitive, superbement conçue et pensée pour l’interaction avec les participants. Le chat façon Slack, les questions-réponses sur scène et les sondages ont renforcé l’engagement du public. »",
+        "role": "Directrice marketing des événements sectoriels"
+      }
+    },
+    "title": "Aimé et approuvé"
+  },
+  "Footer": {
+    "copyright": "© 2022 Welcome. Tous droits réservés.",
+    "legalLinks": {
+      "privacyPolicy": "Politique de confidentialité",
+      "termsOfService": "Conditions d’utilisation"
+    },
+    "logoAlt": "Welcome",
+    "navigation": {
+      "company": {
+        "links": {
+          "aboutUs": "À propos",
+          "contactUs": "Nous contacter"
+        },
+        "title": "Entreprise"
+      },
+      "explore": {
+        "links": {
+          "blog": "Blog",
+          "events": "Événements"
+        },
+        "title": "Explorer"
+      },
+      "product": {
+        "links": {
+          "bookDemo": "Réserver une démo",
+          "features": "Fonctionnalités",
+          "pricing": "Tarifs"
+        },
+        "title": "Produit"
+      }
+    },
+    "socialLinks": {
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "youtube": "YouTube"
+    }
+  },
+  "HomeMetadata": {
+    "description": "Une plateforme de webinaires conçue pour aider les équipes marketing à créer des expériences spectaculaires qui génèrent du revenu.",
+    "imageAlt": "Aperçu de la page d’accueil ExperienceWelcome",
+    "title": "Captiver et convertir"
+  },
   "HomePage": {
     "body": "Cette route de départ est configurée pour six langues avec un routage App Router favorable au SEO.",
     "deployNow": "Déployer",

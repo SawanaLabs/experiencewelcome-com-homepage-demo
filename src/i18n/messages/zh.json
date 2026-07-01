@@ -20,6 +20,83 @@
       "pricing": "价格"
     }
   },
+  "Header": {
+    "previewAlt": "发布日线上研讨会预览",
+    "primaryCtaLabel": "预约演示",
+    "secondaryCtaLabel": "工作原理",
+    "subtitle": "专为营销人员打造的线上研讨会平台，帮助你举办令人惊艳并推动收入增长的体验。",
+    "title": "吸引并转化"
+  },
+  "CustomerStories": {
+    "nextStoryLabel": "下一条客户故事",
+    "previousStoryLabel": "上一条客户故事",
+    "testimonials": {
+      "bitwise": {
+        "author": "Talisha Brantley",
+        "company": "Bitwise",
+        "logoAlt": "Bitwise",
+        "quote": "“在使用 Welcome 之前，我必须准备切换台、使用 Ecamm、OBS，而且总是还缺这个或那个才能跑起来。现在，一两个人就能轻松运行我们的线上活动，不需要任何特殊设备。只用一个平台，我们就能完成想做的一切。”",
+        "role": "活动副总裁"
+      },
+      "dribbble": {
+        "author": "Madeleine Sava",
+        "company": "Dribbble",
+        "logoAlt": "Dribbble",
+        "quote": "“Welcome 的体验可以打 10 分。当 Facebook 这样的赞助商考虑赞助我们的活动时，Welcome 就是我们的秘密武器。”",
+        "role": "项目经理"
+      },
+      "salesforce": {
+        "author": "Ally Masi",
+        "company": "Salesforce",
+        "logoAlt": "Salesforce",
+        "quote": "“我们选择 Welcome，是因为它直观、设计精美，并且专为参会者互动而生，非常适合提升我们的活动体验。类似 Slack 的聊天、台上问答和投票功能都提高了观众参与度。”",
+        "role": "行业活动营销总监"
+      }
+    },
+    "title": "深受喜爱与信任"
+  },
+  "Footer": {
+    "copyright": "© 2022 Welcome。保留所有权利。",
+    "legalLinks": {
+      "privacyPolicy": "隐私政策",
+      "termsOfService": "服务条款"
+    },
+    "logoAlt": "Welcome",
+    "navigation": {
+      "company": {
+        "links": {
+          "aboutUs": "关于我们",
+          "contactUs": "联系我们"
+        },
+        "title": "公司"
+      },
+      "explore": {
+        "links": {
+          "blog": "博客",
+          "events": "活动"
+        },
+        "title": "探索"
+      },
+      "product": {
+        "links": {
+          "bookDemo": "预约演示",
+          "features": "功能",
+          "pricing": "价格"
+        },
+        "title": "产品"
+      }
+    },
+    "socialLinks": {
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "youtube": "YouTube"
+    }
+  },
+  "HomeMetadata": {
+    "description": "专为营销团队打造的线上研讨会平台，帮助你举办令人惊艳并推动收入增长的活动。",
+    "imageAlt": "ExperienceWelcome 首页预览",
+    "title": "吸引并转化"
+  },
   "HomePage": {
     "body": "这个起始路由已经配置六种语言，并使用对 SEO 友好的 App Router 路由。",
     "deployNow": "立即部署",

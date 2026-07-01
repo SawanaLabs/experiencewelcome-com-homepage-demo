@@ -1,16 +1,19 @@
 import Image from "next/image";
 import { type NavbarCopy, SiteNavbar } from "@/components/navbar";
+import type { HomepageHeaderCopy } from "@/i18n/homepage-copy";
 import type { Locale } from "@/i18n/routing";
 
 const linkFocusClasses =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#ffffff] focus-visible:outline-offset-4";
 
 interface HomepageHeaderProps {
+  copy: HomepageHeaderCopy;
   currentLocale: Locale;
   navbarCopy: NavbarCopy;
 }
 
 export function HomepageHeader({
+  copy,
   currentLocale,
   navbarCopy,
 }: HomepageHeaderProps) {
@@ -61,7 +64,7 @@ export function HomepageHeader({
           data-figma-layer="header/hero-card"
         >
           <Image
-            alt="Launch day webinar preview"
+            alt={copy.previewAlt}
             className="absolute top-[-6.76%] left-[-10.29%] h-[126.12%] w-[114.52%] max-w-none object-fill"
             height={765}
             priority
@@ -78,14 +81,13 @@ export function HomepageHeader({
             className="absolute top-[min(60px,4.167vw)] left-[min(166.34px,11.551vw)] h-[min(121px,8.403vw)] w-[min(946px,65.694vw)] text-center font-normal text-[min(103px,7.153vw)] leading-[min(121px,8.403vw)] tracking-[-2px]"
             data-figma-layer="header/content/title"
           >
-            Captivate &amp; Convert
+            {copy.title}
           </h1>
           <p
             className="absolute top-[min(205px,14.236vw)] left-[min(347.75px,24.149vw)] h-[min(63px,4.375vw)] w-[min(584.7px,40.604vw)] text-center font-normal text-[min(24px,1.667vw)] text-[rgba(255,255,255,0.7)] leading-[min(31.2px,2.167vw)] tracking-[0]"
             data-figma-layer="header/content/subtitle"
           >
-            A webinar platform designed for marketers to host jaw-dropping
-            experiences that drive revenue.
+            {copy.subtitle}
           </p>
 
           <div
@@ -96,7 +98,7 @@ export function HomepageHeader({
               className={`flex h-full items-center justify-center rounded-full bg-[#5865ff] px-[min(24px,1.667vw)] font-normal text-[min(16px,1.111vw)] leading-[min(20px,1.389vw)] transition-opacity hover:opacity-90 ${linkFocusClasses}`}
               href="#demo"
             >
-              Demo
+              {copy.primaryCtaLabel}
             </a>
             <a
               className={`flex h-full items-center justify-center gap-[min(12px,0.833vw)] rounded-full border border-[rgba(255,255,255,0.16)] bg-[rgba(0,0,0,0.2)] px-[min(24px,1.667vw)] font-normal text-[min(16px,1.111vw)] leading-[min(20px,1.389vw)] transition-opacity hover:opacity-80 ${linkFocusClasses}`}
@@ -106,7 +108,7 @@ export function HomepageHeader({
                 aria-hidden="true"
                 className="h-0 w-0 border-y-[min(5px,0.347vw)] border-y-transparent border-l-[#ffffff] border-l-[min(8px,0.556vw)]"
               />
-              How it works
+              {copy.secondaryCtaLabel}
             </a>
           </div>
         </div>
@@ -123,18 +125,17 @@ export function HomepageHeader({
 
         <div className="relative z-20 mx-auto mt-10 max-w-[640px] text-center">
           <h1 className="font-normal text-[56px] leading-[60px] tracking-[0] sm:text-[72px] sm:leading-[78px]">
-            Captivate &amp; Convert
+            {copy.title}
           </h1>
           <p className="mx-auto mt-6 max-w-[560px] font-normal text-[20px] text-[rgba(255,255,255,0.65)] leading-[26px] tracking-[0]">
-            A webinar platform designed for marketers to host jaw-dropping
-            experiences that drive revenue.
+            {copy.subtitle}
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
             <a
               className={`flex h-[50px] items-center justify-center rounded-full bg-[#5865ff] px-6 font-normal text-[16px] leading-5 ${linkFocusClasses}`}
               href="#demo"
             >
-              Demo
+              {copy.primaryCtaLabel}
             </a>
             <a
               className={`flex h-[50px] items-center justify-center gap-3 rounded-full border border-[rgba(255,255,255,0.16)] bg-[rgba(0,0,0,0.2)] px-6 font-normal text-[16px] leading-5 ${linkFocusClasses}`}
@@ -144,14 +145,14 @@ export function HomepageHeader({
                 aria-hidden="true"
                 className="h-0 w-0 border-y-[5px] border-y-transparent border-l-[#ffffff] border-l-[8px]"
               />
-              How it works
+              {copy.secondaryCtaLabel}
             </a>
           </div>
         </div>
 
         <div className="relative z-10 mx-auto mt-12 max-w-[760px]">
           <Image
-            alt="Launch day webinar preview"
+            alt={copy.previewAlt}
             className="relative z-20 h-auto w-full"
             height={765}
             priority

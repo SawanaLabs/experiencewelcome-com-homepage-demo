@@ -1,57 +1,71 @@
 import Image from "next/image";
+import type { HomepageCustomerStoriesCopy } from "@/i18n/homepage-copy";
 
-const testimonials = [
+const testimonialAssets = [
   {
-    author: "Ally Masi",
     avatar: "/homepage/customer-stories/ally-masi-avatar.png",
     cardLayer: "customer-stories/card-salesforce",
-    company: "Salesforce",
     logo: {
-      alt: "Salesforce",
       height: 162,
       src: "/homepage/customer-stories/salesforce-logo.png",
       width: 240,
     },
-    quote:
-      '"We chose Welcome because it’s intuitive, beautifully designed, and made for attendee interaction, making it the perfect way to uplevel our experiences. The Slack-like chat, on-stage Q&A, and polling has increased audience engagement."',
-    role: "Director of Industries Events Marketing",
   },
   {
-    author: "Talisha Brantley",
     avatar: "/homepage/customer-stories/talisha-brantley-avatar.png",
     cardLayer: "customer-stories/card-bitwise",
-    company: "Bitwise",
     logo: {
-      alt: "Bitwise",
       height: 64,
       src: "/homepage/customer-stories/bitwise-logo.png",
       width: 241,
     },
-    quote:
-      "“Before Welcome, I had to get a switcher, use Ecamm, OBS and always needed this or that to make it all work. Now, one or two people can run our virtual events easily without any special equipment. With just one platform, we can do everything we want.”",
-    role: "VP of Events",
   },
   {
-    author: "Madeleine Sava",
     avatar: "/homepage/customer-stories/madeleine-sava-avatar.png",
     cardLayer: "customer-stories/card-dribbble",
-    company: "Dribbble",
     logo: {
-      alt: "Dribbble",
       height: 61,
       src: "/homepage/customer-stories/dribbble-logo.png",
       width: 240,
     },
-    quote:
-      '"The Welcome experience has been 10 out of 10. When our sponsors like Facebook are considering sponsoring our events, Welcome is our "secret weapon"',
-    role: "Program Manager",
   },
 ];
 
 const linkFocusClasses =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#ffffff] focus-visible:outline-offset-4";
 
-export function HomepageCustomerStories() {
+interface HomepageCustomerStoriesProps {
+  copy: HomepageCustomerStoriesCopy;
+}
+
+function getTestimonialCards(copy: HomepageCustomerStoriesCopy) {
+  if (copy.testimonials.length !== testimonialAssets.length) {
+    throw new Error(
+      `HomepageCustomerStories expected ${testimonialAssets.length} testimonials, received ${copy.testimonials.length}.`
+    );
+  }
+
+  return testimonialAssets.map((asset, index) => {
+    const testimonialCopy = copy.testimonials[index];
+
+    if (!testimonialCopy) {
+      throw new Error(
+        `HomepageCustomerStories missing testimonial copy at index ${index}.`
+      );
+    }
+
+    return {
+      ...asset,
+      ...testimonialCopy,
+    };
+  });
+}
+
+export function HomepageCustomerStories({
+  copy,
+}: HomepageCustomerStoriesProps) {
+  const testimonials = getTestimonialCards(copy);
+
   return (
     <section
       className="w-full bg-[#000000] text-[#ffffff]"
@@ -77,7 +91,7 @@ export function HomepageCustomerStories() {
           className="absolute top-[min(150px,10.417vw)] left-[min(80px,5.556vw)] h-[min(231px,16.042vw)] w-[min(430.48px,29.894vw)] font-normal text-[#000000] text-[min(121px,8.403vw)] leading-[min(115.2px,8vw)] tracking-[-5px]"
           data-figma-layer="customer-stories/title"
         >
-          Loved &amp; trusted
+          {copy.title}
         </h2>
 
         <div
@@ -85,7 +99,7 @@ export function HomepageCustomerStories() {
           data-figma-layer="customer-stories/controls"
         >
           <button
-            aria-label="Previous customer story"
+            aria-label={copy.previousStoryLabel}
             className={`relative h-[min(64px,4.444vw)] w-[min(64px,4.444vw)] transition-opacity hover:opacity-70 ${linkFocusClasses}`}
             type="button"
           >
@@ -99,7 +113,7 @@ export function HomepageCustomerStories() {
             />
           </button>
           <button
-            aria-label="Next customer story"
+            aria-label={copy.nextStoryLabel}
             className={`relative h-[min(64px,4.444vw)] w-[min(64px,4.444vw)] transition-opacity hover:opacity-70 ${linkFocusClasses}`}
             type="button"
           >
@@ -136,11 +150,11 @@ export function HomepageCustomerStories() {
         <div className="relative z-10 mx-auto max-w-[640px]">
           <div className="flex items-end justify-between gap-5">
             <h2 className="max-w-[320px] font-normal text-[#000000] text-[64px] leading-[60px] tracking-[-2px] sm:text-[84px] sm:leading-[80px]">
-              Loved &amp; trusted
+              {copy.title}
             </h2>
             <div className="mb-2 flex shrink-0 gap-2">
               <button
-                aria-label="Previous customer story"
+                aria-label={copy.previousStoryLabel}
                 className={`relative h-11 w-11 ${linkFocusClasses}`}
                 type="button"
               >
@@ -154,7 +168,7 @@ export function HomepageCustomerStories() {
                 />
               </button>
               <button
-                aria-label="Next customer story"
+                aria-label={copy.nextStoryLabel}
                 className={`relative h-11 w-11 ${linkFocusClasses}`}
                 type="button"
               >
@@ -190,11 +204,11 @@ interface TestimonialCardProps {
   cardLayer: string;
   company: string;
   logo: {
-    alt: string;
     height: number;
     src: string;
     width: number;
   };
+  logoAlt: string;
   quote: string;
   role: string;
 }
@@ -204,6 +218,7 @@ function TestimonialCard({
   avatar,
   cardLayer,
   company,
+  logoAlt,
   logo,
   quote,
   role,
@@ -245,7 +260,7 @@ function TestimonialCard({
       </div>
 
       <Image
-        alt={logo.alt}
+        alt={logoAlt}
         className="mt-[min(33px,2.292vw)] h-auto w-[min(120px,8.333vw)]"
         data-figma-layer={`${cardLayer}/logo`}
         height={logo.height}
@@ -262,6 +277,7 @@ function TestimonialCardMobile({
   avatar,
   cardLayer,
   company,
+  logoAlt,
   logo,
   quote,
   role,
@@ -293,7 +309,7 @@ function TestimonialCardMobile({
         </div>
       </div>
       <Image
-        alt={logo.alt}
+        alt={logoAlt}
         className="mt-8 h-auto w-[120px]"
         height={logo.height}
         src={logo.src}
