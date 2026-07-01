@@ -1,17 +1,5 @@
 import Image from "next/image";
-
-const primaryNavigation = [
-  { label: "Features", href: "#features" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Events", href: "#events" },
-  { label: "About", href: "#about" },
-  { label: "Blog", href: "#blog" },
-];
-
-const accountNavigation = [
-  { label: "Support", href: "#support" },
-  { label: "Login", href: "#login" },
-];
+import { SiteNavbar } from "@/components/navbar";
 
 const linkFocusClasses =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#ffffff] focus-visible:outline-offset-4";
@@ -20,67 +8,12 @@ export function HomepageHeader() {
   return (
     <header className="w-full bg-[#000000] text-[#ffffff]">
       <div className="relative mx-auto hidden h-[min(1142px,79.306vw)] w-full max-w-[1440px] overflow-hidden bg-[#000000] lg:block">
-        <div
-          className="absolute top-0 left-0 z-50 h-[min(69.8px,4.847vw)] w-full border-[rgba(255,255,255,0.1)] border-b bg-[rgba(0,0,0,0.8)]"
+        <SiteNavbar
           data-figma-layer="header/nav"
-        >
-          <a
-            aria-label="Welcome home"
-            className={`absolute top-[min(18px,1.25vw)] left-[min(80px,5.556vw)] flex items-center gap-[min(8px,0.556vw)] transition-opacity hover:opacity-80 ${linkFocusClasses}`}
-            href="#top"
-          >
-            <Image
-              alt=""
-              aria-hidden="true"
-              className="h-[min(32px,2.222vw)] w-[min(28px,1.944vw)]"
-              height={120}
-              priority
-              src="/homepage/footer/welcome-mark.svg"
-              width={105}
-            />
-            <span className="font-semibold text-[min(20px,1.389vw)] leading-[min(24px,1.667vw)]">
-              welcome
-            </span>
-          </a>
-
-          <nav aria-label="Primary navigation">
-            <ul className="absolute top-[min(27px,1.875vw)] left-[min(549px,38.125vw)] flex items-center gap-[min(32px,2.222vw)]">
-              {primaryNavigation.map((link) => (
-                <li key={link.label}>
-                  <a
-                    className={`font-normal text-[min(14px,0.972vw)] leading-[min(17px,1.181vw)] transition-opacity hover:opacity-70 ${linkFocusClasses}`}
-                    href={link.href}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <nav aria-label="Account navigation">
-            <ul className="absolute top-[min(11px,0.764vw)] right-[min(80px,5.556vw)] flex items-center gap-[min(24px,1.667vw)]">
-              {accountNavigation.map((link) => (
-                <li key={link.label}>
-                  <a
-                    className={`font-normal text-[min(14px,0.972vw)] leading-[min(17px,1.181vw)] transition-opacity hover:opacity-70 ${linkFocusClasses}`}
-                    href={link.href}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-              <li>
-                <a
-                  className={`flex h-[min(47px,3.264vw)] min-w-[min(90px,6.25vw)] items-center justify-center rounded-full bg-[#5865ff] px-[min(24px,1.667vw)] font-normal text-[min(16px,1.111vw)] leading-[min(20px,1.389vw)] transition-opacity hover:opacity-90 ${linkFocusClasses}`}
-                  href="#demo"
-                >
-                  Demo
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
+          data-homepage-header-nav="true"
+          logoPriority
+          variant="hero"
+        />
 
         <div
           aria-hidden="true"
@@ -169,30 +102,11 @@ export function HomepageHeader() {
       </div>
 
       <div className="relative overflow-hidden px-5 pt-5 pb-16 lg:hidden">
-        <div className="relative z-20 flex items-center justify-between border-[rgba(255,255,255,0.1)] border-b pb-5">
-          <a
-            aria-label="Welcome home"
-            className={`flex items-center gap-2 transition-opacity hover:opacity-80 ${linkFocusClasses}`}
-            href="#top"
-          >
-            <Image
-              alt=""
-              aria-hidden="true"
-              className="h-8 w-7"
-              height={120}
-              priority
-              src="/homepage/footer/welcome-mark.svg"
-              width={105}
-            />
-            <span className="font-semibold text-[20px] leading-6">welcome</span>
-          </a>
-          <a
-            className={`rounded-full bg-[#5865ff] px-5 py-3 font-normal text-[16px] leading-5 ${linkFocusClasses}`}
-            href="#demo"
-          >
-            Demo
-          </a>
-        </div>
+        <SiteNavbar
+          data-homepage-header-nav="true"
+          logoPriority
+          variant="mobileHeader"
+        />
 
         <div className="relative z-20 mx-auto mt-10 max-w-[640px] text-center">
           <h1 className="font-normal text-[56px] leading-[60px] tracking-[0] sm:text-[72px] sm:leading-[78px]">

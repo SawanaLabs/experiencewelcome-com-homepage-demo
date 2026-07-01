@@ -5,6 +5,7 @@ This directory owns project UI modules. The durable convention is documented in 
 Local rules:
 
 - Put reusable, product-agnostic primitives in `src/components/`.
+- Put site-wide product assemblies in `src/components/` once they are reused across pages; keep their names product-specific enough to avoid confusing them with generic primitives.
 - Keep shadcn-style components source-owned here; do not import a `shadcn/ui` runtime package.
 - `button.tsx` avoids `radix-ui` and `class-variance-authority`; use `buttonVariants` when another element needs button styling.
 - Keep page-only assemblies near their route until reuse or file size justifies promotion.
