@@ -1,0 +1,15 @@
+{
+  "Metadata": {
+    "description": "ExperienceWelcome.com के लिए स्थानीयकृत Next.js होमपेज डेमो.",
+    "siteName": "ExperienceWelcome",
+    "title": "ExperienceWelcome होमपेज डेमो"
+  },
+  "HomePage": {
+    "body": "यह starter route SEO-friendly App Router routing के साथ छह locales के लिए configured है.",
+    "deployNow": "अभी deploy करें",
+    "documentation": "Documentation",
+    "headline": "ExperienceWelcome होमपेज डेमो",
+    "nextLogoAlt": "Next.js logo",
+    "vercelLogoAlt": "Vercel logomark"
+  }
+}

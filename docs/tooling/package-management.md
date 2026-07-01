@@ -15,7 +15,7 @@ updateAt: 2026-07-01
 - The repository uses `pnpm@11.7.0`, declared in `package.json` via `packageManager`.
 - Use `pnpm install`, `pnpm dev`, and `pnpm run <script>` for normal development commands.
 - `package-lock.json` was removed during the pnpm migration; do not reintroduce npm lockfile artifacts.
-- `pnpm-workspace.yaml` currently allows `sharp` build scripts because Next's image pipeline depends on a working optional `sharp` install.
+- `pnpm-workspace.yaml` currently allows `sharp`, `@parcel/watcher`, and `@swc/core` build scripts because Next and next-intl depend on native image, watcher, and SWC packages.
 - `pnpm-workspace.yaml` overrides `next>postcss` to `8.5.16` so `next@16.2.9` resolves a patched PostCSS version.
 
 ## Decision Records

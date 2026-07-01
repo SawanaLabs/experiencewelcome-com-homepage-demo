@@ -1,0 +1,15 @@
+{
+  "Metadata": {
+    "description": "Une démo de page d'accueil Next.js localisée pour ExperienceWelcome.com.",
+    "siteName": "ExperienceWelcome",
+    "title": "Démo de page d'accueil ExperienceWelcome"
+  },
+  "HomePage": {
+    "body": "Cette route de départ est configurée pour six langues avec un routage App Router favorable au SEO.",
+    "deployNow": "Déployer",
+    "documentation": "Documentation",
+    "headline": "Démo de page d'accueil ExperienceWelcome",
+    "nextLogoAlt": "Logo Next.js",
+    "vercelLogoAlt": "Symbole Vercel"
+  }
+}

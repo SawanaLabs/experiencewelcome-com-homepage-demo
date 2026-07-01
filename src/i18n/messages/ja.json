@@ -1,0 +1,15 @@
+{
+  "Metadata": {
+    "description": "ExperienceWelcome.com 向けのローカライズされた Next.js ホームページデモです。",
+    "siteName": "ExperienceWelcome",
+    "title": "ExperienceWelcome ホームページデモ"
+  },
+  "HomePage": {
+    "body": "このスタータールートは、SEO に適した App Router ルーティングで 6 つのロケールに対応しています。",
+    "deployNow": "今すぐデプロイ",
+    "documentation": "ドキュメント",
+    "headline": "ExperienceWelcome ホームページデモ",
+    "nextLogoAlt": "Next.js ロゴ",
+    "vercelLogoAlt": "Vercel ロゴマーク"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "Metadata": {
+    "description": "ExperienceWelcome.com 的本地化 Next.js 首页演示。",
+    "siteName": "ExperienceWelcome",
+    "title": "ExperienceWelcome 首页演示"
+  },
+  "HomePage": {
+    "body": "这个起始路由已经配置六种语言，并使用对 SEO 友好的 App Router 路由。",
+    "deployNow": "立即部署",
+    "documentation": "文档",
+    "headline": "ExperienceWelcome 首页演示",
+    "nextLogoAlt": "Next.js 标志",
+    "vercelLogoAlt": "Vercel 标志图形"
+  }
+}
