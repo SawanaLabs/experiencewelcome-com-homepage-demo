@@ -14,7 +14,7 @@ export default async function Home({ params }: HomeProps) {
   setRequestLocale(locale);
 
   return (
-    <main className="min-h-screen bg-[#000000]">
+    <main className="min-h-screen bg-[#000000] py-6">
       <HomepageHeader />
       <HomepageFooter />
     </main>

@@ -130,16 +130,22 @@ export function HomepageHeader() {
           className="absolute top-[min(16px,1.111vw)] left-[min(80px,5.556vw)] z-40 h-[min(289.38px,20.096vw)] w-[min(1280px,88.889vw)]"
           data-figma-layer="header/content"
         >
-          <h1 className="absolute top-[min(80px,5.556vw)] left-0 w-full text-center font-normal text-[min(100px,6.944vw)] leading-[min(108px,7.5vw)] tracking-[0]">
+          <h1
+            className="absolute top-[min(60px,4.167vw)] left-[min(166.34px,11.551vw)] h-[min(121px,8.403vw)] w-[min(946px,65.694vw)] text-center font-normal text-[min(103px,7.153vw)] leading-[min(121px,8.403vw)] tracking-[-2px]"
+            data-figma-layer="header/content/title"
+          >
             Captivate &amp; Convert
           </h1>
-          <p className="absolute top-[min(207px,14.375vw)] left-1/2 w-[min(610px,42.361vw)] -translate-x-1/2 text-center font-normal text-[min(24px,1.667vw)] text-[rgba(255,255,255,0.65)] leading-[min(30px,2.083vw)] tracking-[0]">
+          <p
+            className="absolute top-[min(205px,14.236vw)] left-[min(347.75px,24.149vw)] h-[min(63px,4.375vw)] w-[min(584.7px,40.604vw)] text-center font-normal text-[min(24px,1.667vw)] text-[rgba(255,255,255,0.7)] leading-[min(31.2px,2.167vw)] tracking-[0]"
+            data-figma-layer="header/content/subtitle"
+          >
             A webinar platform designed for marketers to host jaw-dropping
             experiences that drive revenue.
           </p>
 
           <div
-            className="absolute top-[min(283.38px,19.679vw)] left-1/2 flex h-[min(50px,3.472vw)] -translate-x-1/2 items-center gap-[min(8px,0.556vw)]"
+            className="absolute top-[min(283.4px,19.681vw)] left-0 flex h-[min(50px,3.472vw)] w-[min(1280px,88.889vw)] items-center gap-[min(8px,0.556vw)] px-[min(502.05px,34.865vw)]"
             data-figma-layer="header/content/cta"
           >
             <a
