@@ -1,7 +1,7 @@
 ---
 title: Quality Gates
 description: Stable notes for Ultracite, Biome, and verification commands.
-updateAt: 2026-07-01
+updateAt: 2026-07-02
 ---
 
 # Quality Gates
@@ -12,10 +12,8 @@ updateAt: 2026-07-01
 
 ## Current Subdomain Docs
 
-- `pnpm run check` runs `ultracite check`.
-- `pnpm run fix` runs `ultracite fix`.
-- `pnpm run lint` runs `biome check`.
-- `pnpm run format` runs `biome format --write`.
+- `pnpm run check` runs `ultracite check`, which delegates to Biome for formatting, linting, and import-sorting checks.
+- `pnpm run fix` runs `ultracite fix`, which delegates to Biome write mode for safe fixes, formatting, and import sorting.
 - `pnpm test` runs `vitest run`.
 - `biome.json` extends `ultracite/biome/core`, `ultracite/biome/react`, and `ultracite/biome/next`.
 - `biome.json` disables `suspicious.noUnknownAtRules` because Tailwind v4 uses directives such as `@theme`.

@@ -1,7 +1,7 @@
 ---
 title: Project Knowledge Protocol
 description: Repository-wide conventions and boundaries for durable project knowledge.
-updateAt: 2026-07-01
+updateAt: 2026-07-02
 ---
 
 # Project Knowledge Protocol
@@ -16,7 +16,7 @@ updateAt: 2026-07-01
 - Start with `docs/index.md` and this file before changing project structure, tooling, or app architecture.
 - For Next.js work, read the relevant local guide under `node_modules/next/dist/docs/` before writing code; this project tracks a version with breaking changes.
 - Use `pnpm` for JavaScript package management. Keep npm lockfile artifacts out of the repository.
-- Use Ultracite and Biome through the existing package scripts before claiming code quality is clean.
+- Use `pnpm run check` and `pnpm run fix` for Ultracite-backed Biome quality checks before claiming code quality is clean.
 - Keep docs updates scoped to stable project knowledge. Do not add short-lived debugging notes or speculative product direction.
 
 ## Boundary Principles

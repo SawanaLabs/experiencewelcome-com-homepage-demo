@@ -16,7 +16,7 @@ Use these docs when changing package management, dependency policy, or quality t
 <!-- BEGIN:docs-generated-catalog -->
 | File | Title | Description | Updated |
 | --- | --- | --- | --- |
-| ./DOCS.md | Tooling Domain | Domain-level conventions for package management, dependency policy, linting, formatting, and verification. | 2026-07-01 |
+| ./DOCS.md | Tooling Domain | Domain-level conventions for package management, dependency policy, linting, formatting, and verification. | 2026-07-02 |
 | ./package-management.md | Package Management | Stable notes for pnpm usage, lockfiles, build approvals, and dependency overrides. | 2026-07-01 |
-| ./quality-gates.md | Quality Gates | Stable notes for Ultracite, Biome, and verification commands. | 2026-07-01 |
+| ./quality-gates.md | Quality Gates | Stable notes for Ultracite, Biome, and verification commands. | 2026-07-02 |
 <!-- END:docs-generated-catalog -->

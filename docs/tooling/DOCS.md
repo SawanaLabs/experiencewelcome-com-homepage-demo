@@ -1,7 +1,7 @@
 ---
 title: Tooling Domain
 description: Domain-level conventions for package management, dependency policy, linting, formatting, and verification.
-updateAt: 2026-07-01
+updateAt: 2026-07-02
 ---
 
 # Tooling Domain
@@ -15,7 +15,7 @@ updateAt: 2026-07-01
 
 - Use `pnpm` commands for JavaScript dependencies and scripts.
 - Keep `pnpm-lock.yaml` and `pnpm-workspace.yaml` synchronized with `package.json`.
-- Run targeted verification after tooling changes; at minimum, use `pnpm test`, `pnpm run check`, `pnpm run lint`, and `pnpm run build` when the change can affect tests, compilation, or code quality.
+- Run targeted verification after tooling changes; at minimum, use `pnpm test`, `pnpm run check`, and `pnpm run build` when the change can affect tests, compilation, or code quality.
 - Keep dependency overrides explicit and documented in a tooling leaf doc.
 
 ## Boundary Principles
