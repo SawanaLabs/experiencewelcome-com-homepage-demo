@@ -46,6 +46,8 @@ const controlButtonClasses =
 const controlFocusClasses =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#000000] focus-visible:outline-offset-4";
 const controlIconClasses = "h-full w-full object-contain";
+const customerStoriesBackgroundSrcSet =
+  "/homepage/customer-stories/customer-stories-background-640.webp 640w, /homepage/customer-stories/customer-stories-background-828.webp 828w, /homepage/customer-stories/customer-stories-background-1080.webp 1080w, /homepage/customer-stories/customer-stories-background-1440.webp 1440w, /homepage/customer-stories/customer-stories-background-2880.webp 2880w";
 
 interface HomepageCustomerStoriesProps {
   copy: HomepageCustomerStoriesCopy;
@@ -223,16 +225,24 @@ export function HomepageCustomerStories({
         className="relative mx-auto w-full max-w-[1440px] overflow-hidden bg-[#000000] px-5 pt-16 pb-20 sm:px-8 lg:px-20 lg:pt-[clamp(112px,10.417vw,150px)] lg:pb-[clamp(112px,10.069vw,145px)]"
         data-figma-layer="customer-stories/section"
       >
-        <Image
-          alt=""
-          aria-hidden="true"
-          className="object-cover"
-          data-figma-layer="customer-stories/background"
-          fill
-          priority
-          sizes="1440px"
-          src="/homepage/customer-stories/customer-stories-background.jpg"
-        />
+        <picture className="absolute inset-0">
+          <source
+            sizes="(max-width: 767px) 100vw, 1440px"
+            srcSet={customerStoriesBackgroundSrcSet}
+            type="image/webp"
+          />
+          <img
+            alt=""
+            aria-hidden="true"
+            className="h-full w-full object-cover"
+            data-figma-layer="customer-stories/background"
+            decoding="async"
+            height={1832}
+            loading="lazy"
+            src="/homepage/customer-stories/customer-stories-background-1440.webp"
+            width={2880}
+          />
+        </picture>
 
         <div
           className="relative z-10 mx-auto max-w-[1280px]"

@@ -1,6 +1,4 @@
 import Image from "next/image";
-import homeHeroBlurImage from "@/assets/homepage/header/home-hero-blur.webp";
-import homeHeroCardImage from "@/assets/homepage/header/home-hero-card.webp";
 import {
   MotionButtonLink,
   MotionRevealDiv,
@@ -13,10 +11,10 @@ import type { Locale } from "@/i18n/routing";
 
 const linkFocusClasses =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#ffffff] focus-visible:outline-offset-4";
-const homeHeroBlurBlurDataUrl =
-  "data:image/webp;base64,UklGRoQAAABXRUJQVlA4THgAAAAvCcAAADWwjWxbyXf3j0vM0AEZQ0gB5NRATP81vFEiSVIzR1IUFs3//wYqR7WNJDX72P6rJCXycN//IMAQAgBAAhHoFwau1P5rH+K5Rlnu5uaV5h4vASSs+57l31nPHK9pX+2/r0eoGIBCPT5dm553vHYwtuRvxAA=";
-const homeHeroCardBlurDataUrl =
-  "data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAACQAABQAAQUxQSDUAAAABT6AmAJA2y54/AbhIYBEjIsZpEe/1h5pIUiQTCPol4AELpESbX7SKz0JE/+MAzCO5X+0uAQBWUDggPgAAAPABAJ0BKgoABgACgEIllAJ0ANxLFmJgAAD+76fzueQGbtIhsdk8ZGyf+VMHUqM8gN+xtH6Gp3IN+YgRwAAA";
+const heroBlurSrcSet =
+  "/homepage/header/home-hero-blur-640.webp 640w, /homepage/header/home-hero-blur-828.webp 828w, /homepage/header/home-hero-blur-1080.webp 1080w, /homepage/header/home-hero-blur-1600.webp 1600w";
+const heroCardSrcSet =
+  "/homepage/header/home-hero-card-640.webp 640w, /homepage/header/home-hero-card-828.webp 828w, /homepage/header/home-hero-card-1080.webp 1080w, /homepage/header/home-hero-card-1246.webp 1246w";
 
 interface HomepageHeaderProps {
   copy: HomepageHeaderCopy;
@@ -94,19 +92,24 @@ export function HomepageHeader({
               delay={0.28}
               distance={20}
             >
-              <Image
-                alt=""
-                aria-hidden="true"
-                blurDataURL={homeHeroBlurBlurDataUrl}
-                className="pointer-events-none z-0 col-start-1 row-start-1 w-[145%] max-w-none lg:w-[156.25%]"
-                data-figma-layer="header/home-hero-blur"
-                height={659}
-                placeholder="blur"
-                preload
-                src={homeHeroBlurImage}
-                unoptimized
-                width={1600}
-              />
+              <picture className="pointer-events-none z-0 col-start-1 row-start-1 w-[145%] max-w-none lg:w-[156.25%]">
+                <source
+                  sizes="(max-width: 1023px) calc((100vw - 40px) * 1.45), 1600px"
+                  srcSet={heroBlurSrcSet}
+                  type="image/webp"
+                />
+                <img
+                  alt=""
+                  aria-hidden="true"
+                  className="h-auto w-full max-w-none"
+                  data-figma-layer="header/home-hero-blur"
+                  decoding="async"
+                  fetchPriority="low"
+                  height={659}
+                  src="/homepage/header/home-hero-blur-1600.webp"
+                  width={1600}
+                />
+              </picture>
 
               <Image
                 alt=""
@@ -114,7 +117,6 @@ export function HomepageHeader({
                 className="pointer-events-none z-10 col-start-1 row-start-1 hidden w-[106%] max-w-none lg:block lg:translate-y-[21px]"
                 data-figma-layer="header/home-hero-mockup"
                 height={774}
-                preload
                 src="/homepage/header/home-hero-mockup.png"
                 width={1600}
               />
@@ -124,17 +126,22 @@ export function HomepageHeader({
                 data-figma-layer="header/hero-card"
               >
                 <div className="absolute top-[-6.76%] left-[-10.29%] h-[126.03%] w-[114.52%]">
-                  <Image
-                    alt={copy.previewAlt}
-                    blurDataURL={homeHeroCardBlurDataUrl}
-                    className="object-fill"
-                    fill
-                    placeholder="blur"
-                    preload
-                    sizes="(max-width: 1023px) calc((100vw - 40px) * 1.1452), 1246px"
-                    src={homeHeroCardImage}
-                    unoptimized
-                  />
+                  <picture className="block h-full w-full">
+                    <source
+                      sizes="(max-width: 1023px) calc((100vw - 40px) * 1.1452), 1246px"
+                      srcSet={heroCardSrcSet}
+                      type="image/webp"
+                    />
+                    <img
+                      alt={copy.previewAlt}
+                      className="h-full w-full object-fill"
+                      decoding="async"
+                      fetchPriority="high"
+                      height={765}
+                      src="/homepage/header/home-hero-card-1246.webp"
+                      width={1246}
+                    />
+                  </picture>
                 </div>
               </div>
             </MotionRevealDiv>

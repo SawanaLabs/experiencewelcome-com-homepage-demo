@@ -110,7 +110,8 @@ describe("localized homepage sections", () => {
     expect(html).toContain("relative z-10 mt-4 grid");
     expect(html).toContain("pointer-events-none z-0");
     expect(html).toContain("pointer-events-none z-10");
-    expect(html).toContain("home-hero-blur.webp");
+    expect(html).toContain("home-hero-blur-640.webp 640w");
+    expect(html).toContain("home-hero-blur-1600.webp 1600w");
     expect(html).toContain("lg:aspect-[1280/654]");
     expect(html).toContain("lg:translate-y-[21px]");
     expect(html).toContain("aspect-[1088/607]");
@@ -118,12 +119,15 @@ describe("localized homepage sections", () => {
     expect(html).toContain(
       "top-[-6.76%] left-[-10.29%] h-[126.03%] w-[114.52%]"
     );
-    expect(html).toContain('data-nimg="fill"');
-    expect(html).toContain("home-hero-card.webp");
-    expect(html).toContain("background-image:url");
-    expect(html).toContain("data:image/webp;base64");
+    expect(html).toContain("<picture");
+    expect(html).toContain("home-hero-card-640.webp 640w");
+    expect(html).toContain("home-hero-card-1246.webp 1246w");
+    expect(html).toContain('fetchPriority="high"');
     expect(html).toContain("object-fill");
     expect(html).not.toContain("/homepage/header/home-hero-blur.png");
+    expect(html).not.toContain("home-hero-card.webp");
+    expect(html).not.toContain("home-hero-blur.webp");
+    expect(html).not.toContain('data-nimg="fill"');
     expect(html).not.toContain("mt-12");
     expect(html).not.toContain("top-[min(");
     expect(html).not.toContain("left-[min(");
@@ -141,6 +145,9 @@ describe("localized homepage sections", () => {
     expect(html).toContain("sm:self-end");
     expect(html).toContain("text-balance");
     expect(html).toContain("lg:max-w-[760px]");
+    expect(html).toContain("customer-stories-background-640.webp 640w");
+    expect(html).toContain("customer-stories-background-2880.webp 2880w");
+    expect(html).toContain('loading="lazy"');
     expect(html).toContain("data-customer-stories-previous");
     expect(html).toContain("data-customer-stories-next");
     expect(html).toContain("aria-controls");
