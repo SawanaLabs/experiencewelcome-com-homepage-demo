@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { ComponentProps } from "react";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { MobileNavbarMenu } from "@/components/mobile-navbar-menu";
 import { defaultLocale, type Locale } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +15,8 @@ export interface NavbarCopy {
   brandAriaLabel: string;
   demoLabel: string;
   languageLabel: string;
+  menuCloseLabel: string;
+  menuLabel: string;
   primaryNavigation: NavbarLink[];
 }
 
@@ -25,6 +28,8 @@ const defaultNavbarCopy = {
   brandAriaLabel: "Welcome home",
   demoLabel: "Demo",
   languageLabel: "Change language",
+  menuCloseLabel: "Close menu",
+  menuLabel: "Open menu",
   primaryNavigation: [
     { label: "Features", href: "#features" },
     { label: "Pricing", href: "#pricing" },
@@ -247,7 +252,7 @@ export function SiteNavbar({
       <div
         {...props}
         className={cn(
-          "relative z-20 flex items-center justify-between border-[rgba(255,255,255,0.1)] border-b pb-5 text-[#ffffff]",
+          "relative z-20 flex items-center justify-between border-[rgba(255,255,255,0.1)] border-b px-5 pb-5 text-[#ffffff]",
           className
         )}
       >
@@ -259,9 +264,9 @@ export function SiteNavbar({
           logoPriority={logoPriority}
           textClassName="font-semibold text-[20px] leading-6"
         />
-        <LanguageSwitcher
-          ariaLabel={copy.languageLabel}
+        <MobileNavbarMenu
           className="mr-3 ml-auto size-11"
+          copy={copy}
           currentLocale={currentLocale}
           linkTabIndex={linkTabIndex}
         />
@@ -314,7 +319,7 @@ export function SiteNavbar({
       </nav>
 
       <nav aria-label="Account navigation" className="justify-self-end">
-        <ul className="flex items-center gap-6">
+        <ul className="flex items-center gap-3 sm:gap-4 lg:gap-6">
           {copy.accountNavigation.map((link) => (
             <li className="hidden lg:block" key={link.label}>
               <a
@@ -329,7 +334,15 @@ export function SiteNavbar({
               </a>
             </li>
           ))}
-          <li>
+          <li className="lg:hidden">
+            <MobileNavbarMenu
+              className="size-[42px] sm:size-12"
+              copy={copy}
+              currentLocale={currentLocale}
+              linkTabIndex={linkTabIndex}
+            />
+          </li>
+          <li className="hidden lg:block">
             <LanguageSwitcher
               ariaLabel={copy.languageLabel}
               className="size-[42px] sm:size-12"

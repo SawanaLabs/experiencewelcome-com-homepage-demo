@@ -49,6 +49,8 @@ describe("SiteNavbar", () => {
           brandAriaLabel: "Welcome 首页",
           demoLabel: "预约演示",
           languageLabel: "切换语言",
+          menuCloseLabel: "关闭菜单",
+          menuLabel: "打开菜单",
           primaryNavigation: [
             { href: "#features", label: "功能" },
             { href: "#pricing", label: "价格" },
@@ -66,6 +68,7 @@ describe("SiteNavbar", () => {
       expect(html).toContain(label);
     }
     expect(html).toContain('aria-label="切换语言"');
+    expect(html).toContain('aria-label="打开菜单"');
   });
 
   it("keeps the floating navbar in a centered three-column layout", () => {
@@ -87,6 +90,8 @@ describe("SiteNavbar", () => {
           brandAriaLabel: "Accueil Welcome",
           demoLabel: "Démo",
           languageLabel: "Changer de langue",
+          menuCloseLabel: "Fermer le menu",
+          menuLabel: "Ouvrir le menu",
           primaryNavigation: [
             { href: "#features", label: "Fonctionnalités" },
             { href: "#pricing", label: "Tarifs" },
@@ -125,6 +130,17 @@ describe("SiteNavbar", () => {
 
     expect(html).toContain("welcome");
     expect(html).toContain("Demo");
+    expect(html).toContain('aria-label="Open menu"');
+    expect(html).not.toContain('aria-label="Change language"');
     expect(html).not.toContain("Features");
+  });
+
+  it("uses a mobile menu trigger in the floating navbar before desktop layout takes over", () => {
+    const html = renderToStaticMarkup(<SiteNavbar variant="floating" />);
+
+    expect(html).toContain("lg:hidden");
+    expect(html).toContain('aria-label="Open menu"');
+    expect(html).toContain("hidden lg:block");
+    expect(html).toContain('aria-label="Change language"');
   });
 });

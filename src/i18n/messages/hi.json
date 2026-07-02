@@ -12,6 +12,8 @@
     "brandAriaLabel": "Welcome होम",
     "demoLabel": "डेमो",
     "languageLabel": "भाषा बदलें",
+    "menuCloseLabel": "मेन्यू बंद करें",
+    "menuLabel": "मेन्यू खोलें",
     "primaryNavigation": {
       "about": "परिचय",
       "blog": "ब्लॉग",

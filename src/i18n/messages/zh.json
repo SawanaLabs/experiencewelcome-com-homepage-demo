@@ -12,6 +12,8 @@
     "brandAriaLabel": "Welcome 首页",
     "demoLabel": "预约演示",
     "languageLabel": "切换语言",
+    "menuCloseLabel": "关闭菜单",
+    "menuLabel": "打开菜单",
     "primaryNavigation": {
       "about": "关于",
       "blog": "博客",

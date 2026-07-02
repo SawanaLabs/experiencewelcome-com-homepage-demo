@@ -18,14 +18,18 @@ export interface LanguageSwitcherProps {
   ariaLabel?: string;
   className?: string;
   currentLocale: Locale;
+  ignoreDrawerSwipe?: boolean;
   linkTabIndex?: ComponentProps<"button">["tabIndex"];
+  modal?: ComponentProps<typeof DropdownMenu>["modal"];
 }
 
 export function LanguageSwitcher({
   ariaLabel = "Change language",
   className,
   currentLocale,
+  ignoreDrawerSwipe = false,
   linkTabIndex,
+  modal,
 }: LanguageSwitcherProps) {
   const localeOptions = getLocaleOptions();
   const hasActiveLocale = localeOptions.some(
@@ -36,19 +40,28 @@ export function LanguageSwitcher({
     throw new Error(`Unsupported locale: ${currentLocale}`);
   }
 
+  const drawerSwipeIgnoreProps = ignoreDrawerSwipe
+    ? { "data-base-ui-swipe-ignore": "" }
+    : undefined;
+
   return (
-    <DropdownMenu>
+    <DropdownMenu modal={modal}>
       <DropdownMenuTrigger
         aria-label={ariaLabel}
         className={cn(
-          "flex shrink-0 items-center justify-center gap-1.5 rounded-full border border-[rgba(255,255,255,0.18)] bg-[rgba(255,255,255,0.06)] font-normal text-[#ffffff] transition-opacity hover:opacity-80",
+          "flex shrink-0 items-center justify-center rounded-full border border-[rgba(255,255,255,0.18)] bg-[rgba(255,255,255,0.06)] font-normal text-[#ffffff] transition-opacity hover:opacity-80",
           className
         )}
         tabIndex={linkTabIndex}
+        {...drawerSwipeIgnoreProps}
       >
         <GlobeIcon aria-hidden="true" className="size-4" strokeWidth={1.75} />
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" sideOffset={10}>
+      <DropdownMenuContent
+        align="end"
+        sideOffset={10}
+        {...drawerSwipeIgnoreProps}
+      >
         <DropdownMenuRadioGroup value={currentLocale}>
           {localeOptions.map((option) => (
             <DropdownMenuRadioItem

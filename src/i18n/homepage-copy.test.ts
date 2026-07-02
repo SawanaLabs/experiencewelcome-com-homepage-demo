@@ -33,5 +33,7 @@ describe("createHomepageCopy", () => {
     expect(copy.footer.navigation[0]?.title).toBe("产品");
     expect(copy.footer.navigation[0]?.links[2]?.label).toBe("预约演示");
     expect(copy.footer.legalLinks[1]?.label).toBe("服务条款");
+    expect(copy.navbar.menuLabel).toBe("打开菜单");
+    expect(copy.navbar.menuCloseLabel).toBe("关闭菜单");
   });
 });

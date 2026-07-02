@@ -55,13 +55,13 @@ export function DropdownMenuContent({
       <Menu.Positioner
         align={align}
         alignOffset={alignOffset}
-        className="isolate z-[1000] outline-none"
+        className="pointer-events-auto isolate z-[2147483647] outline-none"
         side={side}
         sideOffset={sideOffset}
       >
         <Menu.Popup
           className={cn(
-            "relative z-[1000] max-h-[22rem] min-w-40 overflow-y-auto overflow-x-hidden rounded-lg border border-[rgba(255,255,255,0.14)] bg-[rgba(10,10,10,0.98)] p-1 text-[#ffffff] shadow-[0_18px_55px_rgba(0,0,0,0.45)] outline-none backdrop-blur-xl",
+            "pointer-events-auto relative z-[2147483647] max-h-[22rem] min-w-40 overflow-y-auto overflow-x-hidden rounded-lg border border-[rgba(255,255,255,0.14)] bg-[rgba(10,10,10,0.98)] p-1 text-[#ffffff] shadow-[0_18px_55px_rgba(0,0,0,0.45)] outline-none backdrop-blur-xl",
             className
           )}
           data-slot="dropdown-menu-content"

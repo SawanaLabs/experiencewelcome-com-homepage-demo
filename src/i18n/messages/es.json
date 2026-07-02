@@ -12,6 +12,8 @@
     "brandAriaLabel": "Inicio de Welcome",
     "demoLabel": "Demo",
     "languageLabel": "Cambiar idioma",
+    "menuCloseLabel": "Cerrar menú",
+    "menuLabel": "Abrir menú",
     "primaryNavigation": {
       "about": "Acerca de",
       "blog": "Blog",

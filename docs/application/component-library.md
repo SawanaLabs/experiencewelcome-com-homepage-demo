@@ -28,6 +28,7 @@ updateAt: 2026-07-02
 - Keep site-wide ExperienceWelcome assemblies in `src/components/` when they are reused across pages but still own product-specific copy or assets. `src/components/navbar.tsx` owns the shared Welcome navigation content and exposes layout variants for the homepage hero, mobile header, and floating shell.
 - Put ExperienceWelcome homepage section components under `src/components/homepage/`. These are product-specific assemblies, so they may depend on homepage copy, assets, layout choreography, and next-intl boundaries defined for the homepage.
 - `src/components/button.tsx` is the first shadcn-style copied primitive. It intentionally avoids headless UI dependencies, `Slot`, `asChild`, and `class-variance-authority`; use its exported `buttonVariants` to style other elements such as locale-aware links.
+- `src/components/drawer.tsx` is a shadcn-style copied primitive backed by Base UI Drawer. It owns the project's bottom-sheet presentation, overlay, portal composition, and Drawer part exports without adding Vaul or Radix dependencies.
 - For new copied shadcn-style interactive primitives that need managed accessibility behavior, prefer the shadcn Base UI variant and `@base-ui/react` primitives over Radix-based implementations.
 - Use native elements first for simple controls such as plain buttons, links, and static layout. Use Base UI for menus, dropdowns, select-like controls, popovers, dialogs, tabs, tooltips, and other stateful interaction patterns where keyboard behavior, focus management, positioning, or ARIA semantics would otherwise be hand-written.
 - Keep Base UI as an implementation detail behind source-owned project modules. Callers should import from `@/components/...`, not from `@base-ui/react/...`, unless a low-level module is intentionally being built.
@@ -91,6 +92,11 @@ export function Button({
   Context: shadcn now documents both Radix UI and Base UI variants, while Base UI is an actively maintained, unstyled React primitive library built for accessible, composable component systems.
   Decision: For new interactive primitives, copy and adapt the shadcn Base UI implementation or wrap `@base-ui/react` directly inside a project-owned component. Keep native implementations for simple controls and avoid new Radix dependencies unless there is a documented gap.
   Consequences: Future dropdown, menu, select, popover, dialog, tabs, tooltip, and similar components should be Base UI-backed by default while preserving the repository's source-owned component surface.
+- **2026-07-02-base-ui-drawer-primitive**: Add a local Drawer primitive for mobile navigation and future bottom sheets.
+  Status: Accepted.
+  Context: The mobile navbar needs a Drawer interaction, while the upstream shadcn registry Drawer currently introduces Vaul and Radix Dialog dependencies.
+  Decision: Implement `src/components/drawer.tsx` as a source-owned wrapper around `@base-ui/react/drawer`, preserving shadcn-style part exports and project styling.
+  Consequences: Mobile and future Drawer surfaces use the existing Base UI dependency, with one local styling point for overlays, portals, and sheet motion.
 
 ## Update Triggers
 

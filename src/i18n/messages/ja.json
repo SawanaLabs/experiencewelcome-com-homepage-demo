@@ -12,6 +12,8 @@
     "brandAriaLabel": "Welcome ホーム",
     "demoLabel": "デモ",
     "languageLabel": "言語を切り替え",
+    "menuCloseLabel": "メニューを閉じる",
+    "menuLabel": "メニューを開く",
     "primaryNavigation": {
       "about": "概要",
       "blog": "ブログ",

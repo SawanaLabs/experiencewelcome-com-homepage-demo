@@ -129,6 +129,8 @@ export function createHomepageCopy({
       brandAriaLabel: navbar("brandAriaLabel"),
       demoLabel: navbar("demoLabel"),
       languageLabel: navbar("languageLabel"),
+      menuCloseLabel: navbar("menuCloseLabel"),
+      menuLabel: navbar("menuLabel"),
       primaryNavigation: [
         { href: "#features", label: navbar("primaryNavigation.features") },
         { href: "#pricing", label: navbar("primaryNavigation.pricing") },
