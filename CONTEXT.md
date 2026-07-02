@@ -18,3 +18,6 @@ A vertical content block in the ExperienceWelcome homepage source section, such 
 
 **Static replication phase**:
 The first implementation phase that focuses on reproducing the Figma homepage source section as static HTML, Tailwind styling, localized text, and exported assets before adding motion, Lighthouse optimization, and final SEO polish.
+
+**Content-resilient layout**:
+A layout approach where meaningful content such as headings, body copy, navigation labels, CTAs, and testimonials can grow, wrap, and re-center across languages and viewport sizes while preserving the intended visual hierarchy.

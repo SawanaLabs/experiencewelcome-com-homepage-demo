@@ -17,6 +17,7 @@ updateAt: 2026-07-01
 - **Figma homepage source section**: The complete `experiencewelcome.com` source section inside the `Top 16 Websites of 2024 Awwwards Community` Figma file.
 - **Homepage section**: A vertical content block from that source section, used as the main component boundary for implementation.
 - **Public reference site**: The live `experiencewelcome.com` site, used only for supporting copy, module semantics, SEO wording, and missing-asset interpretation.
+- **Content-resilient layout**: A layout approach where meaningful content can grow, wrap, and re-center across languages and viewport sizes while preserving the intended visual hierarchy.
 
 ## Current Subdomain Docs
 
@@ -31,9 +32,13 @@ updateAt: 2026-07-01
 - Use the Figma layer tree to find source boundaries, then rename code components by product semantics instead of copying generic names such as `section`, `div`, or `a`.
 - Treat Figma CSS, measurements, colors, typography, and layout metadata as inspection inputs. Translate them into maintainable TypeScript, React, Tailwind, and project components instead of pasting generated CSS as the final implementation.
 - Allow precise Figma-derived Tailwind arbitrary values inside `src/components/homepage/` during static replication, such as exact pixel widths, spacing, font sizes, and colors. Do not push those one-off values into generic components or global theme tokens unless they prove reusable.
+- Prefer content-resilient layout for meaningful text, controls, and primary section structure. Use Flexbox, Grid, `gap`, `max-width`, `mx-auto`, padding, margin, and responsive variants for headings, paragraphs, CTAs, cards, media stages, and navigation groups.
+- Use absolute positioning only for local, intentional overlap that cannot be expressed cleanly with normal layout, such as a background glow inside a bounded media stage. Do not turn an entire section into a coordinate canvas when centering, stacking, or spacing can be expressed with Flexbox, Grid, normal flow, transforms, or margins.
+- Treat Figma coordinates as visual evidence, not a final layout API. Stable constraints such as maximum section width, asset aspect ratio, colors, typography scale, and major spacing rhythm can remain Figma-derived; fragile coordinates such as fixed `top`, `left`, `width`, and `height` on content blocks should be converted into flow layout.
 - Prioritize the static replication phase first: reproduce the Figma layout, assets, text, color, typography, and spacing as a static page before optimizing motion, Lighthouse scores, structured data, and final SEO details.
-- In the static replication phase, use the 1440px desktop Figma source as the primary acceptance surface. Keep mobile from breaking, then do product-grade mobile adaptation after desktop static fidelity is stable.
-- Keep the existing i18n routing infrastructure active during static replication, but do not spend this phase on multilingual content or cross-locale visual tuning. Use English as the content and visual baseline, then complete multilingual polish after static fidelity is stable.
+- In the static replication phase, use the 1440px desktop Figma source as the primary acceptance surface. The acceptance target is approximate high-fidelity: preserve the section structure, visual hierarchy, asset proportions, color, typography character, and spacing rhythm while allowing content-resilient flow layout to differ from raw Figma text coordinates.
+- Keep mobile from breaking during desktop static fidelity work, then do product-grade mobile adaptation after desktop behavior is stable.
+- Keep the existing i18n routing infrastructure active during static replication. For localized sections, use content-resilient layout so multilingual content remains readable while the 1440px desktop view stays visually close to the reference screenshot.
 - Implement the footer first as the pilot section. Use it to settle the repeatable workflow for Figma inspection, asset export, translation shape, component placement, styling fidelity, responsive behavior, and verification before batching the remaining sections.
 - Add interaction after static fidelity is stable. Prefer subtle hover states, active states, scroll reveal, image/card micro-interactions, and mobile navigation behavior that respect `prefers-reduced-motion`.
 - Validate in stages: first visual static comparison, then responsive behavior, then i18n route checks, then Lighthouse mobile Performance and SEO 90+, then README documentation of AI tool usage plus human trade-offs.
@@ -50,6 +55,11 @@ updateAt: 2026-07-01
   Context: Route-local `_components` would be a normal Next.js organization choice, but this project wants the component surface organized under `src/components/`.
   Decision: Keep page orchestration in `src/app/[locale]/(home)/page.tsx` and put homepage sections in `src/components/homepage/`.
   Consequences: The component tree is easier to inspect from one shared component root, but `src/components/` must distinguish generic primitives from homepage-specific assemblies.
+- **2026-07-02-content-resilient-homepage-layout**: Convert localized homepage content layers from fixed Figma coordinates into resilient flow layout.
+  Status: Accepted.
+  Context: The first static Header implementation used Figma-derived absolute positioning for content. After localization, longer languages such as Japanese exposed that fixed text geometry as fragile.
+  Decision: For meaningful content, controls, and primary section structure, prefer Tailwind Flexbox/Grid flow layout, responsive spacing, max-width constraints, and text wrapping utilities. Use local absolute positioning only for intentional overlap that normal layout cannot express cleanly.
+  Consequences: Desktop screenshots may drift slightly from raw Figma coordinates, but localized content remains readable, maintainable, and responsive while retaining Figma-derived hierarchy, colors, assets, and proportions. The 1440px desktop view remains the primary visual acceptance surface and should stay broadly aligned with the reference screenshot.
 
 ## Update Triggers
 
