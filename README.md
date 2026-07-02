@@ -1,5 +1,15 @@
 # ExperienceWelcome 首页复刻 Demo
 
+## 首屏截图
+
+桌面端：
+
+<img src="docs/assets/readme/homepage-desktop-first-fold.png" alt="ExperienceWelcome 桌面端首屏截图" width="720">
+
+移动端：
+
+<img src="docs/assets/readme/homepage-mobile-first-fold.png" alt="ExperienceWelcome 移动端首屏截图" width="260">
+
 这是一个使用 Next.js App Router、TypeScript 和 Tailwind CSS 实现的
 ExperienceWelcome 首页复刻项目，视觉来源为测试题指定的 Figma Community 文件。
 
@@ -77,3 +87,10 @@ pnpm fix
 我使用 PageSpeed Insights 和 Chrome 性能反馈定位移动端主要瓶颈：首屏大图带来的 LCP 压力。当前的优化方向是响应式图片交付，并避免装饰性图片成为 LCP 候选元素。
 
 组件库方面保持较小的本地实现。项目采用类似 shadcn 的 copy-and-own 思路，但没有引入完整组件系统；当一个小型本地 primitive 足够解决问题时，就优先保留简单实现。
+
+## PageSpeed Mobile
+
+2026 年 7 月 2 日 15:22 重新测试线上地址的 PageSpeed Insights Mobile 结果：
+Performance 90、Accessibility 96、Best Practices 100、SEO 100。
+
+<img src="docs/assets/readme/pagespeed-mobile.jpg" alt="PageSpeed Insights Mobile 结果截图" width="640">
