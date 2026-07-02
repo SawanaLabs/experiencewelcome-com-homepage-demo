@@ -2,7 +2,10 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { createHomepageCopy } from "@/i18n/homepage-copy";
 import zhMessages from "@/i18n/messages/zh.json";
-import { HomepageCustomerStories } from "./customer-stories";
+import {
+  HomepageCustomerStories,
+  shouldAutoAdvanceCustomerStories,
+} from "./customer-stories";
 import { HomepageFooter } from "./footer";
 import { HomepageHeader } from "./header";
 
@@ -175,6 +178,40 @@ describe("localized homepage sections", () => {
     expect(cardOpeningTag).toContain('data-motion="viewport-reveal"');
     expect(cardOpeningTag).not.toContain("micro-interaction");
     expect(cardOpeningTag).not.toContain("transform-origin");
+  });
+
+  it("pauses customer story auto-scroll while visitors are reading", () => {
+    expect(
+      shouldAutoAdvanceCustomerStories({
+        isAutoScrollPaused: false,
+        shouldReduceMotion: false,
+        visibilityState: "visible",
+      })
+    ).toBe(true);
+
+    expect(
+      shouldAutoAdvanceCustomerStories({
+        isAutoScrollPaused: true,
+        shouldReduceMotion: false,
+        visibilityState: "visible",
+      })
+    ).toBe(false);
+
+    expect(
+      shouldAutoAdvanceCustomerStories({
+        isAutoScrollPaused: false,
+        shouldReduceMotion: true,
+        visibilityState: "visible",
+      })
+    ).toBe(false);
+
+    expect(
+      shouldAutoAdvanceCustomerStories({
+        isAutoScrollPaused: false,
+        shouldReduceMotion: false,
+        visibilityState: "hidden",
+      })
+    ).toBe(false);
   });
 
   it("keeps the footer navigation in resilient flow layout", () => {

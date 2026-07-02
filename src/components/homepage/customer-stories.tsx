@@ -95,6 +95,22 @@ function getNextCarouselScrollTarget(carousel: HTMLElement, direction: -1 | 1) {
   return targets[(currentIndex + direction + targets.length) % targets.length];
 }
 
+interface AutoAdvanceState {
+  isAutoScrollPaused: boolean;
+  shouldReduceMotion: boolean | null;
+  visibilityState: DocumentVisibilityState;
+}
+
+export function shouldAutoAdvanceCustomerStories({
+  isAutoScrollPaused,
+  shouldReduceMotion,
+  visibilityState,
+}: AutoAdvanceState) {
+  return (
+    !(shouldReduceMotion || isAutoScrollPaused) && visibilityState === "visible"
+  );
+}
+
 function getTestimonialCards(copy: HomepageCustomerStoriesCopy) {
   if (copy.testimonials.length !== testimonialAssets.length) {
     throw new Error(
@@ -123,8 +139,37 @@ export function HomepageCustomerStories({
 }: HomepageCustomerStoriesProps) {
   const testimonials = getTestimonialCards(copy);
   const carouselId = useId();
+  const autoScrollPausedRef = useRef(false);
   const carouselRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
+
+  const pauseAutoScroll = useCallback(() => {
+    autoScrollPausedRef.current = true;
+  }, []);
+
+  const resumeAutoScroll = useCallback(() => {
+    autoScrollPausedRef.current = false;
+  }, []);
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+
+    if (!carousel) {
+      return;
+    }
+
+    carousel.addEventListener("focusin", pauseAutoScroll);
+    carousel.addEventListener("focusout", resumeAutoScroll);
+    carousel.addEventListener("pointerenter", pauseAutoScroll);
+    carousel.addEventListener("pointerleave", resumeAutoScroll);
+
+    return () => {
+      carousel.removeEventListener("focusin", pauseAutoScroll);
+      carousel.removeEventListener("focusout", resumeAutoScroll);
+      carousel.removeEventListener("pointerenter", pauseAutoScroll);
+      carousel.removeEventListener("pointerleave", resumeAutoScroll);
+    };
+  }, [pauseAutoScroll, resumeAutoScroll]);
 
   const scrollCarousel = useCallback(
     (direction: -1 | 1) => {
@@ -154,7 +199,13 @@ export function HomepageCustomerStories({
     }
 
     const intervalId = window.setInterval(() => {
-      if (document.visibilityState === "visible") {
+      if (
+        shouldAutoAdvanceCustomerStories({
+          isAutoScrollPaused: autoScrollPausedRef.current,
+          shouldReduceMotion,
+          visibilityState: document.visibilityState,
+        })
+      ) {
         scrollCarousel(1);
       }
     }, 3000);
@@ -209,7 +260,11 @@ export function HomepageCustomerStories({
                 aria-label={copy.previousStoryLabel}
                 className={`${controlButtonClasses} ${controlFocusClasses}`}
                 data-customer-stories-previous="true"
+                onBlur={resumeAutoScroll}
                 onClick={() => scrollCarousel(-1)}
+                onFocus={pauseAutoScroll}
+                onPointerEnter={pauseAutoScroll}
+                onPointerLeave={resumeAutoScroll}
                 type="button"
               >
                 <Image
@@ -226,7 +281,11 @@ export function HomepageCustomerStories({
                 aria-label={copy.nextStoryLabel}
                 className={`${controlButtonClasses} ${controlFocusClasses}`}
                 data-customer-stories-next="true"
+                onBlur={resumeAutoScroll}
                 onClick={() => scrollCarousel(1)}
+                onFocus={pauseAutoScroll}
+                onPointerEnter={pauseAutoScroll}
+                onPointerLeave={resumeAutoScroll}
                 type="button"
               >
                 <Image
