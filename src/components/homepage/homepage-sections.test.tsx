@@ -151,6 +151,7 @@ describe("homepage customer stories section", () => {
     expect(html).toContain("data-customer-stories-previous");
     expect(html).toContain("data-customer-stories-next");
     expect(html).toContain("aria-controls");
+    expect(html).toContain("cursor-pointer");
     expect(html).toContain("transition-opacity hover:opacity-70");
     expect(html).toContain("h-full w-full object-contain");
     expect(html).toContain("snap-x snap-mandatory");
@@ -236,6 +237,8 @@ describe("homepage footer section", () => {
     expect(html).toContain("xl:gap-x-[clamp(96px,16.875vw,243px)]");
     expect(html).toContain("xl:pb-[197px]");
     expect(html).toContain("xl:flex-1");
+    expect(html).toContain("grid-cols-2");
+    expect(html).toContain("sm:grid-cols-3");
     expect(html).toContain("xl:grid-cols-[repeat(3,minmax(0,1fr))]");
     expect(html).toContain("md:justify-between");
     expect(html).not.toContain("min-h-[457px]");

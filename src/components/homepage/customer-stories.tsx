@@ -42,7 +42,7 @@ const testimonialAssets = [
 ];
 
 const controlButtonClasses =
-  "relative flex h-11 w-11 items-center justify-center transition-opacity hover:opacity-70 lg:h-16 lg:w-16";
+  "relative flex h-11 w-11 cursor-pointer items-center justify-center transition-opacity hover:opacity-70 lg:h-16 lg:w-16";
 const controlFocusClasses =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#000000] focus-visible:outline-offset-4";
 const controlIconClasses = "h-full w-full object-contain";

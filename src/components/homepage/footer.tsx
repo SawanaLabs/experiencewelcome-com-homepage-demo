@@ -149,7 +149,7 @@ export function HomepageFooter({ copy }: HomepageFooterProps) {
 
         <MotionRevealNav
           aria-label="Footer navigation"
-          className="mt-14 grid gap-x-12 gap-y-10 sm:grid-cols-3 xl:mt-0 xl:min-w-0 xl:flex-1 xl:grid-cols-[repeat(3,minmax(0,1fr))] xl:gap-x-16"
+          className="mt-14 grid grid-cols-2 gap-x-12 gap-y-10 sm:grid-cols-3 xl:mt-0 xl:min-w-0 xl:flex-1 xl:grid-cols-[repeat(3,minmax(0,1fr))] xl:gap-x-16"
           delay={0.08}
           distance={16}
         >

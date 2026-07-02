@@ -49,7 +49,7 @@ export function LanguageSwitcher({
       <DropdownMenuTrigger
         aria-label={ariaLabel}
         className={cn(
-          "flex shrink-0 items-center justify-center rounded-full border border-[rgba(255,255,255,0.18)] bg-[rgba(255,255,255,0.06)] font-normal text-[#ffffff] transition-opacity hover:opacity-80",
+          "flex shrink-0 cursor-pointer items-center justify-center rounded-full border border-[rgba(255,255,255,0.18)] bg-[rgba(255,255,255,0.06)] font-normal text-[#ffffff] transition-opacity hover:opacity-80",
           className
         )}
         tabIndex={linkTabIndex}
