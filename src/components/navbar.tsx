@@ -286,7 +286,7 @@ export function SiteNavbar({
         ariaLabel={copy.brandAriaLabel}
         className="ml-[2px] min-w-0 gap-2 justify-self-start lg:ml-[7px]"
         linkTabIndex={linkTabIndex}
-        logoClassName="h-8 w-7"
+        logoClassName="h-8 w-7 -translate-y-[2px]"
         logoPriority={logoPriority}
         textClassName="font-semibold text-[20px] leading-6"
       />
