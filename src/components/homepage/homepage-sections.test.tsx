@@ -43,20 +43,25 @@ function getOpeningTag(html: string, href: string) {
   return html.slice(tagStart, tagEnd + 1);
 }
 
-describe("localized homepage sections", () => {
+function renderHomepageSections() {
+  const copy = createZhHomepageCopy();
+
+  return renderToStaticMarkup(
+    <>
+      <HomepageHeader
+        copy={copy.header}
+        currentLocale="zh"
+        navbarCopy={copy.navbar}
+      />
+      <HomepageCustomerStories copy={copy.customerStories} />
+      <HomepageFooter copy={copy.footer} />
+    </>
+  );
+}
+
+describe("localized homepage section copy", () => {
   it("renders localized copy in header, customer stories, and footer", () => {
-    const copy = createZhHomepageCopy();
-    const html = renderToStaticMarkup(
-      <>
-        <HomepageHeader
-          copy={copy.header}
-          currentLocale="zh"
-          navbarCopy={copy.navbar}
-        />
-        <HomepageCustomerStories copy={copy.customerStories} />
-        <HomepageFooter copy={copy.footer} />
-      </>
-    );
+    const html = renderHomepageSections();
 
     expect(html).toContain("吸引并转化");
     expect(html).toContain("工作原理");
@@ -65,20 +70,11 @@ describe("localized homepage sections", () => {
     expect(html).toContain("隐私政策");
     expect(html).toContain("服务条款");
   });
+});
 
+describe("homepage section motion", () => {
   it("adds motion hooks without replacing the section markup contract", () => {
-    const copy = createZhHomepageCopy();
-    const html = renderToStaticMarkup(
-      <>
-        <HomepageHeader
-          copy={copy.header}
-          currentLocale="zh"
-          navbarCopy={copy.navbar}
-        />
-        <HomepageCustomerStories copy={copy.customerStories} />
-        <HomepageFooter copy={copy.footer} />
-      </>
-    );
+    const html = renderHomepageSections();
 
     expect(html).toContain('data-motion="viewport-reveal"');
     expect(html).toContain('data-motion="micro-interaction"');
@@ -88,7 +84,9 @@ describe("localized homepage sections", () => {
     expect(html).toContain("<header");
     expect(html).toContain("<footer");
   });
+});
 
+describe("homepage header section", () => {
   it("keeps the header content in resilient flow layout", () => {
     const copy = createZhHomepageCopy();
     const html = renderToStaticMarkup(
@@ -132,7 +130,9 @@ describe("localized homepage sections", () => {
     expect(html).not.toContain("top-[min(");
     expect(html).not.toContain("left-[min(");
   });
+});
 
+describe("homepage customer stories section", () => {
   it("keeps the customer stories section in resilient flow layout", () => {
     const copy = createZhHomepageCopy();
     const html = renderToStaticMarkup(
@@ -226,7 +226,9 @@ describe("localized homepage sections", () => {
       })
     ).toBe(false);
   });
+});
 
+describe("homepage footer section", () => {
   it("keeps the footer navigation in resilient flow layout", () => {
     const copy = createZhHomepageCopy();
     const html = renderToStaticMarkup(<HomepageFooter copy={copy.footer} />);

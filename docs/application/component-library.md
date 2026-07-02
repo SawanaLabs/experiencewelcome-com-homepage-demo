@@ -19,6 +19,8 @@ updateAt: 2026-07-02
 - **Pass-through component**: A component that preserves the underlying element or primitive interface by accepting and spreading the native props callers expect.
 - **Wrapper component**: A component whose main job is to add styling, behavior, animation, or accessibility defaults around an underlying element, primitive, or child tree while preserving the caller's expected escape hatches.
 - **Base UI-backed primitive**: A source-owned project component that wraps or adapts `@base-ui/react` behavior while keeping project styling, props, and exports under `src/components/`.
+- **Custom hook boundary**: A `use*` function that owns stateful React logic such as effects, refs, browser APIs, subscriptions, event lifecycles, or reusable interaction behavior.
+- **Pure calculation helper**: A deterministic TypeScript function that transforms, validates, sorts, maps, or derives data without reading React state, mutating inputs, or touching browser/server side effects.
 
 ## Current Subdomain Docs
 
@@ -27,6 +29,11 @@ updateAt: 2026-07-02
 - Keep generic primitives in `src/components/` when they appear. These modules should be reusable across pages and should not import product copy, next-intl translations, route data, analytics, or feature-specific state.
 - Keep site-wide ExperienceWelcome assemblies in `src/components/` when they are reused across pages but still own product-specific copy or assets. `src/components/navbar.tsx` owns the shared Welcome navigation content and exposes layout variants for the homepage hero, mobile header, and floating shell.
 - Put ExperienceWelcome homepage section components under `src/components/homepage/`. These are product-specific assemblies, so they may depend on homepage copy, assets, layout choreography, and next-intl boundaries defined for the homepage.
+- Treat TS/TSX line-limit failures as responsibility probes. Split page and section components by user-visible UI boundaries first: route composition, section, subsection, visual block, repeated item, or interaction island. For Figma replication work, preserve the source layer intent and DOM semantics while reducing the function size.
+- Extract a custom hook when the oversized component mixes JSX with stateful behavior: `useState`, `useEffect`, `useRef`, browser APIs, subscriptions, timers, observers, carousel state, menu state, or event lifecycle wiring. Keep hook names concrete and use-case oriented; a hook should expose intent to the component instead of leaking implementation details.
+- Extract pure calculation helpers when the oversized code is deterministic data work: copy shaping, asset-to-copy merging, assertions, sorting, filtering, URL building, measurement math, or test fixtures. Keep these helpers outside React components so they are easy to test and do not expand the render path.
+- Split oversized tests by subject or behavior rather than by line count alone. Prefer focused `describe` blocks for section contracts such as Header, Customer Stories, and Footer, plus small shared render helpers when repeated setup obscures the assertion.
+- Keep Server Components as the default boundary for route entries, section shells, copy shaping, and static structure. Move Client Components and hooks toward leaf interaction nodes unless a whole section already owns client-only behavior.
 - `src/components/button.tsx` is the first shadcn-style copied primitive. It intentionally avoids headless UI dependencies, `Slot`, `asChild`, and `class-variance-authority`; use its exported `buttonVariants` to style other elements such as locale-aware links.
 - `src/components/drawer.tsx` is a shadcn-style copied primitive backed by Base UI Drawer. It owns the project's bottom-sheet presentation, overlay, portal composition, and Drawer part exports without adding Vaul or Radix dependencies.
 - For new copied shadcn-style interactive primitives that need managed accessibility behavior, prefer the shadcn Base UI variant and `@base-ui/react` primitives over Radix-based implementations.
@@ -97,6 +104,11 @@ export function Button({
   Context: The mobile navbar needs a Drawer interaction, while the upstream shadcn registry Drawer currently introduces Vaul and Radix Dialog dependencies.
   Decision: Implement `src/components/drawer.tsx` as a source-owned wrapper around `@base-ui/react/drawer`, preserving shadcn-style part exports and project styling.
   Consequences: Mobile and future Drawer surfaces use the existing Base UI dependency, with one local styling point for overlays, portals, and sheet motion.
+- **2026-07-02-tsx-refactoring-boundaries**: Use line-limit failures to reveal responsibility boundaries.
+  Status: Accepted.
+  Context: TS/TSX files now have hard maintainability gates for function and file size, but the codebase should not be split mechanically just to satisfy a number.
+  Decision: Classify refactors by component structure, custom hook extraction, pure calculation helpers, test organization, and Server/Client boundaries. Start with the boundary that matches the code's responsibility, then keep the resulting module cohesive and shallow.
+  Consequences: Large UI files become easier to review without fragmenting Figma-derived structure, while stateful logic and pure data work move into boundaries that are easier to test and reuse.
 
 ## Update Triggers
 
@@ -104,3 +116,4 @@ export function Button({
 - Update this file when the component folder structure changes.
 - Update this file when `cn` or its dependencies change.
 - Update this file when component prop, accessibility, variant, or localization conventions change.
+- Update this file when TS/TSX refactoring boundaries change.
