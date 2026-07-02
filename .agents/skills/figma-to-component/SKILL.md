@@ -9,13 +9,15 @@ Use this skill to run a trace from a Figma source section to a committed-quality
 
 ## Non-Negotiables
 
-- Treat Figma as the source of truth for structure, dimensions, spacing, copy, colors, and exported assets.
-- Preserve the meaningful Figma box tree. Semantic HTML is allowed, but do not flatten layout groups that exist to position children.
+- Treat Figma as the source of truth for visual facts: structure, dimensions, spacing, copy, colors, and exported assets. Distinguish stable constraints from raw canvas coordinates before coding.
+- Preserve the meaningful Figma box tree. Semantic HTML is allowed, and layout-only groups may be translated into flow containers or merged when the same visual relationship remains clear.
 - Encode Figma colors exactly in the repo's styling system. In Tailwind repos, use arbitrary values such as `bg-[#000000]` or `text-[rgba(255,255,255,0.65)]`. Do not substitute theme tokens unless the user explicitly maps them.
 - Export references and assets from selected Figma nodes whenever browser access is available. Export the selected section/frame as a visual reference, usually PNG. Prefer SVG for vector icons, logos, and simple graphic groups; use PNG, JPEG, WebP, GIF, or video when the source content requires raster or motion output.
 - Use exported section references as visual references and exported SVGs/images as assets. Do not implement a section by pasting one screenshot as the UI.
 - If Dev Mode is unavailable, say so and continue with the viewer tree, exported references, exported assets, and browser measurements.
 - Ask at most one blocking question before implementation; otherwise make the conservative choice that keeps the trace strongest.
+
+Document-flow best practice: implement meaningful content, controls, cards, and navigation with normal flow, Flexbox, Grid, `gap`, padding, margin, and `max-width`; reserve absolute positioning for local intentional overlap such as decorative layers, glows, and bounded media stages.
 
 ## Workflow
 
@@ -66,7 +68,7 @@ Record:
 
 - top-layer dimensions, flow direction, padding, gap, and background color
 - direct child groups and their names
-- key x/y positions and sizes at the target viewport
+- key x/y positions and sizes at the target viewport as visual evidence, not automatic `top`/`left` implementation instructions
 - text content, font size, line height, and visible color
 - borders, opacity, fills, and strokes
 - exported asset dimensions and original filenames
@@ -87,7 +89,7 @@ Design the component tree before writing the JSX.
 Map:
 
 - Figma section/frame -> exported React component
-- Figma layout groups -> nested `div`, `section`, `nav`, `ul`, or other semantic containers
+- Figma layout groups -> nested `div`, `section`, `nav`, `ul`, or other semantic containers, translated into normal flow where possible
 - repeated link/card groups -> local data arrays
 - exported icons/images -> served asset paths with explicit width and height
 - page-level verification mount -> minimal route composition
@@ -104,8 +106,8 @@ Rules:
 
 - Put components under the repo's established component directory and domain grouping.
 - Use the framework's image component for served assets when dimensions are known and the repo already uses one.
-- Encode Figma dimensions at the relevant breakpoint.
-- Add responsive behavior outside the target viewport without changing the target viewport trace.
+- Translate Figma dimensions into stable constraints at the relevant breakpoint, such as asset dimensions, aspect ratios, padding, gaps, max widths, and typography. Avoid raw coordinate positioning for meaningful content.
+- Add responsive behavior while preserving the target viewport's visual hierarchy; the code does not need to reproduce raw Figma coordinates when content-resilient flow layout better matches the product constraints.
 - Keep static-stage copy hard-coded if the user has deferred i18n.
 - Preserve accessibility basics: semantic landmarks, link labels, decorative image `alt=""`, and visible focus styles.
 
@@ -126,7 +128,7 @@ Browser checks:
 - Start the local dev server.
 - Use the repo's normal browser verification tool for viewport control and DOM inspection.
 - Set every target viewport when the browser supports it.
-- Measure key nodes with `getBoundingClientRect()`: section size, major child x/y positions, image sizes, and divider/border positions.
+- Measure key nodes with `getBoundingClientRect()`: section size, major child positions, image sizes, divider/border positions, and whether content wraps or overflows at target and edge-case viewports.
 - Read computed colors with `getComputedStyle()`.
 - Take a screenshot when the browser surface returns a trustworthy image. If screenshots are clipped or scaled, use DOM measurements as the fidelity evidence and report the screenshot limitation.
 
