@@ -1,4 +1,8 @@
 import Image from "next/image";
+import {
+  MotionRevealDiv,
+  MotionRevealNav,
+} from "@/components/motion/motion-primitives";
 import type { HomepageFooterCopy } from "@/i18n/homepage-copy";
 
 const footerNavigation = [
@@ -130,7 +134,11 @@ export function HomepageFooter({ copy }: HomepageFooterProps) {
   return (
     <footer className="w-full bg-[#000000] text-[#ffffff]">
       <div className="mx-auto flex w-full max-w-[1440px] flex-col px-5 pt-16 pb-16 md:px-10 xl:flex-row xl:items-start xl:gap-x-[clamp(96px,16.875vw,243px)] xl:px-[80px] xl:pt-[112px] xl:pb-[197px]">
-        <div className="h-[120px] w-[105px] shrink-0">
+        <MotionRevealDiv
+          className="h-[120px] w-[105px] shrink-0"
+          data-figma-layer="footer/logo"
+          distance={14}
+        >
           <Image
             alt={copy.logoAlt}
             height={120}
@@ -138,11 +146,13 @@ export function HomepageFooter({ copy }: HomepageFooterProps) {
             src="/homepage/footer/welcome-mark.svg"
             width={105}
           />
-        </div>
+        </MotionRevealDiv>
 
-        <nav
+        <MotionRevealNav
           aria-label="Footer navigation"
           className="mt-14 grid gap-x-12 gap-y-10 sm:grid-cols-3 xl:mt-0 xl:min-w-0 xl:flex-1 xl:grid-cols-[repeat(3,minmax(0,1fr))] xl:gap-x-16"
+          delay={0.08}
+          distance={16}
         >
           {navigation.map((group) => (
             <section className="flex min-w-0 flex-col" key={group.title}>
@@ -163,11 +173,15 @@ export function HomepageFooter({ copy }: HomepageFooterProps) {
               </ul>
             </section>
           ))}
-        </nav>
+        </MotionRevealNav>
       </div>
 
       <div className="border-[rgba(255,255,255,0.1)] border-t">
-        <div className="mx-auto flex min-h-[78px] w-full max-w-[1440px] flex-col gap-8 px-5 py-7 md:flex-row md:items-center md:justify-between md:px-10 md:py-0 lg:px-[80px]">
+        <MotionRevealDiv
+          className="mx-auto flex min-h-[78px] w-full max-w-[1440px] flex-col gap-8 px-5 py-7 md:flex-row md:items-center md:justify-between md:px-10 md:py-0 lg:px-[80px]"
+          delay={0.1}
+          distance={10}
+        >
           <div className="flex min-w-0 flex-col gap-4 md:flex-row md:items-center">
             <p className="font-normal text-[14px] text-[rgba(255,255,255,0.65)] leading-[17px]">
               {copy.copyright}
@@ -203,7 +217,7 @@ export function HomepageFooter({ copy }: HomepageFooterProps) {
               </a>
             ))}
           </div>
-        </div>
+        </MotionRevealDiv>
       </div>
     </footer>
   );

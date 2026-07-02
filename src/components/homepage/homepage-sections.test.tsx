@@ -28,6 +28,18 @@ function createZhHomepageCopy() {
   });
 }
 
+function getOpeningTag(html: string, href: string) {
+  const hrefIndex = html.indexOf(`href="${href}"`);
+  const tagStart = html.lastIndexOf("<a", hrefIndex);
+  const tagEnd = html.indexOf(">", hrefIndex);
+
+  if (hrefIndex === -1 || tagStart === -1 || tagEnd === -1) {
+    throw new Error(`Missing anchor for ${href}.`);
+  }
+
+  return html.slice(tagStart, tagEnd + 1);
+}
+
 describe("localized homepage sections", () => {
   it("renders localized copy in header, customer stories, and footer", () => {
     const copy = createZhHomepageCopy();
@@ -49,6 +61,29 @@ describe("localized homepage sections", () => {
     expect(html).toContain("行业活动营销总监");
     expect(html).toContain("隐私政策");
     expect(html).toContain("服务条款");
+  });
+
+  it("adds motion hooks without replacing the section markup contract", () => {
+    const copy = createZhHomepageCopy();
+    const html = renderToStaticMarkup(
+      <>
+        <HomepageHeader
+          copy={copy.header}
+          currentLocale="zh"
+          navbarCopy={copy.navbar}
+        />
+        <HomepageCustomerStories copy={copy.customerStories} />
+        <HomepageFooter copy={copy.footer} />
+      </>
+    );
+
+    expect(html).toContain('data-motion="viewport-reveal"');
+    expect(html).toContain('data-motion="micro-interaction"');
+    expect(html).toContain('data-figma-layer="header/content/title"');
+    expect(html).toContain('data-figma-layer="customer-stories/carousel"');
+    expect(html).toContain('aria-label="Footer navigation"');
+    expect(html).toContain("<header");
+    expect(html).toContain("<footer");
   });
 
   it("keeps the header content in resilient flow layout", () => {
@@ -122,6 +157,26 @@ describe("localized homepage sections", () => {
     expect(html).not.toContain("tracking-[-");
   });
 
+  it("reveals customer story cards on entry without hover transforms", () => {
+    const copy = createZhHomepageCopy();
+    const html = renderToStaticMarkup(
+      <HomepageCustomerStories copy={copy.customerStories} />
+    );
+    const cardMarkerIndex = html.indexOf('data-customer-story-card="true"');
+    const cardTagStart = html.lastIndexOf("<article", cardMarkerIndex);
+    const cardTagEnd = html.indexOf(">", cardMarkerIndex);
+
+    if (cardMarkerIndex === -1 || cardTagStart === -1 || cardTagEnd === -1) {
+      throw new Error("Missing customer story card article.");
+    }
+
+    const cardOpeningTag = html.slice(cardTagStart, cardTagEnd + 1);
+
+    expect(cardOpeningTag).toContain('data-motion="viewport-reveal"');
+    expect(cardOpeningTag).not.toContain("micro-interaction");
+    expect(cardOpeningTag).not.toContain("transform-origin");
+  });
+
   it("keeps the footer navigation in resilient flow layout", () => {
     const copy = createZhHomepageCopy();
     const html = renderToStaticMarkup(<HomepageFooter copy={copy.footer} />);
@@ -141,5 +196,17 @@ describe("localized homepage sections", () => {
     expect(html).not.toContain("lg:ml-[243px]");
     expect(html).not.toContain("lg:grid-cols-[120px_120px_140px]");
     expect(html).not.toContain("lg:gap-[202px]");
+  });
+
+  it("keeps footer links as plain links with simple hover states", () => {
+    const copy = createZhHomepageCopy();
+    const html = renderToStaticMarkup(<HomepageFooter copy={copy.footer} />);
+    const privacyAnchor = getOpeningTag(html, "#privacy-policy");
+    const youtubeAnchor = getOpeningTag(html, "#youtube");
+
+    expect(html).toContain('href="#privacy-policy"');
+    expect(html).toContain("transition-opacity hover:opacity-70");
+    expect(privacyAnchor).not.toContain("data-motion");
+    expect(youtubeAnchor).not.toContain("data-motion");
   });
 });

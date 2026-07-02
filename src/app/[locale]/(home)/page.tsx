@@ -5,6 +5,7 @@ import { HomepageCustomerStories } from "@/components/homepage/customer-stories"
 import { FloatingNavbar } from "@/components/homepage/floating-navbar";
 import { HomepageFooter } from "@/components/homepage/footer";
 import { HomepageHeader } from "@/components/homepage/header";
+import { HomepageMotionProvider } from "@/components/motion/motion-provider";
 import { createHomepageCopy } from "@/i18n/homepage-copy";
 import { createHomepageMetadata } from "@/i18n/homepage-metadata";
 import { isLocale, type Locale } from "@/i18n/routing";
@@ -64,17 +65,19 @@ export default async function Home({ params }: HomeProps) {
 
   return (
     <main className="min-h-screen bg-[#000000] py-6">
-      <HomepageHeader
-        copy={copy.header}
-        currentLocale={localeCandidate}
-        navbarCopy={copy.navbar}
-      />
-      <FloatingNavbar
-        currentLocale={localeCandidate}
-        navbarCopy={copy.navbar}
-      />
-      <HomepageCustomerStories copy={copy.customerStories} />
-      <HomepageFooter copy={copy.footer} />
+      <HomepageMotionProvider>
+        <HomepageHeader
+          copy={copy.header}
+          currentLocale={localeCandidate}
+          navbarCopy={copy.navbar}
+        />
+        <FloatingNavbar
+          currentLocale={localeCandidate}
+          navbarCopy={copy.navbar}
+        />
+        <HomepageCustomerStories copy={copy.customerStories} />
+        <HomepageFooter copy={copy.footer} />
+      </HomepageMotionProvider>
     </main>
   );
 }

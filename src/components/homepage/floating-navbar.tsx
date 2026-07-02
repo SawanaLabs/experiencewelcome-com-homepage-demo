@@ -1,11 +1,24 @@
 "use client";
 
+import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { type NavbarCopy, SiteNavbar } from "@/components/navbar";
 import type { Locale } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 
 const headerNavbarSelector = "[data-homepage-header-nav]";
+const floatingNavbarVariants = {
+  hidden: {
+    opacity: 0,
+    scaleX: 1.02,
+    y: -12,
+  },
+  visible: {
+    opacity: 1,
+    scaleX: 1,
+    y: 0,
+  },
+};
 
 function isVisibleInViewport(element: HTMLElement) {
   const rect = element.getBoundingClientRect();
@@ -63,21 +76,23 @@ export function FloatingNavbar({
   }, []);
 
   return (
-    <div
+    <motion.div
+      animate={isVisible ? "visible" : "hidden"}
       aria-hidden={!isVisible}
       className={cn(
-        "fixed inset-x-0 top-4 z-[100] mx-auto w-[calc(100%-32px)] origin-top transition-[max-width,opacity,transform] duration-300 ease-out",
-        isVisible
-          ? "max-w-[1280px] translate-y-0 scale-x-100 opacity-100"
-          : "pointer-events-none max-w-[1376px] -translate-y-3 scale-x-[1.02] opacity-0"
+        "fixed inset-x-0 top-4 z-[100] mx-auto w-[calc(100%-32px)] origin-top",
+        isVisible ? "max-w-[1280px]" : "pointer-events-none max-w-[1376px]"
       )}
       data-homepage-floating-navbar="true"
+      initial={false}
+      transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+      variants={floatingNavbarVariants}
     >
       <SiteNavbar
         copy={navbarCopy}
         currentLocale={currentLocale}
         linkTabIndex={isVisible ? undefined : -1}
       />
-    </div>
+    </motion.div>
   );
 }

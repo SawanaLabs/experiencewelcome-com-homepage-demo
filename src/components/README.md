@@ -11,7 +11,9 @@ Local rules:
 - `button.tsx` avoids headless UI dependencies and `class-variance-authority`; use `buttonVariants` when another element needs button styling.
 - Keep page-only assemblies near their route until reuse or file size justifies promotion.
 - Type props from the underlying element or primitive, then add only the props this module owns.
-- Destructure `className` and local props, then spread `...props` onto the underlying element or primitive root.
+- Destructure `className` and local props, then spread `...props` onto the underlying element or primitive root. Wrapper components, including motion wrappers, should preserve the caller's expected DOM target.
 - Compose classes with `cn` from `src/lib/utils.ts`.
 - Preserve accessibility and DOM escape hatches: `id`, `aria-*`, `data-*`, events, form props, and ref behavior.
 - Keep localized text outside generic primitives; pass translated labels through `children` or explicit label props.
+- Prefer Server Components for route and section shells. Put Client Components as close to leaf interaction or animation nodes as practical.
+- Motion wrappers should respect the user's system reduced-motion preference without forking localized content or component structure.

@@ -1,7 +1,14 @@
 "use client";
 
+import { useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useCallback, useEffect, useId, useRef } from "react";
+import {
+  MotionInteractiveButton,
+  MotionRevealArticle,
+  MotionRevealDiv,
+  MotionRevealH2,
+} from "@/components/motion/motion-primitives";
 import type { HomepageCustomerStoriesCopy } from "@/i18n/homepage-copy";
 
 const testimonialAssets = [
@@ -35,7 +42,7 @@ const testimonialAssets = [
 ];
 
 const controlButtonClasses =
-  "relative flex h-11 w-11 items-center justify-center transition-opacity hover:opacity-70 active:scale-95 lg:h-16 lg:w-16";
+  "relative flex h-11 w-11 items-center justify-center transition-opacity hover:opacity-70 lg:h-16 lg:w-16";
 const controlFocusClasses =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#000000] focus-visible:outline-offset-4";
 const controlIconClasses = "h-full w-full object-contain";
@@ -117,27 +124,35 @@ export function HomepageCustomerStories({
   const testimonials = getTestimonialCards(copy);
   const carouselId = useId();
   const carouselRef = useRef<HTMLDivElement>(null);
+  const shouldReduceMotion = useReducedMotion();
 
-  const scrollCarousel = useCallback((direction: -1 | 1) => {
-    const carousel = carouselRef.current;
+  const scrollCarousel = useCallback(
+    (direction: -1 | 1) => {
+      const carousel = carouselRef.current;
 
-    if (!carousel) {
-      return;
-    }
+      if (!carousel) {
+        return;
+      }
 
-    const nextScrollTarget = getNextCarouselScrollTarget(carousel, direction);
+      const nextScrollTarget = getNextCarouselScrollTarget(carousel, direction);
 
-    if (nextScrollTarget === null) {
-      return;
-    }
+      if (nextScrollTarget === null) {
+        return;
+      }
 
-    carousel.scrollTo({
-      behavior: "smooth",
-      left: nextScrollTarget,
-    });
-  }, []);
+      carousel.scrollTo({
+        behavior: shouldReduceMotion ? "auto" : "smooth",
+        left: nextScrollTarget,
+      });
+    },
+    [shouldReduceMotion]
+  );
 
   useEffect(() => {
+    if (shouldReduceMotion) {
+      return;
+    }
+
     const intervalId = window.setInterval(() => {
       if (document.visibilityState === "visible") {
         scrollCarousel(1);
@@ -145,7 +160,7 @@ export function HomepageCustomerStories({
     }, 3000);
 
     return () => window.clearInterval(intervalId);
-  }, [scrollCarousel]);
+  }, [scrollCarousel, shouldReduceMotion]);
 
   return (
     <section
@@ -172,21 +187,24 @@ export function HomepageCustomerStories({
           className="relative z-10 mx-auto max-w-[1280px]"
           data-figma-layer="customer-stories/content"
         >
-          <div
+          <MotionRevealDiv
             className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:gap-5 lg:min-h-[230px]"
             data-figma-layer="customer-stories/top-row"
+            distance={16}
           >
-            <h2
+            <MotionRevealH2
               className="max-w-[min(100%,360px)] text-balance font-normal text-[#000000] text-[64px] leading-[60px] tracking-[0] sm:max-w-[520px] sm:text-[84px] sm:leading-[80px] lg:max-w-[760px] lg:text-[clamp(96px,8.403vw,121px)] lg:leading-[clamp(92px,8vw,115px)]"
               data-figma-layer="customer-stories/title"
+              delay={0.06}
+              distance={12}
             >
               {copy.title}
-            </h2>
+            </MotionRevealH2>
             <div
               className="flex shrink-0 items-center gap-2 self-start sm:self-end lg:gap-4"
               data-figma-layer="customer-stories/controls"
             >
-              <button
+              <MotionInteractiveButton
                 aria-controls={carouselId}
                 aria-label={copy.previousStoryLabel}
                 className={`${controlButtonClasses} ${controlFocusClasses}`}
@@ -202,8 +220,8 @@ export function HomepageCustomerStories({
                   src="/homepage/customer-stories/arrow-left.png"
                   width={128}
                 />
-              </button>
-              <button
+              </MotionInteractiveButton>
+              <MotionInteractiveButton
                 aria-controls={carouselId}
                 aria-label={copy.nextStoryLabel}
                 className={`${controlButtonClasses} ${controlFocusClasses}`}
@@ -219,9 +237,9 @@ export function HomepageCustomerStories({
                   src="/homepage/customer-stories/arrow-right.png"
                   width={128}
                 />
-              </button>
+              </MotionInteractiveButton>
             </div>
-          </div>
+          </MotionRevealDiv>
 
           <div
             className="mt-16 flex w-full snap-x snap-mandatory gap-6 overflow-x-auto overscroll-x-contain scroll-smooth pb-6 [-ms-overflow-style:none] [scrollbar-width:none] lg:mt-[clamp(56px,5.069vw,73px)] lg:gap-8 [&::-webkit-scrollbar]:hidden"
@@ -229,8 +247,12 @@ export function HomepageCustomerStories({
             id={carouselId}
             ref={carouselRef}
           >
-            {testimonials.map((testimonial) => (
-              <TestimonialCard key={testimonial.cardLayer} {...testimonial} />
+            {testimonials.map((testimonial, index) => (
+              <TestimonialCard
+                key={testimonial.cardLayer}
+                revealDelay={0.08 * index}
+                {...testimonial}
+              />
             ))}
           </div>
         </div>
@@ -251,6 +273,7 @@ interface TestimonialCardProps {
   };
   logoAlt: string;
   quote: string;
+  revealDelay: number;
   role: string;
 }
 
@@ -262,13 +285,16 @@ function TestimonialCard({
   logoAlt,
   logo,
   quote,
+  revealDelay,
   role,
 }: TestimonialCardProps) {
   return (
-    <article
+    <MotionRevealArticle
       className="w-full shrink-0 snap-start rounded-tr-[32px] border-[#ffffff] border-t border-r pt-8 pr-6 sm:w-[420px] md:w-[520px] lg:min-h-[416px] lg:w-[clamp(480px,42.708vw,615px)] lg:pt-[45px] lg:pr-8"
       data-customer-story-card="true"
       data-figma-layer={cardLayer}
+      delay={revealDelay}
+      distance={16}
     >
       <p
         className="font-normal text-[20px] leading-[28px] tracking-[0] lg:text-[23px] lg:leading-[31px]"
@@ -310,6 +336,6 @@ function TestimonialCard({
         style={{ height: "auto" }}
         width={logo.width}
       />
-    </article>
+    </MotionRevealArticle>
   );
 }

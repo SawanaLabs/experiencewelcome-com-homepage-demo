@@ -1,4 +1,10 @@
 import Image from "next/image";
+import {
+  MotionButtonLink,
+  MotionRevealDiv,
+  MotionRevealH1,
+  MotionRevealP,
+} from "@/components/motion/motion-primitives";
 import { type NavbarCopy, SiteNavbar } from "@/components/navbar";
 import type { HomepageHeaderCopy } from "@/i18n/homepage-copy";
 import type { Locale } from "@/i18n/routing";
@@ -35,30 +41,36 @@ export function HomepageHeader({
           data-figma-layer="header/content"
         >
           <div className="mx-auto flex max-w-[1280px] flex-col items-center text-center">
-            <h1
+            <MotionRevealH1
               className="max-w-[1180px] text-wrap font-normal text-[56px] leading-[60px] tracking-[0] sm:text-[72px] sm:leading-[78px] lg:text-[88px] lg:leading-[100px] xl:text-[103px] xl:leading-[121px]"
               data-figma-layer="header/content/title"
+              delay={0.04}
+              distance={14}
             >
               {copy.title}
-            </h1>
-            <p
+            </MotionRevealH1>
+            <MotionRevealP
               className="mt-6 max-w-[585px] text-pretty font-normal text-[20px] text-[rgba(255,255,255,0.7)] leading-[26px] tracking-[0] lg:text-[22px] lg:leading-[29px] xl:text-[24px] xl:leading-[31px]"
               data-figma-layer="header/content/subtitle"
+              delay={0.12}
+              distance={14}
             >
               {copy.subtitle}
-            </p>
+            </MotionRevealP>
 
-            <div
+            <MotionRevealDiv
               className="relative z-20 mt-8 flex flex-wrap items-center justify-center gap-2 lg:mt-4"
               data-figma-layer="header/content/cta"
+              delay={0.2}
+              distance={12}
             >
-              <a
+              <MotionButtonLink
                 className={`flex h-[50px] items-center justify-center rounded-full bg-[#5865ff] px-6 font-normal text-[16px] leading-5 transition-opacity hover:opacity-90 ${linkFocusClasses}`}
                 href="#demo"
               >
                 {copy.primaryCtaLabel}
-              </a>
-              <a
+              </MotionButtonLink>
+              <MotionButtonLink
                 className={`flex h-[50px] items-center justify-center gap-3 rounded-full border border-[rgba(255,255,255,0.16)] bg-[rgba(0,0,0,0.2)] px-6 font-normal text-[16px] leading-5 transition-opacity hover:opacity-80 ${linkFocusClasses}`}
                 href="#how-it-works"
               >
@@ -67,12 +79,14 @@ export function HomepageHeader({
                   className="h-0 w-0 border-y-[5px] border-y-transparent border-l-[#ffffff] border-l-[8px]"
                 />
                 {copy.secondaryCtaLabel}
-              </a>
-            </div>
+              </MotionButtonLink>
+            </MotionRevealDiv>
 
-            <div
+            <MotionRevealDiv
               className="relative z-10 mt-4 grid aspect-[760/520] w-full max-w-[760px] grid-cols-1 grid-rows-1 place-items-center overflow-visible lg:mt-[10px] lg:aspect-[1280/654] lg:max-w-[1280px]"
               data-figma-layer="header/media-stage"
+              delay={0.28}
+              distance={20}
             >
               <Image
                 alt=""
@@ -112,7 +126,7 @@ export function HomepageHeader({
                   />
                 </div>
               </div>
-            </div>
+            </MotionRevealDiv>
           </div>
         </div>
       </div>
