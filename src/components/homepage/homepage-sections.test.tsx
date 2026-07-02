@@ -102,12 +102,15 @@ describe("localized homepage sections", () => {
     expect(html).toContain("flex-col items-center text-center");
     expect(html).toContain("max-w-[1280px]");
     expect(html).toContain("max-w-[1180px]");
+    expect(html).toContain("relative z-20 max-w-[1180px]");
+    expect(html).toContain("relative z-20 mt-6 max-w-[585px]");
     expect(html).toContain("text-wrap");
     expect(html).toContain("relative z-20 mt-8");
     expect(html).toContain("grid-cols-1 grid-rows-1 place-items-center");
     expect(html).toContain("relative z-10 mt-4 grid");
     expect(html).toContain("pointer-events-none z-0");
     expect(html).toContain("pointer-events-none z-10");
+    expect(html).toContain("home-hero-blur.webp");
     expect(html).toContain("lg:aspect-[1280/654]");
     expect(html).toContain("lg:translate-y-[21px]");
     expect(html).toContain("aspect-[1088/607]");
@@ -116,8 +119,11 @@ describe("localized homepage sections", () => {
       "top-[-6.76%] left-[-10.29%] h-[126.03%] w-[114.52%]"
     );
     expect(html).toContain('data-nimg="fill"');
-    expect(html).toContain('src="/homepage/header/home-hero-card.png"');
+    expect(html).toContain("home-hero-card.webp");
+    expect(html).toContain("background-image:url");
+    expect(html).toContain("data:image/webp;base64");
     expect(html).toContain("object-fill");
+    expect(html).not.toContain("/homepage/header/home-hero-blur.png");
     expect(html).not.toContain("mt-12");
     expect(html).not.toContain("top-[min(");
     expect(html).not.toContain("left-[min(");
