@@ -66,7 +66,7 @@ export function MobileNavbarMenu({
                   <Image
                     alt=""
                     aria-hidden="true"
-                    className="h-8 w-7"
+                    className="h-8 w-7 -translate-y-[2px]"
                     height={120}
                     src="/homepage/footer/welcome-mark.svg"
                     width={105}

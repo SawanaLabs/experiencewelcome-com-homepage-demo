@@ -41,6 +41,7 @@ const defaultNavbarCopy = {
 
 const linkFocusClasses =
   "focus-visible:outline-[2px_solid_#ffffff] focus-visible:outline-offset-4";
+const brandLogoClasses = "h-8 w-7 -translate-y-[2px]";
 
 type NavbarVariant = "auto" | "floating" | "hero" | "mobileHeader";
 type NavbarBreakpoint = "sm" | "md" | "lg" | "xl";
@@ -183,7 +184,7 @@ export function SiteNavbar({
           ariaLabel={copy.brandAriaLabel}
           className="min-w-0 gap-2 justify-self-start"
           linkTabIndex={linkTabIndex}
-          logoClassName="h-8 w-7"
+          logoClassName={brandLogoClasses}
           logoPriority={logoPriority}
           textClassName="font-semibold text-[20px] leading-6"
         />
@@ -260,7 +261,7 @@ export function SiteNavbar({
           ariaLabel={copy.brandAriaLabel}
           className="gap-2"
           linkTabIndex={linkTabIndex}
-          logoClassName="h-8 w-7"
+          logoClassName={brandLogoClasses}
           logoPriority={logoPriority}
           textClassName="font-semibold text-[20px] leading-6"
         />
@@ -291,7 +292,7 @@ export function SiteNavbar({
         ariaLabel={copy.brandAriaLabel}
         className="ml-[2px] min-w-0 gap-2 justify-self-start lg:ml-[7px]"
         linkTabIndex={linkTabIndex}
-        logoClassName="h-8 w-7 -translate-y-[2px]"
+        logoClassName={brandLogoClasses}
         logoPriority={logoPriority}
         textClassName="font-semibold text-[20px] leading-6"
       />

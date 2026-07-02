@@ -135,6 +135,18 @@ describe("SiteNavbar", () => {
     expect(html).not.toContain("Features");
   });
 
+  it("applies the optical brand logo offset across navbar layouts", () => {
+    const floatingHtml = renderToStaticMarkup(
+      <SiteNavbar variant="floating" />
+    );
+    const mobileHeaderHtml = renderToStaticMarkup(
+      <SiteNavbar variant="mobileHeader" />
+    );
+
+    expect(floatingHtml).toContain("-translate-y-[2px]");
+    expect(mobileHeaderHtml).toContain("-translate-y-[2px]");
+  });
+
   it("uses a mobile menu trigger in the floating navbar before desktop layout takes over", () => {
     const html = renderToStaticMarkup(<SiteNavbar variant="floating" />);
 
