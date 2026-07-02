@@ -84,4 +84,25 @@ describe("localized homepage sections", () => {
     expect(html).not.toContain("top-[min(");
     expect(html).not.toContain("left-[min(");
   });
+
+  it("keeps the footer navigation in resilient flow layout", () => {
+    const copy = createZhHomepageCopy();
+    const html = renderToStaticMarkup(<HomepageFooter copy={copy.footer} />);
+
+    expect(html).toContain("xl:gap-x-[clamp(96px,16.875vw,243px)]");
+    expect(html).toContain("xl:pb-[197px]");
+    expect(html).toContain("xl:flex-1");
+    expect(html).toContain("xl:grid-cols-[repeat(3,minmax(0,1fr))]");
+    expect(html).toContain("md:justify-between");
+    expect(html).not.toContain("min-h-[457px]");
+    expect(html).not.toContain("lg:h-[457px]");
+    expect(html).not.toContain("lg:h-[78px]");
+    expect(html).not.toContain("lg:flex-row");
+    expect(html).not.toContain("lg:ml-auto");
+    expect(html).not.toContain("xl:ml-auto");
+    expect(html).not.toContain("xl:max-w-[932px]");
+    expect(html).not.toContain("lg:ml-[243px]");
+    expect(html).not.toContain("lg:grid-cols-[120px_120px_140px]");
+    expect(html).not.toContain("lg:gap-[202px]");
+  });
 });

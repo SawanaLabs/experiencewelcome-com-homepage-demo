@@ -129,7 +129,7 @@ export function HomepageFooter({ copy }: HomepageFooterProps) {
 
   return (
     <footer className="w-full bg-[#000000] text-[#ffffff]">
-      <div className="mx-auto flex min-h-[457px] w-full max-w-[1440px] flex-col px-5 pt-16 pb-16 md:flex-row md:items-start md:px-10 lg:h-[457px] lg:px-[80px] lg:pt-[112px] lg:pb-0">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-5 pt-16 pb-16 md:px-10 xl:flex-row xl:items-start xl:gap-x-[clamp(96px,16.875vw,243px)] xl:px-[80px] xl:pt-[112px] xl:pb-[197px]">
         <div className="h-[120px] w-[105px] shrink-0">
           <Image
             alt={copy.logoAlt}
@@ -142,10 +142,10 @@ export function HomepageFooter({ copy }: HomepageFooterProps) {
 
         <nav
           aria-label="Footer navigation"
-          className="mt-14 grid gap-10 md:mt-0 md:ml-24 md:grid-cols-3 lg:ml-[243px] lg:grid-cols-[120px_120px_140px] lg:gap-[202px]"
+          className="mt-14 grid gap-x-12 gap-y-10 sm:grid-cols-3 xl:mt-0 xl:min-w-0 xl:flex-1 xl:grid-cols-[repeat(3,minmax(0,1fr))] xl:gap-x-16"
         >
           {navigation.map((group) => (
-            <section className="flex flex-col" key={group.title}>
+            <section className="flex min-w-0 flex-col" key={group.title}>
               <h2 className="font-normal text-[18px] text-[rgba(255,255,255,0.65)] leading-[22px]">
                 {group.title}
               </h2>
@@ -167,12 +167,12 @@ export function HomepageFooter({ copy }: HomepageFooterProps) {
       </div>
 
       <div className="border-[rgba(255,255,255,0.1)] border-t">
-        <div className="mx-auto flex min-h-[78px] w-full max-w-[1440px] flex-col gap-8 px-5 py-7 md:flex-row md:items-center md:gap-0 md:px-10 md:py-0 lg:h-[78px] lg:px-[80px]">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-0">
+        <div className="mx-auto flex min-h-[78px] w-full max-w-[1440px] flex-col gap-8 px-5 py-7 md:flex-row md:items-center md:justify-between md:px-10 md:py-0 lg:px-[80px]">
+          <div className="flex min-w-0 flex-col gap-4 md:flex-row md:items-center">
             <p className="font-normal text-[14px] text-[rgba(255,255,255,0.65)] leading-[17px]">
               {copy.copyright}
             </p>
-            <div className="flex flex-wrap items-center gap-x-7 gap-y-4 md:ml-10 md:gap-x-7">
+            <div className="flex flex-wrap items-center gap-x-7 gap-y-4 md:ml-10">
               {legal.map((link) => (
                 <a
                   className="font-normal text-[14px] text-[rgba(255,255,255,0.65)] leading-[17px] transition-opacity hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#ffffff] focus-visible:outline-offset-4"
@@ -185,7 +185,7 @@ export function HomepageFooter({ copy }: HomepageFooterProps) {
             </div>
           </div>
 
-          <div className="flex items-center gap-5 md:ml-auto">
+          <div className="flex shrink-0 items-center gap-5">
             {social.map((link) => (
               <a
                 aria-label={link.label}
