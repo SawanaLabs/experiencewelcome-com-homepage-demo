@@ -9,7 +9,7 @@ updateAt: 2026-07-02
 ## Scope
 
 - Covers the planned project component surface under `src/components/`.
-- Covers reusable UI primitives, application-level composition, prop pass-through, and class-name composition.
+- Covers reusable UI primitives, application-level composition, wrapper components, prop pass-through, and class-name composition.
 - Covers the project-owned `cn` utility in `src/lib/utils.ts`.
 
 ## Domain Language
@@ -17,6 +17,7 @@ updateAt: 2026-07-02
 - **Project-owned component**: A component whose source lives in this repository and can be edited directly.
 - **UI primitive**: A reusable, product-agnostic component that owns presentation and accessible behavior, but no business workflow.
 - **Pass-through component**: A component that preserves the underlying element or primitive interface by accepting and spreading the native props callers expect.
+- **Wrapper component**: A component whose main job is to add styling, behavior, animation, or accessibility defaults around an underlying element, primitive, or child tree while preserving the caller's expected escape hatches.
 - **Base UI-backed primitive**: A source-owned project component that wraps or adapts `@base-ui/react` behavior while keeping project styling, props, and exports under `src/components/`.
 
 ## Current Subdomain Docs
@@ -64,6 +65,8 @@ export function Button({
 ```
 
 - Use `...props` on the underlying native element or headless primitive root. If a wrapper must split props across multiple elements, document that interface explicitly because callers can no longer infer pass-through behavior.
+- Treat visual wrapper components, including motion wrappers, as pass-through components by default. Type props from the wrapped element or primitive, destructure only local options plus `className`, compose classes with `cn`, and forward the remaining props to the element that callers conceptually target.
+- Do not swallow DOM and accessibility escape hatches in wrappers. Preserve `id`, `aria-*`, `data-*`, event handlers, form props, and ref behavior unless the component explicitly documents why a prop cannot pass through.
 - Use `className={cn(baseClasses, conditionalClasses, className)}` so caller classes extend the component while shared defaults remain local and readable.
 - `src/lib/utils.ts` owns the shadcn-style `cn` helper. It uses `clsx` plus `tailwind-merge` so conditional classes and Tailwind conflicts such as `p-2 p-4` are handled centrally.
 - `src/app/globals.css` owns the semantic Tailwind tokens used by copied shadcn-style components, including `primary`, `secondary`, `accent`, `destructive`, `border`, `input`, `ring`, and radius tokens.

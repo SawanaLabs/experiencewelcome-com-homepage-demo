@@ -1,7 +1,7 @@
 ---
 title: Homepage Replication
 description: Stable constraints for the ExperienceWelcome Figma homepage replication.
-updateAt: 2026-07-01
+updateAt: 2026-07-02
 ---
 
 # Homepage Replication
@@ -18,6 +18,10 @@ updateAt: 2026-07-01
 - **Homepage section**: A vertical content block from that source section, used as the main component boundary for implementation.
 - **Public reference site**: The live `experiencewelcome.com` site, used only for supporting copy, module semantics, SEO wording, and missing-asset interpretation.
 - **Content-resilient layout**: A layout approach where meaningful content can grow, wrap, and re-center across languages and viewport sizes while preserving the intended visual hierarchy.
+- **Motion enhancement phase**: The follow-up implementation phase that adds restrained homepage animation and interaction after static replication is stable, without changing the Figma-derived section structure or static visual acceptance baseline.
+- **Viewport entry animation**: A one-time reveal used when a homepage section or meaningful content group enters the viewport, usually expressed as subtle opacity and position changes.
+- **Micro-interaction**: A small interaction response for homepage controls and visual objects, such as CTA hover, tap feedback, card hover depth, carousel control feedback, or navigation affordances.
+- **Reduced-motion contract**: The accessibility rule that homepage motion must respect the visitor's reduced-motion preference by removing or simplifying large movement, parallax, autoplay, and continuous decorative motion.
 
 ## Current Subdomain Docs
 
@@ -41,6 +45,9 @@ updateAt: 2026-07-01
 - Keep the existing i18n routing infrastructure active during static replication. For localized sections, use content-resilient layout so multilingual content remains readable while the 1440px desktop view stays visually close to the reference screenshot.
 - Implement the footer first as the pilot section. Use it to settle the repeatable workflow for Figma inspection, asset export, translation shape, component placement, styling fidelity, responsive behavior, and verification before batching the remaining sections.
 - Add interaction after static fidelity is stable. Prefer subtle hover states, active states, scroll reveal, image/card micro-interactions, and mobile navigation behavior that respect `prefers-reduced-motion`.
+- During the motion enhancement phase, prefer Server Components for route entries, section shells, copy shaping, and static structure. Put Client Components as close to the leaves as practical, especially for Motion wrappers, carousel controls, dropdowns, hover/tap behavior, and browser-observed viewport state.
+- Use section-level Client Components only when leaf islands would make the section harder to understand or when the section already owns client-only behavior. `HomepageCustomerStories` is currently a client section because it owns carousel state; static sections such as Header and Footer should prefer server shells with client motion islands.
+- Build repeated homepage motion patterns as pass-through wrapper components under `src/components/motion/`. These wrappers should accept normal element props, preserve `className`, `id`, `aria-*`, `data-*`, event handlers, and refs, and only add the small animation contract they own.
 - Validate in stages: first visual static comparison, then responsive behavior, then i18n route checks, then Lighthouse mobile Performance and SEO 90+, then README documentation of AI tool usage plus human trade-offs.
 
 ## Decision Records
@@ -60,6 +67,11 @@ updateAt: 2026-07-01
   Context: The first static Header implementation used Figma-derived absolute positioning for content. After localization, longer languages such as Japanese exposed that fixed text geometry as fragile.
   Decision: For meaningful content, controls, and primary section structure, prefer Tailwind Flexbox/Grid flow layout, responsive spacing, max-width constraints, and text wrapping utilities. Use local absolute positioning only for intentional overlap that normal layout cannot express cleanly.
   Consequences: Desktop screenshots may drift slightly from raw Figma coordinates, but localized content remains readable, maintainable, and responsive while retaining Figma-derived hierarchy, colors, assets, and proportions. The 1440px desktop view remains the primary visual acceptance surface and should stay broadly aligned with the reference screenshot.
+- **2026-07-02-motion-client-leaf-boundary**: Keep homepage motion client code near the leaves.
+  Status: Accepted.
+  Context: Motion effects require client-side JavaScript, while the homepage still needs SEO-friendly static structure, localized server-rendered copy, and small client bundles.
+  Decision: Keep route and section shells as Server Components by default. Add Motion through pass-through client wrapper islands near the animated leaf elements, and promote an entire section to a Client Component only when that section already owns client-only behavior or when leaf islands would make the section less maintainable.
+  Consequences: Motion implementation requires a few small wrapper modules, but static markup stays server-first and repeated effects remain consistent across homepage sections.
 
 ## Update Triggers
 

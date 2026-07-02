@@ -21,3 +21,15 @@ The first implementation phase that focuses on reproducing the Figma homepage so
 
 **Content-resilient layout**:
 A layout approach where meaningful content such as headings, body copy, navigation labels, CTAs, and testimonials can grow, wrap, and re-center across languages and viewport sizes while preserving the intended visual hierarchy.
+
+**Motion enhancement phase**:
+The follow-up implementation phase that adds restrained homepage animation and interaction after static replication is stable, without changing the Figma-derived section structure or static visual acceptance baseline.
+
+**Viewport entry animation**:
+A one-time reveal used when a homepage section or meaningful content group enters the viewport, usually expressed as subtle opacity and position changes.
+
+**Micro-interaction**:
+A small interaction response for homepage controls and visual objects, such as CTA hover, tap feedback, card hover depth, carousel control feedback, or navigation affordances.
+
+**Reduced-motion contract**:
+The accessibility rule that homepage motion must respect the visitor's reduced-motion preference by removing or simplifying large movement, parallax, autoplay, and continuous decorative motion.
