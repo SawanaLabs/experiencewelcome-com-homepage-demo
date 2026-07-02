@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { Locale } from "./routing";
-import { getAbsoluteUrl, getLanguageAlternates, siteUrl } from "./seo";
+import { getAbsoluteUrl, getLanguageAlternates, getSiteUrl } from "./seo";
 
 export interface HomepageMetadataCopy {
   description: string;
@@ -31,7 +31,7 @@ export function createHomepageMetadata(
       languages: getLanguageAlternates(),
     },
     description: copy.description,
-    metadataBase: siteUrl,
+    metadataBase: getSiteUrl(),
     openGraph: {
       description: copy.description,
       images: [image],

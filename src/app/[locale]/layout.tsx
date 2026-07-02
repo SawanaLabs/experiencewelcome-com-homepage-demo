@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { isLocale, locales } from "@/i18n/routing";
-import { getAbsoluteUrl, getLanguageAlternates, siteUrl } from "@/i18n/seo";
+import { getAbsoluteUrl, getLanguageAlternates, getSiteUrl } from "@/i18n/seo";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -57,7 +57,7 @@ export async function generateMetadata({
       languages: getLanguageAlternates(),
     },
     description: t("description"),
-    metadataBase: siteUrl,
+    metadataBase: getSiteUrl(),
     openGraph: {
       description: t("description"),
       siteName: t("siteName"),

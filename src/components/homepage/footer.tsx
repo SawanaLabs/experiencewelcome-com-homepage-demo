@@ -142,7 +142,6 @@ export function HomepageFooter({ copy }: HomepageFooterProps) {
           <Image
             alt={copy.logoAlt}
             height={120}
-            priority
             src="/homepage/footer/welcome-mark.svg"
             width={105}
           />
