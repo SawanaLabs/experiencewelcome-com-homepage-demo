@@ -103,8 +103,10 @@ describe("SiteNavbar", () => {
     expect(html).toContain("grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]");
     expect(html).toContain("justify-self-center");
     expect(html).toContain("justify-self-end");
-    expect(html).toContain("gap-[clamp(16px,1.944vw,28px)]");
+    expect(html).toContain("relative z-50 grid");
+    expect(html).toContain("gap-5 whitespace-nowrap xl:gap-7");
     expect(html).toContain("whitespace-nowrap");
+    expect(html).not.toContain("absolute top-0 left-0");
   });
 
   it("can switch between hero and mobile header layouts by breakpoint", () => {

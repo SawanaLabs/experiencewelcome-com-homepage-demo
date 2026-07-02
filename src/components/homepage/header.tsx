@@ -19,155 +19,101 @@ export function HomepageHeader({
 }: HomepageHeaderProps) {
   return (
     <header className="w-full bg-[#000000] text-[#ffffff]">
-      <div className="relative mx-auto hidden h-[min(1142px,79.306vw)] w-full max-w-[1440px] overflow-hidden bg-[#000000] lg:block">
+      <div className="mx-auto w-full max-w-[1440px] overflow-hidden bg-[#000000]">
         <SiteNavbar
+          autoBreakpoint="lg"
           copy={navbarCopy}
           currentLocale={currentLocale}
           data-figma-layer="header/nav"
           data-homepage-header-nav="true"
           logoPriority
-          variant="hero"
+          variant="auto"
         />
 
         <div
-          aria-hidden="true"
-          className="absolute top-[min(283.81px,19.709vw)] left-[max(-280px,-19.444vw)] z-0 h-[min(823.73px,57.204vw)] w-[min(2000px,138.889vw)]"
-          data-figma-layer="header/home-hero-blur"
-        >
-          <Image
-            alt=""
-            className="h-full w-full object-fill"
-            height={659}
-            priority
-            src="/homepage/header/home-hero-blur.png"
-            width={1600}
-          />
-        </div>
-
-        <div
-          aria-hidden="true"
-          className="absolute top-[min(403.42px,28.015vw)] left-[min(41.6px,2.889vw)] z-10 h-[min(656.34px,45.579vw)] w-[min(1356.8px,94.222vw)]"
-          data-figma-layer="header/home-hero-mockup"
-        >
-          <Image
-            alt=""
-            className="h-full w-full object-fill"
-            height={774}
-            priority
-            src="/homepage/header/home-hero-mockup.png"
-            width={1600}
-          />
-        </div>
-
-        <div
-          className="absolute top-[min(406.1px,28.201vw)] left-[min(172.8px,12vw)] z-20 h-[min(606.55px,42.122vw)] w-[min(1088px,75.556vw)] rounded-[min(16px,1.111vw)] border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.002)]"
-          data-figma-layer="header/hero-card"
-        >
-          <Image
-            alt={copy.previewAlt}
-            className="absolute top-[-6.76%] left-[-10.29%] h-[126.12%] w-[114.52%] max-w-none object-fill"
-            height={765}
-            priority
-            src="/homepage/header/home-hero-card.png"
-            width={1246}
-          />
-        </div>
-
-        <div
-          className="absolute top-[min(16px,1.111vw)] left-[min(80px,5.556vw)] z-40 h-[min(289.38px,20.096vw)] w-[min(1280px,88.889vw)]"
+          className="px-5 pt-10 pb-16 lg:px-20 lg:pt-[6px] lg:pb-[82px]"
           data-figma-layer="header/content"
         >
-          <h1
-            className="absolute top-[min(60px,4.167vw)] left-[min(166.34px,11.551vw)] h-[min(121px,8.403vw)] w-[min(946px,65.694vw)] text-center font-normal text-[min(103px,7.153vw)] leading-[min(121px,8.403vw)] tracking-[-2px]"
-            data-figma-layer="header/content/title"
-          >
-            {copy.title}
-          </h1>
-          <p
-            className="absolute top-[min(205px,14.236vw)] left-[min(347.75px,24.149vw)] h-[min(63px,4.375vw)] w-[min(584.7px,40.604vw)] text-center font-normal text-[min(24px,1.667vw)] text-[rgba(255,255,255,0.7)] leading-[min(31.2px,2.167vw)] tracking-[0]"
-            data-figma-layer="header/content/subtitle"
-          >
-            {copy.subtitle}
-          </p>
+          <div className="mx-auto flex max-w-[1280px] flex-col items-center text-center">
+            <h1
+              className="max-w-[1180px] text-wrap font-normal text-[56px] leading-[60px] tracking-[0] sm:text-[72px] sm:leading-[78px] lg:text-[88px] lg:leading-[100px] xl:text-[103px] xl:leading-[121px]"
+              data-figma-layer="header/content/title"
+            >
+              {copy.title}
+            </h1>
+            <p
+              className="mt-6 max-w-[585px] text-pretty font-normal text-[20px] text-[rgba(255,255,255,0.7)] leading-[26px] tracking-[0] lg:text-[22px] lg:leading-[29px] xl:text-[24px] xl:leading-[31px]"
+              data-figma-layer="header/content/subtitle"
+            >
+              {copy.subtitle}
+            </p>
 
-          <div
-            className="absolute top-[min(283.4px,19.681vw)] left-0 flex h-[min(50px,3.472vw)] w-[min(1280px,88.889vw)] items-center gap-[min(8px,0.556vw)] px-[min(502.05px,34.865vw)]"
-            data-figma-layer="header/content/cta"
-          >
-            <a
-              className={`flex h-full items-center justify-center rounded-full bg-[#5865ff] px-[min(24px,1.667vw)] font-normal text-[min(16px,1.111vw)] leading-[min(20px,1.389vw)] transition-opacity hover:opacity-90 ${linkFocusClasses}`}
-              href="#demo"
+            <div
+              className="relative z-20 mt-8 flex flex-wrap items-center justify-center gap-2 lg:mt-4"
+              data-figma-layer="header/content/cta"
             >
-              {copy.primaryCtaLabel}
-            </a>
-            <a
-              className={`flex h-full items-center justify-center gap-[min(12px,0.833vw)] rounded-full border border-[rgba(255,255,255,0.16)] bg-[rgba(0,0,0,0.2)] px-[min(24px,1.667vw)] font-normal text-[min(16px,1.111vw)] leading-[min(20px,1.389vw)] transition-opacity hover:opacity-80 ${linkFocusClasses}`}
-              href="#how-it-works"
+              <a
+                className={`flex h-[50px] items-center justify-center rounded-full bg-[#5865ff] px-6 font-normal text-[16px] leading-5 transition-opacity hover:opacity-90 ${linkFocusClasses}`}
+                href="#demo"
+              >
+                {copy.primaryCtaLabel}
+              </a>
+              <a
+                className={`flex h-[50px] items-center justify-center gap-3 rounded-full border border-[rgba(255,255,255,0.16)] bg-[rgba(0,0,0,0.2)] px-6 font-normal text-[16px] leading-5 transition-opacity hover:opacity-80 ${linkFocusClasses}`}
+                href="#how-it-works"
+              >
+                <span
+                  aria-hidden="true"
+                  className="h-0 w-0 border-y-[5px] border-y-transparent border-l-[#ffffff] border-l-[8px]"
+                />
+                {copy.secondaryCtaLabel}
+              </a>
+            </div>
+
+            <div
+              className="relative z-10 mt-4 grid aspect-[760/520] w-full max-w-[760px] grid-cols-1 grid-rows-1 place-items-center overflow-visible lg:mt-[10px] lg:aspect-[1280/654] lg:max-w-[1280px]"
+              data-figma-layer="header/media-stage"
             >
-              <span
+              <Image
+                alt=""
                 aria-hidden="true"
-                className="h-0 w-0 border-y-[min(5px,0.347vw)] border-y-transparent border-l-[#ffffff] border-l-[min(8px,0.556vw)]"
+                className="pointer-events-none z-0 col-start-1 row-start-1 w-[145%] max-w-none lg:w-[156.25%]"
+                data-figma-layer="header/home-hero-blur"
+                height={659}
+                preload
+                src="/homepage/header/home-hero-blur.png"
+                width={1600}
               />
-              {copy.secondaryCtaLabel}
-            </a>
-          </div>
-        </div>
-      </div>
 
-      <div className="relative overflow-hidden px-5 pt-5 pb-16 lg:hidden">
-        <SiteNavbar
-          copy={navbarCopy}
-          currentLocale={currentLocale}
-          data-homepage-header-nav="true"
-          logoPriority
-          variant="mobileHeader"
-        />
-
-        <div className="relative z-20 mx-auto mt-10 max-w-[640px] text-center">
-          <h1 className="font-normal text-[56px] leading-[60px] tracking-[0] sm:text-[72px] sm:leading-[78px]">
-            {copy.title}
-          </h1>
-          <p className="mx-auto mt-6 max-w-[560px] font-normal text-[20px] text-[rgba(255,255,255,0.65)] leading-[26px] tracking-[0]">
-            {copy.subtitle}
-          </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
-            <a
-              className={`flex h-[50px] items-center justify-center rounded-full bg-[#5865ff] px-6 font-normal text-[16px] leading-5 ${linkFocusClasses}`}
-              href="#demo"
-            >
-              {copy.primaryCtaLabel}
-            </a>
-            <a
-              className={`flex h-[50px] items-center justify-center gap-3 rounded-full border border-[rgba(255,255,255,0.16)] bg-[rgba(0,0,0,0.2)] px-6 font-normal text-[16px] leading-5 ${linkFocusClasses}`}
-              href="#how-it-works"
-            >
-              <span
+              <Image
+                alt=""
                 aria-hidden="true"
-                className="h-0 w-0 border-y-[5px] border-y-transparent border-l-[#ffffff] border-l-[8px]"
+                className="pointer-events-none z-10 col-start-1 row-start-1 hidden w-[106%] max-w-none lg:block lg:translate-y-[21px]"
+                data-figma-layer="header/home-hero-mockup"
+                height={774}
+                preload
+                src="/homepage/header/home-hero-mockup.png"
+                width={1600}
               />
-              {copy.secondaryCtaLabel}
-            </a>
-          </div>
-        </div>
 
-        <div className="relative z-10 mx-auto mt-12 max-w-[760px]">
-          <Image
-            alt={copy.previewAlt}
-            className="relative z-20 h-auto w-full"
-            height={765}
-            priority
-            src="/homepage/header/home-hero-card.png"
-            width={1246}
-          />
-          <Image
-            alt=""
-            aria-hidden="true"
-            className="absolute top-[-12%] left-1/2 z-0 h-auto w-[145%] max-w-none -translate-x-1/2"
-            height={659}
-            priority
-            src="/homepage/header/home-hero-blur.png"
-            width={1600}
-          />
+              <div
+                className="relative z-20 col-start-1 row-start-1 aspect-[1088/607] w-full max-w-[760px] overflow-hidden rounded-[12px] bg-[rgba(255,255,255,0.002)] lg:w-[85%] lg:max-w-[1088px] lg:rounded-[16px]"
+                data-figma-layer="header/hero-card"
+              >
+                <div className="absolute top-[-6.76%] left-[-10.29%] h-[126.03%] w-[114.52%]">
+                  <Image
+                    alt={copy.previewAlt}
+                    className="object-fill"
+                    fill
+                    preload
+                    sizes="(max-width: 1023px) calc((100vw - 40px) * 1.1452), 1246px"
+                    src="/homepage/header/home-hero-card.png"
+                    unoptimized
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </header>

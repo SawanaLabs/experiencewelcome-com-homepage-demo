@@ -170,29 +170,29 @@ export function SiteNavbar({
       <div
         {...props}
         className={cn(
-          "absolute top-0 left-0 z-50 grid h-[min(69.8px,4.847vw)] w-full grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center border-[rgba(255,255,255,0.1)] border-b bg-[rgba(0,0,0,0.8)] px-[min(80px,5.556vw)] text-[#ffffff]",
+          "relative z-50 grid h-[70px] w-full grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center border-[rgba(255,255,255,0.1)] border-b bg-[rgba(0,0,0,0.8)] px-10 text-[#ffffff] lg:px-12 xl:px-20",
           className
         )}
       >
         <BrandLink
           ariaLabel={copy.brandAriaLabel}
-          className="min-w-0 gap-[min(8px,0.556vw)] justify-self-start"
+          className="min-w-0 gap-2 justify-self-start"
           linkTabIndex={linkTabIndex}
-          logoClassName="h-[min(32px,2.222vw)] w-[min(28px,1.944vw)]"
+          logoClassName="h-8 w-7"
           logoPriority={logoPriority}
-          textClassName="font-semibold text-[min(20px,1.389vw)] leading-[min(24px,1.667vw)]"
+          textClassName="font-semibold text-[20px] leading-6"
         />
 
         <nav
           aria-label="Primary navigation"
-          className="min-w-0 justify-self-center px-[min(48px,3.333vw)]"
+          className="min-w-0 justify-self-center px-6 xl:px-12"
         >
-          <ul className="flex min-w-0 items-center justify-center gap-[clamp(16px,1.944vw,28px)] whitespace-nowrap">
+          <ul className="flex min-w-0 items-center justify-center gap-5 whitespace-nowrap xl:gap-7">
             {copy.primaryNavigation.map((link) => (
               <li key={link.label}>
                 <a
                   className={cn(
-                    "font-normal text-[min(14px,0.972vw)] leading-[min(17px,1.181vw)] transition-opacity hover:opacity-70",
+                    "font-normal text-[14px] leading-[17px] transition-opacity hover:opacity-70",
                     linkFocusClasses
                   )}
                   href={link.href}
@@ -206,12 +206,12 @@ export function SiteNavbar({
         </nav>
 
         <nav aria-label="Account navigation" className="justify-self-end">
-          <ul className="flex items-center gap-[min(24px,1.667vw)] whitespace-nowrap">
+          <ul className="flex items-center gap-5 whitespace-nowrap xl:gap-6">
             {copy.accountNavigation.map((link) => (
               <li key={link.label}>
                 <a
                   className={cn(
-                    "font-normal text-[min(14px,0.972vw)] leading-[min(17px,1.181vw)] transition-opacity hover:opacity-70",
+                    "font-normal text-[14px] leading-[17px] transition-opacity hover:opacity-70",
                     linkFocusClasses
                   )}
                   href={link.href}
@@ -224,14 +224,14 @@ export function SiteNavbar({
             <li>
               <LanguageSwitcher
                 ariaLabel={copy.languageLabel}
-                className="h-[min(47px,3.264vw)] w-[min(47px,3.264vw)]"
+                className="h-[47px] w-[47px]"
                 currentLocale={currentLocale}
                 linkTabIndex={linkTabIndex}
               />
             </li>
             <li>
               <DemoLink
-                className="h-[min(47px,3.264vw)] min-w-[min(90px,6.25vw)] px-[min(24px,1.667vw)] text-[min(16px,1.111vw)] leading-[min(20px,1.389vw)]"
+                className="h-[47px] min-w-[90px] px-6 text-[16px] leading-5"
                 label={copy.demoLabel}
                 linkTabIndex={linkTabIndex}
               />
