@@ -85,6 +85,43 @@ describe("localized homepage sections", () => {
     expect(html).not.toContain("left-[min(");
   });
 
+  it("keeps the customer stories section in resilient flow layout", () => {
+    const copy = createZhHomepageCopy();
+    const html = renderToStaticMarkup(
+      <HomepageCustomerStories copy={copy.customerStories} />
+    );
+
+    expect(html).toContain("relative z-10 mx-auto max-w-[1280px]");
+    expect(html).toContain("flex flex-col items-start justify-between");
+    expect(html).toContain("lg:min-h-[230px]");
+    expect(html).toContain("sm:self-end");
+    expect(html).toContain("text-balance");
+    expect(html).toContain("lg:max-w-[760px]");
+    expect(html).toContain("data-customer-stories-previous");
+    expect(html).toContain("data-customer-stories-next");
+    expect(html).toContain("aria-controls");
+    expect(html).toContain("transition-opacity hover:opacity-70");
+    expect(html).toContain("h-full w-full object-contain");
+    expect(html).toContain("snap-x snap-mandatory");
+    expect(html).toContain("overflow-x-auto");
+    expect(html).toContain("scroll-smooth");
+    expect(html).toContain("data-customer-story-card");
+    expect(html).toContain("shrink-0 snap-start");
+    expect(html).toContain("w-full");
+    expect(html).toContain("lg:min-h-[416px]");
+    expect(html).toContain("lg:w-[clamp(480px,42.708vw,615px)]");
+    expect(html).toContain("lg:text-[23px] lg:leading-[31px]");
+    expect(html).toContain("salesforce-logo.png");
+    expect(html).not.toContain("lg:hidden");
+    expect(html).not.toContain("hidden h-[min(");
+    expect(html).not.toContain("flex-col gap-10");
+    expect(html).not.toContain("bg-[rgba(255,255,255,0.24)]");
+    expect(html).not.toContain("shadow-[0_6px_24px_rgba(0,0,0,0.12)]");
+    expect(html).not.toContain("absolute top-[min(");
+    expect(html).not.toContain("left-[min(");
+    expect(html).not.toContain("tracking-[-");
+  });
+
   it("keeps the footer navigation in resilient flow layout", () => {
     const copy = createZhHomepageCopy();
     const html = renderToStaticMarkup(<HomepageFooter copy={copy.footer} />);

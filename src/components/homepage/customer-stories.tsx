@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useCallback, useEffect, useId, useRef } from "react";
 import type { HomepageCustomerStoriesCopy } from "@/i18n/homepage-copy";
 
 const testimonialAssets = [
@@ -31,11 +34,58 @@ const testimonialAssets = [
   },
 ];
 
-const linkFocusClasses =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#ffffff] focus-visible:outline-offset-4";
+const controlButtonClasses =
+  "relative flex h-11 w-11 items-center justify-center transition-opacity hover:opacity-70 active:scale-95 lg:h-16 lg:w-16";
+const controlFocusClasses =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#000000] focus-visible:outline-offset-4";
+const controlIconClasses = "h-full w-full object-contain";
 
 interface HomepageCustomerStoriesProps {
   copy: HomepageCustomerStoriesCopy;
+}
+
+function getCarouselScrollTargets(carousel: HTMLElement) {
+  const cards = Array.from(
+    carousel.querySelectorAll<HTMLElement>("[data-customer-story-card]")
+  );
+  const firstCard = cards[0];
+
+  if (!firstCard) {
+    return [];
+  }
+
+  const maxScroll = Math.max(0, carousel.scrollWidth - carousel.clientWidth);
+  const baseOffset = firstCard.offsetLeft;
+  const positions = cards.map((card) =>
+    Math.min(maxScroll, Math.max(0, card.offsetLeft - baseOffset))
+  );
+
+  return positions.filter(
+    (position, index) =>
+      index === 0 || Math.abs(position - positions[index - 1]) > 1
+  );
+}
+
+function getNextCarouselScrollTarget(carousel: HTMLElement, direction: -1 | 1) {
+  const targets = getCarouselScrollTargets(carousel);
+
+  if (targets.length === 0) {
+    return null;
+  }
+
+  let currentIndex = 0;
+  let currentDistance = Number.POSITIVE_INFINITY;
+
+  for (const [index, target] of targets.entries()) {
+    const distance = Math.abs(carousel.scrollLeft - target);
+
+    if (distance < currentDistance) {
+      currentDistance = distance;
+      currentIndex = index;
+    }
+  }
+
+  return targets[(currentIndex + direction + targets.length) % targets.length];
 }
 
 function getTestimonialCards(copy: HomepageCustomerStoriesCopy) {
@@ -65,6 +115,37 @@ export function HomepageCustomerStories({
   copy,
 }: HomepageCustomerStoriesProps) {
   const testimonials = getTestimonialCards(copy);
+  const carouselId = useId();
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const scrollCarousel = useCallback((direction: -1 | 1) => {
+    const carousel = carouselRef.current;
+
+    if (!carousel) {
+      return;
+    }
+
+    const nextScrollTarget = getNextCarouselScrollTarget(carousel, direction);
+
+    if (nextScrollTarget === null) {
+      return;
+    }
+
+    carousel.scrollTo({
+      behavior: "smooth",
+      left: nextScrollTarget,
+    });
+  }, []);
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      if (document.visibilityState === "visible") {
+        scrollCarousel(1);
+      }
+    }, 3000);
+
+    return () => window.clearInterval(intervalId);
+  }, [scrollCarousel]);
 
   return (
     <section
@@ -73,7 +154,7 @@ export function HomepageCustomerStories({
       style={{ fontFamily: "var(--font-inter)" }}
     >
       <div
-        className="relative mx-auto hidden h-[min(1015.11px,70.493vw)] w-full max-w-[1440px] overflow-hidden bg-[#000000] lg:block"
+        className="relative mx-auto w-full max-w-[1440px] overflow-hidden bg-[#000000] px-5 pt-16 pb-20 sm:px-8 lg:px-20 lg:pt-[clamp(112px,10.417vw,150px)] lg:pb-[clamp(112px,10.069vw,145px)]"
         data-figma-layer="customer-stories/section"
       >
         <Image
@@ -87,95 +168,53 @@ export function HomepageCustomerStories({
           src="/homepage/customer-stories/customer-stories-background.jpg"
         />
 
-        <h2
-          className="absolute top-[min(150px,10.417vw)] left-[min(80px,5.556vw)] h-[min(231px,16.042vw)] w-[min(430.48px,29.894vw)] font-normal text-[#000000] text-[min(121px,8.403vw)] leading-[min(115.2px,8vw)] tracking-[-5px]"
-          data-figma-layer="customer-stories/title"
-        >
-          {copy.title}
-        </h2>
-
         <div
-          className="absolute top-[min(318px,22.083vw)] right-[min(80px,5.556vw)] flex h-[min(64px,4.444vw)] items-center gap-[min(16px,1.111vw)]"
-          data-figma-layer="customer-stories/controls"
+          className="relative z-10 mx-auto max-w-[1280px]"
+          data-figma-layer="customer-stories/content"
         >
-          <button
-            aria-label={copy.previousStoryLabel}
-            className={`relative h-[min(64px,4.444vw)] w-[min(64px,4.444vw)] transition-opacity hover:opacity-70 ${linkFocusClasses}`}
-            type="button"
+          <div
+            className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:gap-5 lg:min-h-[230px]"
+            data-figma-layer="customer-stories/top-row"
           >
-            <Image
-              alt=""
-              aria-hidden="true"
-              className="h-full w-full"
-              height={128}
-              src="/homepage/customer-stories/arrow-left.png"
-              width={128}
-            />
-          </button>
-          <button
-            aria-label={copy.nextStoryLabel}
-            className={`relative h-[min(64px,4.444vw)] w-[min(64px,4.444vw)] transition-opacity hover:opacity-70 ${linkFocusClasses}`}
-            type="button"
-          >
-            <Image
-              alt=""
-              aria-hidden="true"
-              className="h-full w-full"
-              height={128}
-              src="/homepage/customer-stories/arrow-right.png"
-              width={128}
-            />
-          </button>
-        </div>
-
-        <div
-          className="absolute top-[min(454px,31.528vw)] left-[min(80px,5.556vw)] flex h-[min(416px,28.889vw)] w-[min(1907px,132.431vw)] gap-[min(32px,2.222vw)]"
-          data-figma-layer="customer-stories/carousel"
-        >
-          {testimonials.map((testimonial) => (
-            <TestimonialCard key={testimonial.cardLayer} {...testimonial} />
-          ))}
-        </div>
-      </div>
-
-      <div className="relative overflow-hidden px-5 pt-16 pb-20 lg:hidden">
-        <Image
-          alt=""
-          aria-hidden="true"
-          className="object-cover"
-          fill
-          sizes="(max-width: 1023px) 100vw, 0px"
-          src="/homepage/customer-stories/customer-stories-background.jpg"
-        />
-        <div className="relative z-10 mx-auto max-w-[640px]">
-          <div className="flex items-end justify-between gap-5">
-            <h2 className="max-w-[320px] font-normal text-[#000000] text-[64px] leading-[60px] tracking-[-2px] sm:text-[84px] sm:leading-[80px]">
+            <h2
+              className="max-w-[min(100%,360px)] text-balance font-normal text-[#000000] text-[64px] leading-[60px] tracking-[0] sm:max-w-[520px] sm:text-[84px] sm:leading-[80px] lg:max-w-[760px] lg:text-[clamp(96px,8.403vw,121px)] lg:leading-[clamp(92px,8vw,115px)]"
+              data-figma-layer="customer-stories/title"
+            >
               {copy.title}
             </h2>
-            <div className="mb-2 flex shrink-0 gap-2">
+            <div
+              className="flex shrink-0 items-center gap-2 self-start sm:self-end lg:gap-4"
+              data-figma-layer="customer-stories/controls"
+            >
               <button
+                aria-controls={carouselId}
                 aria-label={copy.previousStoryLabel}
-                className={`relative h-11 w-11 ${linkFocusClasses}`}
+                className={`${controlButtonClasses} ${controlFocusClasses}`}
+                data-customer-stories-previous="true"
+                onClick={() => scrollCarousel(-1)}
                 type="button"
               >
                 <Image
                   alt=""
                   aria-hidden="true"
-                  className="h-full w-full"
+                  className={controlIconClasses}
                   height={128}
                   src="/homepage/customer-stories/arrow-left.png"
                   width={128}
                 />
               </button>
               <button
+                aria-controls={carouselId}
                 aria-label={copy.nextStoryLabel}
-                className={`relative h-11 w-11 ${linkFocusClasses}`}
+                className={`${controlButtonClasses} ${controlFocusClasses}`}
+                data-customer-stories-next="true"
+                onClick={() => scrollCarousel(1)}
                 type="button"
               >
                 <Image
                   alt=""
                   aria-hidden="true"
-                  className="h-full w-full"
+                  className={controlIconClasses}
                   height={128}
                   src="/homepage/customer-stories/arrow-right.png"
                   width={128}
@@ -184,12 +223,14 @@ export function HomepageCustomerStories({
             </div>
           </div>
 
-          <div className="mt-16 flex flex-col gap-10">
+          <div
+            className="mt-16 flex w-full snap-x snap-mandatory gap-6 overflow-x-auto overscroll-x-contain scroll-smooth pb-6 [-ms-overflow-style:none] [scrollbar-width:none] lg:mt-[clamp(56px,5.069vw,73px)] lg:gap-8 [&::-webkit-scrollbar]:hidden"
+            data-figma-layer="customer-stories/carousel"
+            id={carouselId}
+            ref={carouselRef}
+          >
             {testimonials.map((testimonial) => (
-              <TestimonialCardMobile
-                key={testimonial.cardLayer}
-                {...testimonial}
-              />
+              <TestimonialCard key={testimonial.cardLayer} {...testimonial} />
             ))}
           </div>
         </div>
@@ -225,92 +266,45 @@ function TestimonialCard({
 }: TestimonialCardProps) {
   return (
     <article
-      className="h-full w-[min(615px,42.708vw)] shrink-0 rounded-tr-[min(32px,2.222vw)] border-[#ffffff] border-t border-r pt-[min(45px,3.125vw)]"
+      className="w-full shrink-0 snap-start rounded-tr-[32px] border-[#ffffff] border-t border-r pt-8 pr-6 sm:w-[420px] md:w-[520px] lg:min-h-[416px] lg:w-[clamp(480px,42.708vw,615px)] lg:pt-[45px] lg:pr-8"
+      data-customer-story-card="true"
       data-figma-layer={cardLayer}
     >
       <p
-        className="font-normal text-[min(23px,1.597vw)] leading-[min(31px,2.153vw)] tracking-[0]"
+        className="font-normal text-[20px] leading-[28px] tracking-[0] lg:text-[23px] lg:leading-[31px]"
         data-figma-layer={`${cardLayer}/quote`}
       >
         {quote}
       </p>
 
       <div
-        className="mt-[min(40px,2.778vw)] flex items-center"
+        className="mt-8 flex items-center lg:mt-10"
         data-figma-layer={`${cardLayer}/author`}
       >
         <Image
           alt=""
           aria-hidden="true"
-          className="h-[min(64px,4.444vw)] w-[min(64px,4.444vw)] rounded-full object-cover"
-          height={97}
-          src={avatar}
-          width={97}
-        />
-        <div className="ml-[min(15px,1.042vw)]">
-          <p className="font-normal text-[min(19px,1.319vw)] leading-[min(23px,1.597vw)]">
-            {author}
-          </p>
-          <p className="mt-[min(5px,0.347vw)] max-w-[min(380px,26.389vw)] font-normal text-[min(15px,1.042vw)] text-[rgba(255,255,255,0.65)] leading-[min(21px,1.458vw)]">
-            {role}
-            <br />
-            {company}
-          </p>
-        </div>
-      </div>
-
-      <Image
-        alt={logoAlt}
-        className="mt-[min(33px,2.292vw)] h-auto w-[min(120px,8.333vw)]"
-        data-figma-layer={`${cardLayer}/logo`}
-        height={logo.height}
-        src={logo.src}
-        style={{ height: "auto" }}
-        width={logo.width}
-      />
-    </article>
-  );
-}
-
-function TestimonialCardMobile({
-  author,
-  avatar,
-  cardLayer,
-  company,
-  logoAlt,
-  logo,
-  quote,
-  role,
-}: TestimonialCardProps) {
-  return (
-    <article
-      className="rounded-tr-[32px] border-[#ffffff] border-t border-r pt-8 pr-6"
-      data-figma-layer={`${cardLayer}/mobile`}
-    >
-      <p className="font-normal text-[20px] leading-[28px] tracking-[0]">
-        {quote}
-      </p>
-      <div className="mt-8 flex items-center">
-        <Image
-          alt=""
-          aria-hidden="true"
-          className="h-14 w-14 rounded-full object-cover"
+          className="h-14 w-14 rounded-full object-cover lg:h-16 lg:w-16"
           height={97}
           src={avatar}
           width={97}
         />
         <div className="ml-4">
-          <p className="font-normal text-[18px] leading-[22px]">{author}</p>
-          <p className="mt-1 text-[14px] text-[rgba(255,255,255,0.65)] leading-[20px]">
+          <p className="font-normal text-[18px] leading-[22px] lg:text-[19px] lg:leading-[23px]">
+            {author}
+          </p>
+          <p className="mt-1 max-w-[380px] font-normal text-[14px] text-[rgba(255,255,255,0.65)] leading-[20px] lg:text-[15px] lg:leading-[21px]">
             {role}
             <br />
             {company}
           </p>
         </div>
       </div>
+
       <Image
         alt={logoAlt}
-        className="mt-8 h-auto w-[120px]"
+        className="mt-8 h-auto w-[120px] lg:mt-[33px]"
+        data-figma-layer={`${cardLayer}/logo`}
         height={logo.height}
         src={logo.src}
         style={{ height: "auto" }}
