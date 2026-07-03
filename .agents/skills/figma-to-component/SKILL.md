@@ -133,3 +133,7 @@ Browser checks:
 - Take a screenshot when the browser surface returns a trustworthy image. If screenshots are clipped or scaled, use DOM measurements as the fidelity evidence and report the screenshot limitation.
 
 Completion criterion: report the verification commands and the measured facts that prove the implementation matches the Figma source.
+
+## Stop And Ask
+
+- If Figma opens in a browser session that is not logged in or cannot access the target file, stop and ask the user for the correct way to proceed before exporting assets, taking screenshots, or cropping manually.
