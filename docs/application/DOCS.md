@@ -1,7 +1,7 @@
 ---
 title: Application Domain
 description: Domain-level conventions for the Next.js application surface.
-updateAt: 2026-07-01
+updateAt: 2026-07-03
 ---
 
 # Application Domain
@@ -18,6 +18,8 @@ updateAt: 2026-07-01
 - Read the relevant local Next.js guide in `node_modules/next/dist/docs/` before changing App Router APIs or framework conventions.
 - Keep the first screen as the usable application surface when product work starts; avoid replacing it with generic marketing scaffolding.
 - Prefer scoped changes in `src/app/` and `src/i18n/` while the project remains a single-route homepage demo.
+- All user-visible interfaces should hold up across desktop, mobile, intermediate viewport widths, and supported locales. Layout work should avoid unintended page-level horizontal overflow, clipped content, and fixed-width containers that push the viewport wider.
+- After completing page or visible UI implementation work, open the app in a real browser and perform end-to-end acceptance for the affected user-facing flow before handing it off.
 
 ## Boundary Principles
 

@@ -1,7 +1,7 @@
 ---
 title: Homepage Replication
 description: Stable constraints for the ExperienceWelcome Figma homepage replication.
-updateAt: 2026-07-02
+updateAt: 2026-07-03
 ---
 
 # Homepage Replication
@@ -29,6 +29,7 @@ updateAt: 2026-07-02
 - Use the public reference site only as auxiliary evidence when Figma does not expose enough copy, asset, or semantic context.
 - Implement the homepage as code-first high-fidelity React and Tailwind, with real image assets exported from Figma.
 - Export image assets for logos, avatars, product screenshots, complex illustrations, textures, and other non-textual visuals. Keep Figma-exported assets as-is by default, without manual retouching, recomposition, or design-side post-processing.
+- For the How It Works section, Figma media assets are exported through the browser UI from the signed-in `hsawana9@gmail.com` Chrome profile. The full-section reference image belongs under `docs/assets/` for comparison only; the runtime page uses real text plus the three separately exported media assets.
 - Allow animated assets such as GIFs or other Figma-exported motion media in the static replication phase when they are part of the source visual. Defer format optimization until the later performance phase unless the asset cannot render correctly in the app.
 - Keep headings, paragraphs, navigation labels, CTA labels, FAQ copy, and other meaningful content as real HTML text so i18n, SEO, accessibility, selection, and responsive layout remain controllable.
 - Put homepage section components under `src/components/homepage/`. Keep `src/app/[locale]/(home)/page.tsx` as the localized route entrypoint and composition surface.
@@ -44,6 +45,7 @@ updateAt: 2026-07-02
 - Keep mobile from breaking during desktop static fidelity work, then do product-grade mobile adaptation after desktop behavior is stable.
 - Keep the existing i18n routing infrastructure active during static replication. For localized sections, use content-resilient layout so multilingual content remains readable while the 1440px desktop view stays visually close to the reference screenshot.
 - Implement the footer first as the pilot section. Use it to settle the repeatable workflow for Figma inspection, asset export, translation shape, component placement, styling fidelity, responsive behavior, and verification before batching the remaining sections.
+- Implement the How It Works section as a real homepage section with localized HTML copy, lucide title arrows, and Figma-exported media assets at `public/homepage/how-it-works/`.
 - Add interaction after static fidelity is stable. Prefer subtle hover states, active states, scroll reveal, image/card micro-interactions, and mobile navigation behavior that respect `prefers-reduced-motion`.
 - During the motion enhancement phase, prefer Server Components for route entries, section shells, copy shaping, and static structure. Put Client Components as close to the leaves as practical, especially for Motion wrappers, carousel controls, dropdowns, hover/tap behavior, and browser-observed viewport state.
 - Use section-level Client Components only when leaf islands would make the section harder to understand or when the section already owns client-only behavior. `HomepageCustomerStories` is currently a client section because it owns carousel state; static sections such as Header and Footer should prefer server shells with client motion islands.
@@ -72,6 +74,11 @@ updateAt: 2026-07-02
   Context: Motion effects require client-side JavaScript, while the homepage still needs SEO-friendly static structure, localized server-rendered copy, and small client bundles.
   Decision: Keep route and section shells as Server Components by default. Add Motion through pass-through client wrapper islands near the animated leaf elements, and promote an entire section to a Client Component only when that section already owns client-only behavior or when leaf islands would make the section less maintainable.
   Consequences: Motion implementation requires a few small wrapper modules, but static markup stays server-first and repeated effects remain consistent across homepage sections.
+- **2026-07-03-how-it-works-browser-export-boundary**: Keep How It Works source assets tied to browser-exported Figma layers.
+  Status: Accepted.
+  Context: The Figma file is view/comment only, but its Properties panel still exposes export controls for selected layers.
+  Decision: Export the How It Works section reference and per-step media layers through the browser UI using the signed-in `hsawana9@gmail.com` Chrome profile. Store the reference image in `docs/assets/homepage/how-it-works/` and store runtime media in `public/homepage/how-it-works/`.
+  Consequences: The implementation has traceable Figma source assets without relying on API access or local screenshot cropping, and the runtime section remains accessible because meaningful text stays as HTML.
 
 ## Update Triggers
 
