@@ -23,6 +23,19 @@ export interface HomepageCustomerStoriesCopy {
   title: string;
 }
 
+export interface HomepageHowItWorksStepCopy {
+  description: string;
+  stepLabel: string;
+  title: string;
+}
+
+export interface HomepageHowItWorksCopy {
+  ctaLabel: string;
+  intro: string;
+  steps: HomepageHowItWorksStepCopy[];
+  title: string;
+}
+
 export interface HomepageFooterCopy {
   copyright: string;
   legalLinks: Array<{
@@ -44,6 +57,7 @@ export interface HomepageCopy {
   customerStories: HomepageCustomerStoriesCopy;
   footer: HomepageFooterCopy;
   header: HomepageHeaderCopy;
+  howItWorks: HomepageHowItWorksCopy;
   navbar: NavbarCopy;
 }
 
@@ -53,6 +67,7 @@ interface HomepageCopyTranslators {
   customerStories: Translate;
   footer: Translate;
   header: Translate;
+  howItWorks: Translate;
   navbar: Translate;
 }
 
@@ -60,6 +75,7 @@ export function createHomepageCopy({
   customerStories,
   footer,
   header,
+  howItWorks,
   navbar,
 }: HomepageCopyTranslators): HomepageCopy {
   return {
@@ -120,6 +136,16 @@ export function createHomepageCopy({
       secondaryCtaLabel: header("secondaryCtaLabel"),
       subtitle: header("subtitle"),
       title: header("title"),
+    },
+    howItWorks: {
+      ctaLabel: howItWorks("ctaLabel"),
+      intro: howItWorks("intro"),
+      steps: ["create", "engage", "analyze"].map((stepKey) => ({
+        description: howItWorks(`steps.${stepKey}.description`),
+        stepLabel: howItWorks(`steps.${stepKey}.stepLabel`),
+        title: howItWorks(`steps.${stepKey}.title`),
+      })),
+      title: howItWorks("title"),
     },
     navbar: {
       accountNavigation: [

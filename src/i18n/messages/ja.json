@@ -29,6 +29,28 @@
     "subtitle": "マーケターが収益につながる印象的な体験を開催できるように設計されたウェビナープラットフォームです。",
     "title": "惹きつけて、転換する"
   },
+  "HowItWorks": {
+    "ctaLabel": "詳しく見る",
+    "intro": "連携や登録から、インタラクティブなステージ要素、イベント後のデータまで、体験全体を最初から最後まで管理できます。",
+    "steps": {
+      "analyze": {
+        "description": "参加者体験全体で計測した深いインサイトと分析により、イベントの成果を追跡できます。",
+        "stepLabel": "ステップ 3",
+        "title": "分析"
+      },
+      "create": {
+        "description": "Welcome Studio は、ブランドを中心に置いた魅力的なバーチャル体験を作成、開催するためのツールを提供します。",
+        "stepLabel": "ステップ 1",
+        "title": "作成"
+      },
+      "engage": {
+        "description": "退屈な時間をなくし、参加者の注意を引きつけ、受け身の視聴者を積極的な参加者に変えます。",
+        "stepLabel": "ステップ 2",
+        "title": "参加促進"
+      }
+    },
+    "title": "仕組み"
+  },
   "CustomerStories": {
     "nextStoryLabel": "次の顧客ストーリー",
     "previousStoryLabel": "前の顧客ストーリー",

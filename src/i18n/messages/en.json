@@ -29,6 +29,28 @@
     "subtitle": "A webinar platform designed for marketers to host jaw-dropping experiences that drive revenue.",
     "title": "Captivate & Convert"
   },
+  "HowItWorks": {
+    "ctaLabel": "Learn more",
+    "intro": "Manage your experience from start to finish, from integrations to registration and from interactive stage elements to post-event data, it’s all here.",
+    "steps": {
+      "analyze": {
+        "description": "Track the success of your events with deep insights and analytics measured across the entire attendee experience.",
+        "stepLabel": "Step 3",
+        "title": "Analyze"
+      },
+      "create": {
+        "description": "Welcome Studio gives you all the tools you need to create and host virtual experiences that look awesome and put your brand centerstage.",
+        "stepLabel": "Step 1",
+        "title": "Create"
+      },
+      "engage": {
+        "description": "Cut through the yawns, grab your audience’s attention, and turn passive attendees into active participants.",
+        "stepLabel": "Step 2",
+        "title": "Engage"
+      }
+    },
+    "title": "How it works"
+  },
   "CustomerStories": {
     "nextStoryLabel": "Next customer story",
     "previousStoryLabel": "Previous customer story",

@@ -8,6 +8,7 @@ import {
 } from "./customer-stories";
 import { HomepageFooter } from "./footer";
 import { HomepageHeader } from "./header";
+import { HomepageHowItWorks } from "./how-it-works";
 
 function createNamespaceTranslator(namespace: keyof typeof zhMessages) {
   const messages = zhMessages[namespace];
@@ -27,6 +28,7 @@ function createZhHomepageCopy() {
     customerStories: createNamespaceTranslator("CustomerStories"),
     footer: createNamespaceTranslator("Footer"),
     header: createNamespaceTranslator("Header"),
+    howItWorks: createNamespaceTranslator("HowItWorks"),
     navbar: createNamespaceTranslator("Navbar"),
   });
 }
@@ -53,6 +55,7 @@ function renderHomepageSections() {
         currentLocale="zh"
         navbarCopy={copy.navbar}
       />
+      <HomepageHowItWorks copy={copy.howItWorks} />
       <HomepageCustomerStories copy={copy.customerStories} />
       <HomepageFooter copy={copy.footer} />
     </>
@@ -64,7 +67,8 @@ describe("localized homepage section copy", () => {
     const html = renderHomepageSections();
 
     expect(html).toContain("吸引并转化");
-    expect(html).toContain("工作原理");
+    expect(html).toContain("从集成到注册");
+    expect(html).toContain("把被动参会者变成主动参与者");
     expect(html).toContain("深受喜爱与信任");
     expect(html).toContain("行业活动营销总监");
     expect(html).toContain("隐私政策");
@@ -79,6 +83,7 @@ describe("homepage section motion", () => {
     expect(html).toContain('data-motion="viewport-reveal"');
     expect(html).toContain('data-motion="micro-interaction"');
     expect(html).toContain('data-figma-layer="header/content/title"');
+    expect(html).toContain('data-figma-layer="how-it-works/steps"');
     expect(html).toContain('data-figma-layer="customer-stories/carousel"');
     expect(html).toContain('aria-label="Footer navigation"');
     expect(html).toContain("<header");
@@ -129,6 +134,36 @@ describe("homepage header section", () => {
     expect(html).not.toContain("mt-12");
     expect(html).not.toContain("top-[min(");
     expect(html).not.toContain("left-[min(");
+  });
+});
+
+describe("homepage how it works section", () => {
+  it("keeps the how it works section as real copy with exported media assets", () => {
+    const copy = createZhHomepageCopy();
+    const html = renderToStaticMarkup(
+      <HomepageHowItWorks copy={copy.howItWorks} />
+    );
+
+    expect(html).toContain('id="how-it-works"');
+    expect(html).toContain('data-figma-layer="how-it-works/section"');
+    expect(html).toContain('data-figma-layer="how-it-works/create/media"');
+    expect(html).toContain('data-figma-layer="how-it-works/engage/media"');
+    expect(html).toContain('data-figma-layer="how-it-works/analyze/media"');
+    expect(html).toContain("工作原理");
+    expect(html).toContain("了解更多");
+    expect(html).toContain("创建");
+    expect(html).toContain("互动");
+    expect(html).toContain("分析");
+    expect(html).toContain("how-it-works-create.png");
+    expect(html).toContain("how-it-works-engage.png");
+    expect(html).toContain("how-it-works-analyze.png");
+    expect(html).toContain("lg:grid-cols-[280px_minmax(0,944px)]");
+    expect(html).toContain("rounded-full bg-[#f3ffab]");
+    expect(html).toContain('data-motion="viewport-reveal"');
+    expect(html).toContain('data-motion="micro-interaction"');
+    expect(html).not.toContain("how-it-works-reference.png");
+    expect(html).not.toContain("section.png");
+    expect(html).not.toContain("tracking-[-");
   });
 });
 

@@ -29,6 +29,28 @@
     "subtitle": "मार्केटिंग टीमों के लिए बनाया गया वेबिनार प्लेटफॉर्म, जो यादगार अनुभवों से revenue बढ़ाने में मदद करता है.",
     "title": "Captivate और Convert करें"
   },
+  "HowItWorks": {
+    "ctaLabel": "और जानें",
+    "intro": "Integrations से registration तक, interactive stage elements से post-event data तक, अपना पूरा experience शुरू से अंत तक manage करें.",
+    "steps": {
+      "analyze": {
+        "description": "पूरे attendee experience पर मापे गए deep insights और analytics से अपने events की सफलता track करें.",
+        "stepLabel": "Step 3",
+        "title": "Analyze"
+      },
+      "create": {
+        "description": "Welcome Studio आपको virtual experiences बनाने और host करने के लिए सारे tools देता है, ताकि आपकी brand centerstage पर दिखे.",
+        "stepLabel": "Step 1",
+        "title": "Create"
+      },
+      "engage": {
+        "description": "Audience का attention पकड़ें और passive attendees को active participants में बदलें.",
+        "stepLabel": "Step 2",
+        "title": "Engage"
+      }
+    },
+    "title": "यह कैसे काम करता है"
+  },
   "CustomerStories": {
     "nextStoryLabel": "अगली customer story",
     "previousStoryLabel": "पिछली customer story",

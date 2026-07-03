@@ -29,6 +29,28 @@
     "subtitle": "专为营销人员打造的线上研讨会平台，帮助你举办令人惊艳并推动收入增长的体验。",
     "title": "吸引并转化"
   },
+  "HowItWorks": {
+    "ctaLabel": "了解更多",
+    "intro": "从集成到注册，从互动舞台元素到活动后数据，完整管理你的体验，一切都在这里。",
+    "steps": {
+      "analyze": {
+        "description": "通过覆盖整个参会体验的深度洞察和分析数据，追踪你的活动成效。",
+        "stepLabel": "第 3 步",
+        "title": "分析"
+      },
+      "create": {
+        "description": "Welcome Studio 提供创建和举办虚拟体验所需的一切工具，让你的品牌成为舞台中心。",
+        "stepLabel": "第 1 步",
+        "title": "创建"
+      },
+      "engage": {
+        "description": "摆脱无聊时刻，抓住观众注意力，把被动参会者变成主动参与者。",
+        "stepLabel": "第 2 步",
+        "title": "互动"
+      }
+    },
+    "title": "工作原理"
+  },
   "CustomerStories": {
     "nextStoryLabel": "下一条客户故事",
     "previousStoryLabel": "上一条客户故事",

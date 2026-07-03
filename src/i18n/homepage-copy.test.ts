@@ -21,11 +21,20 @@ describe("createHomepageCopy", () => {
       customerStories: createNamespaceTranslator("CustomerStories"),
       footer: createNamespaceTranslator("Footer"),
       header: createNamespaceTranslator("Header"),
+      howItWorks: createNamespaceTranslator("HowItWorks"),
       navbar: createNamespaceTranslator("Navbar"),
     });
 
     expect(copy.header.title).toBe("吸引并转化");
     expect(copy.header.primaryCtaLabel).toBe("预约演示");
+    expect(copy.howItWorks.title).toBe("工作原理");
+    expect(copy.howItWorks.ctaLabel).toBe("了解更多");
+    expect(copy.howItWorks.steps.map((step) => step.title)).toEqual([
+      "创建",
+      "互动",
+      "分析",
+    ]);
+    expect(copy.howItWorks.steps[2]?.stepLabel).toBe("第 3 步");
     expect(copy.customerStories.title).toBe("深受喜爱与信任");
     expect(copy.customerStories.previousStoryLabel).toBe("上一条客户故事");
     expect(copy.customerStories.testimonials[0]?.author).toBe("Ally Masi");

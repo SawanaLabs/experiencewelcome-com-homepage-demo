@@ -29,6 +29,28 @@
     "subtitle": "Una plataforma de webinars diseñada para que los equipos de marketing creen experiencias impactantes que generan ingresos.",
     "title": "Cautiva y convierte"
   },
+  "HowItWorks": {
+    "ctaLabel": "Más información",
+    "intro": "Gestiona tu experiencia de principio a fin: integraciones, registro, elementos interactivos en el escenario y datos posteriores al evento.",
+    "steps": {
+      "analyze": {
+        "description": "Mide el éxito de tus eventos con insights y analíticas profundas en toda la experiencia del asistente.",
+        "stepLabel": "Paso 3",
+        "title": "Analiza"
+      },
+      "create": {
+        "description": "Welcome Studio te da las herramientas para crear y alojar experiencias virtuales atractivas que ponen tu marca en el centro.",
+        "stepLabel": "Paso 1",
+        "title": "Crea"
+      },
+      "engage": {
+        "description": "Capta la atención de tu audiencia y convierte a asistentes pasivos en participantes activos.",
+        "stepLabel": "Paso 2",
+        "title": "Involucra"
+      }
+    },
+    "title": "Cómo funciona"
+  },
   "CustomerStories": {
     "nextStoryLabel": "Siguiente historia de cliente",
     "previousStoryLabel": "Historia de cliente anterior",

@@ -29,6 +29,28 @@
     "subtitle": "Une plateforme de webinaires conçue pour aider les équipes marketing à créer des expériences spectaculaires qui génèrent du revenu.",
     "title": "Captiver et convertir"
   },
+  "HowItWorks": {
+    "ctaLabel": "En savoir plus",
+    "intro": "Gérez votre expérience de bout en bout, des intégrations à l’inscription, des éléments interactifs sur scène aux données après événement.",
+    "steps": {
+      "analyze": {
+        "description": "Suivez la réussite de vos événements grâce à des insights et analyses approfondis sur toute l’expérience participant.",
+        "stepLabel": "Étape 3",
+        "title": "Analyser"
+      },
+      "create": {
+        "description": "Welcome Studio réunit les outils nécessaires pour créer et héberger des expériences virtuelles superbes qui placent votre marque au centre.",
+        "stepLabel": "Étape 1",
+        "title": "Créer"
+      },
+      "engage": {
+        "description": "Captez l’attention de votre audience et transformez les participants passifs en participants actifs.",
+        "stepLabel": "Étape 2",
+        "title": "Engager"
+      }
+    },
+    "title": "Comment ça marche"
+  },
   "CustomerStories": {
     "nextStoryLabel": "Témoignage client suivant",
     "previousStoryLabel": "Témoignage client précédent",
