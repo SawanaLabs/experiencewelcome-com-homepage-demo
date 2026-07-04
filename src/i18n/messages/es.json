@@ -121,6 +121,17 @@
     "imageAlt": "Vista previa de la página de inicio de ExperienceWelcome",
     "title": "Cautiva y convierte"
   },
+  "StoryEntry": {
+    "ariaLabel": "Leer How I build this",
+    "label": "How I build this"
+  },
+  "HowIBuildThis": {
+    "backHomeLabel": "Inicio",
+    "constructionNotice": "Esta página está en construcción.",
+    "contentLocaleLabel": "Borrador en español",
+    "eyebrow": "Historia de construcción",
+    "languageLabel": "Cambiar idioma"
+  },
   "HomePage": {
     "body": "Esta ruta inicial está configurada para seis idiomas con rutas App Router pensadas para SEO.",
     "deployNow": "Desplegar ahora",

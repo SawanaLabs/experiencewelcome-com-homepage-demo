@@ -121,6 +121,17 @@
     "imageAlt": "ExperienceWelcome 首页预览",
     "title": "吸引并转化"
   },
+  "StoryEntry": {
+    "ariaLabel": "阅读 How I build this",
+    "label": "How I build this"
+  },
+  "HowIBuildThis": {
+    "backHomeLabel": "返回首页",
+    "constructionNotice": "这个页面正在装修中。",
+    "contentLocaleLabel": "中文草稿",
+    "eyebrow": "构建复盘",
+    "languageLabel": "切换语言"
+  },
   "HomePage": {
     "body": "这个起始路由已经配置六种语言，并使用对 SEO 友好的 App Router 路由。",
     "deployNow": "立即部署",

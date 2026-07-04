@@ -121,6 +121,17 @@
     "imageAlt": "ExperienceWelcome ホームページのプレビュー",
     "title": "惹きつけて、転換する"
   },
+  "StoryEntry": {
+    "ariaLabel": "How I build this を読む",
+    "label": "How I build this"
+  },
+  "HowIBuildThis": {
+    "backHomeLabel": "ホーム",
+    "constructionNotice": "このページは現在整備中です。",
+    "contentLocaleLabel": "日本語ドラフト",
+    "eyebrow": "Build story",
+    "languageLabel": "言語を変更"
+  },
   "HomePage": {
     "body": "このスタータールートは、SEO に適した App Router ルーティングで 6 つのロケールに対応しています。",
     "deployNow": "今すぐデプロイ",

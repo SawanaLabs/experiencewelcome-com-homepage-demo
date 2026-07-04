@@ -12,7 +12,8 @@ updateAt: 2026-07-05
 - Covers article framing, writing voice, reference inspirations, and the durable macro concepts behind the feature.
 - Covers how the article should explain this repository as evidence for a transferable Figma-to-web delivery method.
 - Covers the source-content workflow for the future Markdown article.
-- Excludes the final article copy and route implementation details until the writing and UI pass begins.
+- Covers the implemented article route boundary and content/i18n split.
+- Excludes the final article copy until the writing pass finishes.
 
 ## Domain Language
 
@@ -26,12 +27,14 @@ updateAt: 2026-07-05
 - **Harness formula**: `Model + repository context + skills + tools = Harness`.
 - **Engineering-practices-Harness split**: Project engineering practices describe the repository materials and local best practices humans and agents work from; Harness describes how an agent works inside it.
 - **Agent-ready frontend delivery system**: A front-end project and Harness system designed so human developers and coding agents can understand the product surface, extend landing page work, follow local conventions, run checks, and hand off verified changes with increasing team throughput.
-- **Article source Markdown**: The `src/content/how-i-build-this-zh.md` Chinese source draft for focused article writing before the route renders it as a webpage and before an English version is produced.
+- **Article source Markdown**: The localized article source files under `src/content/how-i-build-this-<locale>.md`; the Chinese file remains the primary authoring source during drafting, and translated files mirror the current draft for published locales.
+- **Article content loader**: The `src/lib/content/how-i-build-this.ts` server-side module that reads the locale-specific Markdown source, parses frontmatter and the supported Markdown blocks, and returns the article for the current route locale.
 - **AI Native Product Engineer**: The future-facing product engineer role the article should describe in chapter 0: someone who uses an agent-ready delivery system to ship modules or pages while continuously improving the system's context, docs, best practices, verification paths, and Harness.
 
 ## Current Subdomain Docs
 
 - The current Chinese article title is `How I Build This：从一个 Figma 任务开始`.
+- The article currently has localized Markdown sources for every supported app locale: `en`, `zh`, `ja`, `fr`, `es`, and `hi`.
 - The Chinese source draft starts with chapter 0, which first describes the future-facing agent-ready engineering state, then introduces the `AI Native Product Engineer` role as both a user and continuous improver of that state.
 - The article starts from a concrete Figma task: a visual reference material for a landing page needed to become a real webpage.
 - The article should use that concrete task to introduce the larger question: how Figma visual reference material can become an agent-ready frontend delivery system for landing page work.
@@ -47,7 +50,10 @@ updateAt: 2026-07-05
 - Failures, detours, and reflections should come from the author's actual build process during drafting. Do not invent failure points just to make the article feel credible.
 - "One day" can appear as result context, but the article's center of gravity is the method and foundation, not speed as a standalone claim.
 - The article should avoid sounding like a framework manual. It should expose technical choices through concrete moments of judgment.
-- Store the article's editable Chinese Markdown source at `src/content/how-i-build-this-zh.md`; produce the English version after the Chinese draft is stable.
+- Store localized article sources as `src/content/how-i-build-this-<locale>.md`. Keep `src/content/how-i-build-this-zh.md` as the primary authoring source while drafting, then keep translated files synchronized when publishing route-visible updates.
+- Render the article at `/how-i-build-this` for the default locale and `/<locale>/how-i-build-this` for prefixed locales through `src/app/[locale]/how-i-build-this/page.tsx`.
+- Keep long-form article body content in `src/content`, content loading/parsing in `src/lib/content`, and route/chrome copy in `src/i18n/messages/*.json`. Do not move article prose into next-intl message files.
+- The homepage entry is `src/components/story/story-floating-link.tsx`; its visible label remains `How I build this`.
 - Use the Markdown file as the focused content workspace. During writing, update it directly through normal additions, removals, and rewrites; do not add a separate writing-state system.
 - Start the Markdown file with a table of contents that reflects the current outline. Chapter titles should read like an essay, not a project log. Chapter 0 frames the future role, chapter 1 starts from the Figma assignment, chapter 2 opens the project-building process with second-level subsections, and chapter 3 closes on what the project became.
 - Decide evidence, images, paths, commands, and other Markdown inserts while discussing concrete paragraphs. Do not predefine a rigid evidence insertion rule before drafting.
@@ -89,4 +95,4 @@ updateAt: 2026-07-05
 - Update this file when the `How I Build This` route, article title, writing voice, macro structure, or reference set changes.
 - Update this file when drafting reveals stable article principles that should guide future implementation or writing passes.
 - Update this file when the feature moves from concept into route/component implementation.
-- Update this file if the article source path moves away from `src/content/how-i-build-this-zh.md`.
+- Update this file if article source paths move away from `src/content/how-i-build-this-<locale>.md`.

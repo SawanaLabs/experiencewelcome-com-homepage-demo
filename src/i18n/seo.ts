@@ -1,7 +1,7 @@
 import { getPathname } from "./navigation";
 import { defaultLocale, type Locale, locales } from "./routing";
 
-type LocalizedHref = "/";
+type LocalizedHref = "/" | "/how-i-build-this";
 
 const explicitSiteUrlEnvKeys = ["NEXT_PUBLIC_SITE_URL", "SITE_URL"] as const;
 const absoluteUrlPattern = /^https?:\/\//i;

@@ -121,6 +121,17 @@
     "imageAlt": "Aperçu de la page d’accueil ExperienceWelcome",
     "title": "Captiver et convertir"
   },
+  "StoryEntry": {
+    "ariaLabel": "Lire How I build this",
+    "label": "How I build this"
+  },
+  "HowIBuildThis": {
+    "backHomeLabel": "Accueil",
+    "constructionNotice": "Cette page est en construction.",
+    "contentLocaleLabel": "Brouillon français",
+    "eyebrow": "Récit de construction",
+    "languageLabel": "Changer de langue"
+  },
   "HomePage": {
     "body": "Cette route de départ est configurée pour six langues avec un routage App Router favorable au SEO.",
     "deployNow": "Déployer",

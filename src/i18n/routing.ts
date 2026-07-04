@@ -15,5 +15,6 @@ export const routing = defineRouting({
   locales,
   pathnames: {
     "/": "/",
+    "/how-i-build-this": "/how-i-build-this",
   },
 });

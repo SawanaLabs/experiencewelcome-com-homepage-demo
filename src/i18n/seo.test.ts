@@ -72,4 +72,20 @@ describe("i18n SEO URLs", () => {
       "x-default": "https://example.com/",
     });
   });
+
+  it("generates canonical hreflang URLs for the story route", async () => {
+    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://example.com");
+    vi.resetModules();
+
+    const { getAbsoluteUrl, getLanguageAlternates } = await import("./seo");
+
+    expect(getAbsoluteUrl("zh", "/how-i-build-this")).toBe(
+      "https://example.com/zh/how-i-build-this"
+    );
+    expect(getLanguageAlternates("/how-i-build-this")).toMatchObject({
+      en: "https://example.com/how-i-build-this",
+      zh: "https://example.com/zh/how-i-build-this",
+      "x-default": "https://example.com/how-i-build-this",
+    });
+  });
 });

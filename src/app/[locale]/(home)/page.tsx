@@ -7,6 +7,7 @@ import { HomepageFooter } from "@/components/homepage/footer";
 import { HomepageHeader } from "@/components/homepage/header";
 import { HomepageHowItWorks } from "@/components/homepage/how-it-works";
 import { HomepageMotionProvider } from "@/components/motion/motion-provider";
+import { StoryFloatingLink } from "@/components/story/story-floating-link";
 import { createHomepageCopy } from "@/i18n/homepage-copy";
 import { createHomepageMetadata } from "@/i18n/homepage-metadata";
 import { isLocale, type Locale } from "@/i18n/routing";
@@ -65,7 +66,10 @@ export default async function Home({ params }: HomeProps) {
   }
 
   setRequestLocale(localeCandidate);
-  const copy = await getHomepageCopy(localeCandidate);
+  const [copy, storyEntry] = await Promise.all([
+    getHomepageCopy(localeCandidate),
+    getTranslations({ locale: localeCandidate, namespace: "StoryEntry" }),
+  ]);
 
   return (
     <main className="min-h-screen bg-[#000000] py-6">
@@ -82,6 +86,11 @@ export default async function Home({ params }: HomeProps) {
         <HomepageHowItWorks copy={copy.howItWorks} />
         <HomepageCustomerStories copy={copy.customerStories} />
         <HomepageFooter copy={copy.footer} />
+        <StoryFloatingLink
+          ariaLabel={storyEntry("ariaLabel")}
+          currentLocale={localeCandidate}
+          label={storyEntry("label")}
+        />
       </HomepageMotionProvider>
     </main>
   );

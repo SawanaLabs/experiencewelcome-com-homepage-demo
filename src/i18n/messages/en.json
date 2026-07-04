@@ -121,6 +121,17 @@
     "imageAlt": "ExperienceWelcome homepage preview",
     "title": "Captivate & Convert"
   },
+  "StoryEntry": {
+    "ariaLabel": "Read How I build this",
+    "label": "How I build this"
+  },
+  "HowIBuildThis": {
+    "backHomeLabel": "Home",
+    "constructionNotice": "This page is under construction.",
+    "contentLocaleLabel": "English draft",
+    "eyebrow": "Build story",
+    "languageLabel": "Change language"
+  },
   "HomePage": {
     "body": "This starter route is configured for six locales with SEO-friendly App Router routing.",
     "deployNow": "Deploy Now",

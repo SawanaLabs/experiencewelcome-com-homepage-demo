@@ -121,6 +121,17 @@
     "imageAlt": "ExperienceWelcome होमपेज प्रीव्यू",
     "title": "Captivate और Convert करें"
   },
+  "StoryEntry": {
+    "ariaLabel": "How I build this पढ़ें",
+    "label": "How I build this"
+  },
+  "HowIBuildThis": {
+    "backHomeLabel": "Home",
+    "constructionNotice": "यह पेज अभी तैयार किया जा रहा है.",
+    "contentLocaleLabel": "Hindi draft",
+    "eyebrow": "Build story",
+    "languageLabel": "भाषा बदलें"
+  },
   "HomePage": {
     "body": "यह starter route SEO-friendly App Router routing के साथ छह locales के लिए configured है.",
     "deployNow": "अभी deploy करें",

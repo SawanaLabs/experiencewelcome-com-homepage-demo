@@ -14,10 +14,13 @@ import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 
+type LanguageSwitcherHref = "/" | "/how-i-build-this";
+
 export interface LanguageSwitcherProps {
   ariaLabel?: string;
   className?: string;
   currentLocale: Locale;
+  href?: LanguageSwitcherHref;
   ignoreDrawerSwipe?: boolean;
   linkTabIndex?: ComponentProps<"button">["tabIndex"];
   modal?: ComponentProps<typeof DropdownMenu>["modal"];
@@ -27,6 +30,7 @@ export function LanguageSwitcher({
   ariaLabel = "Change language",
   className,
   currentLocale,
+  href = "/",
   ignoreDrawerSwipe = false,
   linkTabIndex,
   modal,
@@ -72,7 +76,7 @@ export function LanguageSwitcher({
                   aria-current={
                     option.locale === currentLocale ? "page" : undefined
                   }
-                  href="/"
+                  href={href}
                   locale={option.locale}
                 />
               }
