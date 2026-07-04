@@ -1,7 +1,7 @@
 ---
 title: How I Build This
 description: Stable framing for the product-independent build-process article and route.
-updateAt: 2026-07-04
+updateAt: 2026-07-05
 ---
 
 # How I Build This
@@ -19,7 +19,8 @@ updateAt: 2026-07-04
 - **How I Build This route**: A product-independent route that hosts the author's build-process article for human readers, AI agents, developer peers, and future collaborators.
 - **Build-process article**: An article that explains how a landing page work was built and what the author thought through while building it.
 - **Developer narrative essay**: The preferred writing style: a developer's experience, process, judgment, and analysis told through the build story, with structure used only where it improves comprehension.
-- **Figma-to-web delivery**: The end-to-end process of turning a responsive Figma landing page design into a maintainable front-end web project.
+- **Figma visual reference material**: A Figma input used primarily as a visual target for front-end delivery; it may be designer-authored, community-sourced, website-captured, or AI-generated, and should not be assumed to contain complete design-system semantics, responsive rules, interaction behavior, product decisions, or production-ready code structure.
+- **Figma-to-web delivery**: The end-to-end process of turning Figma visual reference material for a responsive landing page into a maintainable front-end web project.
 - **Project engineering practices**: The repository's delivery-facing hard content and local best practices: directory structure, code organization, components, styling, content, i18n, assets, docs, tests, quality gates, and verification habits.
 - **Harness engineering system**: The coding-agent behavior system that lets an AI agent open a fresh session, understand a requested landing page or section change, discover local tools and best practices, implement end-to-end, verify the result, and deliver work results to humans.
 - **Harness formula**: `Model + repository context + skills + tools = Harness`.
@@ -32,8 +33,11 @@ updateAt: 2026-07-04
 
 - The current Chinese article title is `How I Build This：从一个 Figma 任务开始`.
 - The Chinese source draft starts with chapter 0, which first describes the future-facing agent-ready engineering state, then introduces the `AI Native Product Engineer` role as both a user and continuous improver of that state.
-- The article starts from a concrete hiring assignment: a Figma design was provided and the author was asked to implement it as a webpage.
-- The article should use that concrete assignment to introduce the larger question: how a Figma implementation task can become an agent-ready frontend delivery system for landing page work.
+- The article starts from a concrete Figma task: a visual reference material for a landing page needed to become a real webpage.
+- The article should use that concrete task to introduce the larger question: how Figma visual reference material can become an agent-ready frontend delivery system for landing page work.
+- Treat Figma as a broad input category for this system. The source may be a designer-authored file, a community/template file, a website capture or conversion, an AI-generated mockup, or a prototype-like material.
+- The article should not overclaim that the input was a complete designer handoff. Many Figma materials are still primarily static visual references for front-end work, even though the Figma platform now includes prototypes, Figma Make, Figma Sites, AI generation, and code layers.
+- This wider Figma-input boundary belongs in docs now; final article wording should be decided during paragraph drafting.
 - The core framing is an evidence-backed transferable method. This repository is the proof surface; the method should remain useful beyond this single ExperienceWelcome homepage.
 - The article uses a dual-track build narrative:
   - Visible track: how this project was actually built from Figma to Web.
@@ -50,6 +54,11 @@ updateAt: 2026-07-04
 
 ## Reference Inputs
 
+- Figma input-shape references:
+  - [`Turn webpages into editable design layers`](https://help.figma.com/hc/en-us/articles/40826832449303-Turn-webpages-into-editable-design-layers) shows the official Figma Chrome extension flow for capturing webpages into editable Figma layers, with limitations around design-system mapping, complex scroll effects, canvas-rendered sites, and heavy JavaScript pages.
+  - [`Use AI tools in Figma Design`](https://help.figma.com/hc/en-us/articles/23870272542231-Use-AI-tools-in-Figma-Design) frames Figma AI as useful for starting faster while still requiring judgment because AI output may be misleading or wrong.
+  - [`Free AI Website Generator`](https://www.figma.com/solutions/ai-website-generator/) shows Figma Make generating responsive, interactive sites from natural-language prompts.
+  - [`html.to.design`](https://html.to.design/home/) is the third-party reference for converting websites into editable Figma designs.
 - Clerk is the functional reference for developer-facing article mechanics:
   - [`Clerk Init: The fastest way to start a new project`](https://clerk.com/blog/clerk-init) shows a blog article with jump links, "Explore with AI", terminal commands, agent pairing, and a start-from-zero product setup story.
   - [`Add Google as a social connection`](https://clerk.com/docs/guides/configure/auth-strategies/social-connections/google) shows functional documentation with prerequisites, development and production paths, warnings, testing instructions, and security notes.
@@ -66,7 +75,7 @@ updateAt: 2026-07-04
 
 - Start from a concrete scene rather than an abstract framework definition.
 - Use chapter 0 to describe the engineering state and goal state before the concrete Figma assignment: the article is also about how an AI Native Product Engineer uses and improves that state.
-- Let the Figma assignment expose the deeper problem: a good result needs a project that a human or agent can continue from.
+- Let the Figma task expose the deeper problem: a good result needs a project that a human or agent can continue from.
 - Use third-person retrospective framing when describing the author, while keeping the tone close to a developer explaining their own choices and trade-offs.
 - Prefer conversational chapter titles such as "Starting from a Figma assignment" and "Starting to build the project" over titles that sound like logs, records, or internal engineering documentation.
 - Define `Harness` through the work rather than as a detached theory chapter.

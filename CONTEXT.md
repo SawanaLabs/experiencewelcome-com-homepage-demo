@@ -10,6 +10,9 @@ The complete `experiencewelcome.com` source section inside the `Top 16 Websites 
 **Public reference site**:
 The live `experiencewelcome.com` website. It can support copy, module semantics, SEO wording, and missing-asset interpretation, but it is not the primary visual acceptance source.
 
+**Figma visual reference material**:
+A Figma input used primarily as a visual target for front-end delivery. It may be designer-authored, community-sourced, website-captured, or AI-generated, and it should not be assumed to contain complete design-system semantics, responsive rules, interaction behavior, product decisions, or production-ready code structure.
+
 **Homepage replication**:
 The localized single-page Next.js implementation of the Figma homepage source section. It excludes other websites, unrelated frames, and additional business pages outside the assigned homepage.
 
@@ -47,7 +50,7 @@ The writing voice for the build-process article. It explains the author's work f
 The preferred article style for How I Build This. It should read like a developer explaining experience, process, judgment, and analysis through the build story, with structure used only where it improves comprehension. Technical choices should naturally reveal the author's reasoning instead of turning the article into a rigid framework document.
 
 **Figma-to-web delivery**:
-The end-to-end process of turning a responsive Figma landing page design into a maintainable front-end web project. It starts with source inspection and project initialization, then moves through project engineering practices, component boundaries, responsive layout, localization, asset handling, AI-agent collaboration, tests, quality gates, and browser verification.
+The end-to-end process of turning Figma visual reference material for a responsive landing page into a maintainable front-end web project. It starts with source inspection and project initialization, then moves through project engineering practices, component boundaries, responsive layout, localization, asset handling, AI-agent collaboration, tests, quality gates, and browser verification.
 
 **Harness engineering system**:
 The coding-agent behavior system that lets an AI agent open a fresh session, understand a requested landing page or section change, discover the repository's tools and best practices, implement the change end-to-end, choose and run the right verification steps, and deliver work results to humans with minimal human steering.
@@ -62,7 +65,7 @@ The repository's delivery-facing hard content and local best practices: director
 Project engineering practices describe the repository materials and local best practices humans and agents work from. Harness describes how an agent works inside the project and how its behavior is guided, verified, and handed off.
 
 **Evidence-backed transferable method**:
-The article's framing: use this repository as concrete evidence for a broader, reusable method of turning Figma landing page designs into maintainable front-end web projects with agent-ready workflows.
+The article's framing: use this repository as concrete evidence for a broader, reusable method of turning varied Figma visual reference materials into maintainable front-end web projects with agent-ready workflows.
 
 **Human-agent readable article**:
 A writing target where the same article is readable by humans and useful to AI agents. It should preserve narrative flow and reflection while exposing commands, paths, decisions, and verification evidence in forms that developers can also read comfortably.
@@ -70,8 +73,8 @@ A writing target where the same article is readable by humans and useful to AI a
 **Dual-track build narrative**:
 The build-process article uses a visible track and an underlying track. The visible track follows how this project was actually built from Figma to Web; the underlying track shows how project engineering practices and Harness thinking formed through that work, including relevant prior engineering experience.
 
-**Figma-assignment-to-delivery-system arc**:
-The article starts from a concrete hiring assignment: a Figma design was provided and the author was asked to implement it as a webpage. The story then shows how that short assignment became a complete, extensible, convention-rich front-end delivery system within one day.
+**Figma-material-to-delivery-system arc**:
+The article starts from a concrete task: a Figma visual reference material for a landing page needed to become a real webpage. The story then shows how that task became a complete, extensible, convention-rich front-end delivery system within one day.
 
 **How I Build This title**:
 How I Build This：从一个 Figma 任务开始.
