@@ -4,11 +4,11 @@
 
 桌面端：
 
-<img src="docs/assets/readme/homepage-desktop-first-fold.png" alt="ExperienceWelcome 桌面端首屏截图" width="720">
+<img src="docs/assets/homepage-desktop-first-fold.png" alt="ExperienceWelcome 桌面端首屏截图" width="720">
 
 移动端：
 
-<img src="docs/assets/readme/homepage-mobile-first-fold.png" alt="ExperienceWelcome 移动端首屏截图" width="260">
+<img src="docs/assets/homepage-mobile-first-fold.png" alt="ExperienceWelcome 移动端首屏截图" width="260">
 
 这是一个使用 Next.js App Router、TypeScript 和 Tailwind CSS 实现的
 ExperienceWelcome 首页复刻项目，视觉来源为测试题指定的 Figma Community 文件。
@@ -93,4 +93,4 @@ pnpm fix
 2026 年 7 月 2 日 15:22 重新测试线上地址的 PageSpeed Insights Mobile 结果：
 Performance 90、Accessibility 96、Best Practices 100、SEO 100。
 
-<img src="docs/assets/readme/pagespeed-mobile.jpg" alt="PageSpeed Insights Mobile 结果截图" width="640">
+<img src="docs/assets/pagespeed-mobile.jpg" alt="PageSpeed Insights Mobile 结果截图" width="640">

@@ -1,7 +1,7 @@
 ---
 title: Documentation Assets Domain
 description: Domain-level conventions for reference images and other files stored under docs/assets.
-updateAt: 2026-07-02
+updateAt: 2026-07-04
 ---
 
 # Documentation Assets Domain
@@ -14,12 +14,13 @@ updateAt: 2026-07-02
 ## Collaboration Conventions
 
 - Keep documentation assets under `docs/assets/` when they are referenced by docs or used as stable implementation evidence.
+- Keep asset files directly under `docs/assets/` with descriptive filenames. Do not create nested subdirectories inside this domain; the docs verifier treats direct child directories as docs layout boundaries.
 - Prefer descriptive filenames that include the feature or section name.
 - Do not treat screenshots and exported references as source UI; implementation should still live in typed React, Tailwind classes, and project components.
 
 ## Boundary Principles
 
-- `docs/assets/` owns supporting files for documentation and review.
+- `docs/assets/` owns flat supporting files for documentation and review.
 - `public/` owns runtime assets served by the application.
 - `src/components/` owns UI implementation.
 - `docs/application/homepage-replication.md` owns the Figma replication process and should reference these assets when they become part of the durable workflow.
