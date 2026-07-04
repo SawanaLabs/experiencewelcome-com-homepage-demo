@@ -1,7 +1,7 @@
 ---
 title: Homepage Replication
 description: Stable constraints for the ExperienceWelcome Figma homepage replication.
-updateAt: 2026-07-04
+updateAt: 2026-07-05
 ---
 
 # Homepage Replication
@@ -29,7 +29,7 @@ updateAt: 2026-07-04
 - Use the public reference site only as auxiliary evidence when Figma does not expose enough copy, asset, or semantic context.
 - Implement the homepage as code-first high-fidelity React and Tailwind, with real image assets exported from Figma.
 - Export image assets for logos, avatars, product screenshots, complex illustrations, textures, and other non-textual visuals. Keep Figma-exported assets as-is by default, without manual retouching, recomposition, or design-side post-processing.
-- For the How It Works section, Figma media assets are exported through the browser UI from the signed-in `hsawana9@gmail.com` Chrome profile. The full-section reference image belongs at `docs/assets/how-it-works-reference.png` for comparison only; the runtime page uses real text plus the three separately exported media assets.
+- For the How It Works section, Figma media assets are exported through the browser UI from the signed-in `hsawana9@gmail.com` Chrome profile. The full-section reference image belongs at `docs/assets/homepage/how-it-works-reference.png` for comparison only; the runtime page uses real text plus the three separately exported media assets.
 - Allow animated assets such as GIFs or other Figma-exported motion media in the static replication phase when they are part of the source visual. Defer format optimization until the later performance phase unless the asset cannot render correctly in the app.
 - Keep headings, paragraphs, navigation labels, CTA labels, FAQ copy, and other meaningful content as real HTML text so i18n, SEO, accessibility, selection, and responsive layout remain controllable.
 - Put homepage section components under `src/components/homepage/`. Keep `src/app/[locale]/(home)/page.tsx` as the localized route entrypoint and composition surface.
@@ -77,7 +77,7 @@ updateAt: 2026-07-04
 - **2026-07-03-how-it-works-browser-export-boundary**: Keep How It Works source assets tied to browser-exported Figma layers.
   Status: Accepted.
   Context: The Figma file is view/comment only, but its Properties panel still exposes export controls for selected layers.
-  Decision: Export the How It Works section reference and per-step media layers through the browser UI using the signed-in `hsawana9@gmail.com` Chrome profile. Store the section reference as `docs/assets/how-it-works-reference.png` and store runtime media in `public/homepage/how-it-works/`.
+  Decision: Export the How It Works section reference and per-step media layers through the browser UI using the signed-in `hsawana9@gmail.com` Chrome profile. Store the section reference as `docs/assets/homepage/how-it-works-reference.png` and store runtime media in `public/homepage/how-it-works/`.
   Consequences: The implementation has traceable Figma source assets without relying on API access or local screenshot cropping, and the runtime section remains accessible because meaningful text stays as HTML.
 
 ## Update Triggers

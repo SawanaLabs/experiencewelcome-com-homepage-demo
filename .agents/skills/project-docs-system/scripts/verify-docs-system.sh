@@ -126,7 +126,9 @@ while IFS= read -r domain_dir; do
   fi
 
   while IFS= read -r nested_dir; do
-    warn "nested docs directory is outside the two-level layout: $nested_dir"
+    if find "$nested_dir" -type f -name '*.md' -print -quit | grep -q .; then
+      warn "nested docs directory is outside the two-level layout: $nested_dir"
+    fi
   done < <(find "$domain_dir" -mindepth 1 -maxdepth 1 -type d ! -name '.*' -print | sort)
 
   while IFS= read -r leaf_doc; do
