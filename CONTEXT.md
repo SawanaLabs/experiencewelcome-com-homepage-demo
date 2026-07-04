@@ -33,3 +33,66 @@ A small interaction response for homepage controls and visual objects, such as C
 
 **Reduced-motion contract**:
 The accessibility rule that homepage motion must respect the visitor's reduced-motion preference by removing or simplifying large movement, parallax, autoplay, and continuous decorative motion.
+
+**How I Build This route**:
+A product-independent route that hosts the author's build-process article. It helps human readers, AI agents, developer peers, and future collaborators understand the author's process, tools, trade-offs, and reflections behind the landing page work.
+
+**Build-process article**:
+An article that explains how a landing page work was built and what the author thought through while building it. It can include tutorial-like steps and evidence, but its primary job is to expose judgment, process, trade-offs, and collaboration style.
+
+**Third-person engineering retrospective**:
+The writing voice for the build-process article. It explains the author's work from a third-person perspective and pairs narrative claims with concrete engineering evidence such as directory structure, docs, commands, code boundaries, test results, browser checks, and deployment milestones.
+
+**Developer narrative essay**:
+The preferred article style for How I Build This. It should read like a developer explaining experience, process, judgment, and analysis through the build story, with structure used only where it improves comprehension. Technical choices should naturally reveal the author's reasoning instead of turning the article into a rigid framework document.
+
+**Figma-to-web delivery**:
+The end-to-end process of turning a responsive Figma landing page design into a maintainable front-end web project. It starts with source inspection and project initialization, then moves through project engineering practices, component boundaries, responsive layout, localization, asset handling, AI-agent collaboration, tests, quality gates, and browser verification.
+
+**Harness engineering system**:
+The coding-agent behavior system that lets an AI agent open a fresh session, understand a requested landing page or section change, discover the repository's tools and best practices, implement the change end-to-end, choose and run the right verification steps, and deliver work results to humans with minimal human steering.
+
+**Harness formula**:
+Model + repository context + skills + tools = Harness. The model supplies reasoning and generation; repository context supplies local truth; skills supply repeatable working methods; tools supply executable capabilities. A working Harness then runs an implementation and verification loop so an agent can implement, verify, and hand off work end-to-end.
+
+**Project engineering practices**:
+The repository's delivery-facing hard content and local best practices: directory structure, code organization, components, styling, content, i18n, assets, docs, tests, quality gates, and verification habits.
+
+**Engineering-practices-Harness split**:
+Project engineering practices describe the repository materials and local best practices humans and agents work from. Harness describes how an agent works inside the project and how its behavior is guided, verified, and handed off.
+
+**Evidence-backed transferable method**:
+The article's framing: use this repository as concrete evidence for a broader, reusable method of turning Figma landing page designs into maintainable front-end web projects with agent-ready workflows.
+
+**Human-agent readable article**:
+A writing target where the same article is readable by humans and useful to AI agents. It should preserve narrative flow and reflection while exposing commands, paths, decisions, and verification evidence in forms that developers can also read comfortably.
+
+**Dual-track build narrative**:
+The build-process article uses a visible track and an underlying track. The visible track follows how this project was actually built from Figma to Web; the underlying track shows how project engineering practices and Harness thinking formed through that work, including relevant prior engineering experience.
+
+**Figma-assignment-to-delivery-system arc**:
+The article starts from a concrete hiring assignment: a Figma design was provided and the author was asked to implement it as a webpage. The story then shows how that short assignment became a complete, extensible, convention-rich front-end delivery system within one day.
+
+**How I Build This title**:
+How I Build This：从一个 Figma 任务开始.
+
+**Agent-ready frontend delivery system**:
+A front-end project and Harness system designed so human developers and coding agents can understand the product surface, extend landing page work, follow local conventions, run the right checks, and hand off verified changes with increasing team throughput.
+
+**Agent-ready engineering state**:
+A software engineering state where human developers and AI agents enter a project through shared readable context, understand product and engineering constraints, add judgment, reduce coordination friction, and continue delivery through executable verification loops.
+
+**AI project context entrypoint**:
+The role AI plays when a new human contributor asks it to explain implementation reasons, historical decisions, technical stack, module locations, and relevant docs so they can land in the project faster.
+
+**Article source Markdown**:
+The editable Chinese source draft for the How I Build This article at `src/content/how-i-build-this-zh.md`, before it is rendered as a webpage and before an English version is produced.
+
+**AI Native Product Engineer**:
+A future-facing product engineer role that uses an agent-ready delivery system to ship modules or pages while continuously improving that system's context, docs, best practices, verification paths, and Harness so the next landing becomes easier.
+
+**Marketing web foundation**:
+The reusable project foundation that lets future developers and AI agents extend a landing page work into a broader marketing and growth website without losing maintainability.
+
+**Landing page work**:
+The broader portfolio category for current and future pages in this repository. The ExperienceWelcome homepage is one landing page work; future pages may be separate landing page works that share the same process-story surface.
